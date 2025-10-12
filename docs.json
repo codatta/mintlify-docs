@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Protocol Guides",
         "groups": [
           {
             "group": "Getting started",
@@ -83,7 +83,7 @@
       "anchors": [
         {
           "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "href": "https://codatta.mintlify.app",
           "icon": "book-open-cover"
         },
         {
