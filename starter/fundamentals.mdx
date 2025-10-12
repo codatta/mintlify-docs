@@ -1,0 +1,123 @@
+<Tip>
+### TL;DR
+This page builds shared language for the rest of the docs. It explains how **AI** uses **samples**, **labels**, **validations**, how **Codatta** models them as **atomic contributions**, how they bundle into a **data asset** (the minimal commercial unit), and why we use **blockchain** to make **assetification** & **royalties programmable**.
+</Tip>
+
+## Data basics for Artificial Intelligence (AI)
+
+**Sample** (math notion: **X**): A raw observation the model will learn from (image, audio clip, text span, time
+series window, multi-sensor frame, etc.).
+
+**Label** (math notion: **Y** or **y**): A structured interpretation of a sample (or group of samples): class, bounding
+box, segmentation mask, span, rating, relation, events over time, etc.
+
+*Validation*: A quality judgment or evidence check on a sample or label. This can be consensus
+voting, rubric scoring, re-labeling, or automated checks plus human adjudication.
+
+**Why quality matters to models**
+- **Signal-to-noise** – mislabeled or low-information data reduces effective batch
+  size and slows convergence.  
+- **Bias & leakage** – inconsistent schema, shortcut features, or label leakage
+  harm generalization and fairness.  
+- **Heterogeneous tasks** – multi-task/chain-of-thought models depend on **clear,
+  consistent instructions** and **traceable provenance** to debug and improve.
+
+**Take-away**: Better samples + clearer labels + verifiable validations =
+**more useful gradient steps** and **fewer surprises in production**.
+
+---
+## Codatta’s data model
+
+![Atomic → Data Asset → Dataset](/diagrams/data_assetify_model.png)
+*Figure 1. Samples, labels, and validations aggregate into a **Data Asset**; assets
+are then selected into **Datasets**.*
+
+<Callout icon="key" color="#FFC107" iconType="regular">
+**Why it matters**: The **Data Asset** is the **unit of ownership & royalty** and
+the **unit of licensing** most buyers actually consume.
+</Callout>
+
+**A. Atomic Contribution (AC)**  
+One unit of work produced by a human or agent:
+- `sample` – the observation
+- `label` – the interpretation
+- `validation` – the quality/evidence decision
+
+Every AC is assigned a **Contribution Fingerprint (CF)**:
+- A tamper-evident identifier (hash + metadata + parent links) that proves
+  *who did what, when, to which payload*.
+- CFs make contributions **discoverable, deduplicable, and auditable**.
+
+**B. Data Asset (DA)**  
+A **composite, minimal commercial unit** created by aggregating ACs that belong
+together (e.g., one image + its accepted labels + validations). Ownership and
+licensing are enforced at the **asset** level because that’s what AI teams
+actually use.
+
+**C. Dataset (View / Collection)**  
+A curated selection of **Data Assets** for a particular model, vertical, or
+evaluation—defined by a saved query or manifest. Datasets inherit all
+**ownership, licensing, and lineage** from the assets they include.
+
+---
+## Typical real-world scenarios
+
+<Warning> The figures below are **conceptual** and focus on relationships and flow; field
+names and formats may evolve as the protocol is finalized. </Warning>
+
+
+### Scenarion A: One sample, multiple label sets
+![One sample → two assets via different label bundles](/diagrams/pattern01_sample_multi_label.png)
+*Figure 2. One sample (X0) gets labeled by **task01** and **task02**. Bundling*
+`X0 + {Y0, Y1}` *forms Asset-A (Vertical AI “a”), while bundling* `X0 + {Y2}`
+*forms Asset-B (Vertical AI “b”).*
+
+**Why it matters**: The same raw sample can power **different products** simply by
+bundling **different labels**—each with its own royalties and license terms.
+
+### Scenarion B: Cross-sample composite
+![Cross-sample composite](/diagrams/pattern02_cross_sample.png)
+*Figure 3. Two samples (X0, X1) are combined into a **composite asset** for a new
+task (task03). A downstream label (Y3) annotates the composite, not a single
+sample.*
+
+**Why it matters**: Many tasks (dialog pairs, multi-turn contexts, video/action
+segments) require **relationships across samples**. Codatta supports composite
+assets and keeps **derivation links** for proper attribution and payouts.
+
+### Scenarion C: Label-on-label (meta-labeling)
+![Label-on-label](/diagrams/pattern03_label_on_label.png)
+*Figure 4. A downstream label (Y4) targets an **upstream label** (Y0), which itself
+annotated X0. Royalties propagate to the **meta-labelers** and **origin labelers**
+(and to the original sample as policy dictates).*
+
+**Why it matters**: You can annotate **interpretations**, not just raw data:
+rubrics, explanations, confidence judgments, or evaluator notes—all with lineage
+and revenue inheritance.
+
+---
+
+## Assetification & blockchain technology
+
+**Why assetify?**  
+Traditional labeling produces files that are hard to track, share, or value.
+**Assetification** turns work into **on-chain objects** with provenance and
+programmable rights:
+- **Provenance** via **Contribution Fingerprints** (hash + metadata + parents)
+  → *who did what, when, to which payload*.
+- **Ownership** via **fractional tokens** on Data Assets (not just on files),
+  so multiple contributors/validators can participate in revenue.
+- **Licensing & metering** with policy-gated access (public vs. restricted), and
+  usage receipts (read/train/infer) that drive **royalty routing**.
+- **Derivation** that carries **inheritance rules** (child assets point to
+  parents; royalties propagate per policy).
+- **Privacy-by-design**: hybrid storage + secure compute (e.g., TEEs) so models
+  can **use** data without exposing raw content.
+
+**What blockchain adds**
+- **Trust minimization**: public, append-only record of contributions, ownership,
+  and usage events.  
+- **Composability**: assets can be queried, bundled, and re-licensed across apps
+  while preserving **lineage and payouts**.  
+- **Incentives**: contributors and validators earn when assets are used—aligning
+  quality with long-term value.

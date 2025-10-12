@@ -16,33 +16,44 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "starter/overview",
+              "starter/royalty-economy",
+              "starter/fundamentals",
+              "starter/why-now"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Core Systems",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "core-concepts/key-concepts",
+              "core-concepts/identity-reputation",
+              "core-concepts/contribution-fingerprint", 
+              "core-concepts/lineage-asset-assembly"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Use Cases",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "use-cases/why-human-intelligence",
+              "use-cases/tasks",
+              "use-cases/verticals",
+              "use-cases/examples"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Build with Codatta",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "build-with-codatta/integration-patterns",
+              "build-with-codatta/quickstart",
+              "build-with-codatta/playbook"
+            ]
+          },
+          {
+            "group": "Protocol Token ($XNY)",
+            "pages": [
+              "protocol-token/token-utility",
+              "protocol-token/tokenomics",
+              "protocol-token/token-info"
             ]
           }
         ]
@@ -114,9 +125,9 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/codatta_io",
+      "github": "https://github.com/codatta",
+      "linkedin": "https://linkedin.com/company/codatta"
     }
   }
 }
