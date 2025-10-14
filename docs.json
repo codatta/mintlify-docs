@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Codatta's Documentation",
   "colors": {
     "primary": "#16A34A",
@@ -41,19 +41,18 @@
             ]
           },
           {
-            "group": "Build with Codatta",
-            "pages": [
-              "build-with-codatta/integration-patterns",
-              "build-with-codatta/quickstart",
-              "build-with-codatta/playbook"
-            ]
-          },
-          {
             "group": "Protocol Token ($XNY)",
             "pages": [
               "protocol-token/token-utility",
               "protocol-token/tokenomics",
               "protocol-token/token-info"
+            ]
+          },
+          {
+            "group": "Community",
+            "pages": [
+              "community/roadmap",
+              "community/history"
             ]
           }
         ]
