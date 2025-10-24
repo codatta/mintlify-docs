@@ -32,10 +32,16 @@
           {
             "group": "Core Systems",
             "pages": [
-              "core-concepts/key-concepts",
-              "core-concepts/identity-reputation",
-              "core-concepts/contribution-fingerprint", 
-              "core-concepts/lineage-asset-assembly"
+              "core-systems/architecture",
+              "core-systems/key-concepts",
+              "core-systems/contribution-fingerprint", 
+              "core-systems/identity",
+              "core-systems/reputation",
+              "core-systems/lineage-asset-assembly",
+              "core-systems/storage-compute-serving",
+              "core-systems/access-control-metering",
+              "core-systems/tokenized-ownership-proofs",
+              "core-systems/royalty-engine"
             ]
           },
           {
