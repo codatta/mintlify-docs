@@ -7,6 +7,13 @@
     "light": "#07C983",
     "dark": "#15803D"
   },
+  "seo": {
+    "indexing": "all",
+    "metatags": {
+      "og:type": "website",
+      "og:site_name": "Codatta's Official Documentations"
+    }
+  },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
