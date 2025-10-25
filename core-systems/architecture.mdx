@@ -1,6 +1,6 @@
 ---
-title: Core System Architecture
-description: "From data creation to royalties — the end-to-end lifecycle: Contribution Fingerprint → Identity → Reputation → Lineage → Storage/Compute/Serving → Access & Metering → Tokenized Ownership → Royalty Engine."
+title: Core System Architecture (WIP)
+description: "How **Codatta** turns data into owned, metered assets and royalties." 
 ---
 
 > **TL;DR**  
@@ -8,132 +8,97 @@ description: "From data creation to royalties — the end-to-end lifecycle: Cont
 
 ## Architecture
 
+<div style={{ transform: 'scale(1)', transformOrigin: 'top left' }}>
 ```mermaid
-flowchart LR
-  %% LAYOUT DIRECTION
-  %% Use LR (left→right) to mirror the supplied chart
+---
+config:
+  theme: mc
+  look: classic
+  layout: dagre
+---
+flowchart TB
+    ID["Identity"] --> REP["Reputation"]
+    KC["Knowledge Contributors<br>(Providers / Validators)"] --> CF["Contribution Fingerprint"] & TOK["Tokenized Ownership"]
+    REP --> CF
+    CF --> DStor["Decentralized Storage<br>(Source-of-truth)"] & LEX["Data Lineage Explorer"]
+    LEX --> PAC["Permissioned Access Control"]
+    DC["Data Consumer<br>(AI Model Developer)"] --> PAC
+    PAC --> Gate["Access Endpoint"]
+    Gate --> Cloud["Cloud Computing"] & MET["Metering Module"]
+    Cloud --> TEE["TEE or Federated Learning"]
+    TEE --> AIM["AI Model"]
+    AIM --> U["Users"]
+    %% Ownership & marketplace
+    TOK --> OH["Ownership Holders"] & RM["Royalty Module"]
+    TOK <---> ODFI["Ownership DeFi Marketplace"]
+    %% Metering to royalty
+    MET --> RM
+    %% Royalty splits and flows
+    RM --> OH & PT["Protocol Treasury"] & RA["Revenue Account<br/>(owned by data consumer)"]
+    %% NEW: Users pay revenue accounts
+    U --> RA
+    %% NEW: Portion of revenue redistributed via Royalty Module
+    RA --> RM
+    %% NEW: Majority of revenue goes back to AI developers (data consumers)
+    RA --> DC
 
-  %% =========================
-  %% NODES (grouped by type)
-  %% =========================
+     ID:::module
+     REP:::module
+     KC:::role
+     CF:::module
+     TOK:::module
+     DStor:::module
+     LEX:::module
+     PAC:::module
+     DC:::role
+     Gate:::module
+     Cloud:::module
+     MET:::module
+     TEE:::module
+     AIM:::model
+     U:::role
+     OH:::role
+     RM:::module
+     ODFI:::module
+     PT:::module
+     RA:::module
+     RA:::revenue
 
-  %% --- Actors / Roles (yellow)
-  KC[Knowledge Contributors<br/>(Providers / Validators)]
-  DC[Data Consumer<br/>(AI Model Developer)]
-  OH[Ownership Holders]
-  U[Users]
-
-  %% --- Core blue modules
-  ID[Identity]
-  REP[Reputation]
-  CF[Contribution Fingerprint]
-  PAC[Permissioned Access Control]
-  MET[Metering Module]
-  LEX[Data Lineage Explorer]
-  TOK[Tokenized Ownership]
-  ODFI[Ownership DeFi Marketplace]
-  DStor[Decentralized Storage<br/>(Source-of-truth)]
-  Cloud[Cloud Computing]
-  Gate[Access Endpoint]
-  TEE[TEE or Federated Learning]
-  AIM[AI Model]
-  RM[Royalty Module]
-  PT[Protocol Treasury]
-  RA[Revenue Accounts]
-
-  %% =========================
-  %% FLOWS / EDGES
-  %% =========================
-
-  %% Identity & Reputation inform contributions
-  ID --> REP
-  KC --> CF
-  REP --> CF
-
-  %% CF persists and becomes discoverable
-  CF --> DStor
-  CF --> LEX
-
-  %% Access control and serving path
-  LEX --> PAC
-  DC --> PAC
-  PAC --> Gate
-  Gate --> Cloud
-  Cloud --> TEE
-  TEE --> AIM
-  AIM --> U
-
-  %% Metering & billing events
-  Gate --> MET
-
-  %% Ownership lifecycle
-  KC --> TOK
-  TOK --> OH
-  TOK <---> ODFI
-
-  %% Royalties
-  MET --> RM
-  TOK --> RM
-  RM --> OH
-  RM --> PT
-  RM --> RA
-
-  %% =========================
-  %% STYLES (optional, to resemble the diagram)
-  %% =========================
-  classDef role fill:#F6C667,stroke:#d9a52c,color:#111,stroke-width:1px;
-  classDef module fill:#66B8F6,stroke:#2b82c9,color:#111,stroke-width:1px;
-  classDef model fill:#7EDB86,stroke:#3aa24a,color:#111,stroke-width:1px;
-  classDef revenue fill:#F79B5F,stroke:#d26d2d,color:#111,stroke-width:1px;
-
-  class KC,DC,OH,U role;
-  class ID,REP,CF,PAC,MET,LEX,TOK,ODFI,DStor,Cloud,Gate,TEE,RM,PT,RA module;
-  class AIM model;
-  class RA revenue;
+    classDef role fill:#F6C667,stroke:#d9a52c,color:#111,stroke-width:1px
+    classDef module fill:#66B8F6,stroke:#2b82c9,color:#111,stroke-width:1px
+    classDef model fill:#7EDB86,stroke:#3aa24a,color:#111,stroke-width:1px
+    classDef revenue fill:#F79B5F,stroke:#d26d2d,color:#111,stroke-width:1px
 ```
+</div>
 
+--- 
 
-## Roles
+## The 4-step flow (end-to-end)
 
-- **Knowledge Contributors** *(providers & validators; human or autonomous agents)* — create/verify contributions and may stake on accuracy.
-- **Knowledge Backers** — underwrite contributor cohorts or datasets; share in ownership and royalties.
-- **Data Consumers (AI builders)** — license datasets via policy-gated endpoints; usage generates billable events.
+1. **Contribution**: A contributor (human or agent) submits work that is sealed as a **[Contribution Fingerprint](/core-concepts/contribution-fingerprint.mdx)** and bound to **[Identity](/core-concepts/identity.mdx)** and **[Reputation](/core-concepts/reputation.mdx)**.
+2. **Assetification**: Atomic contributions (samples, labels, validations) with **verified contribuiton fingerprints**, are assembled and curated into versioned datasets (**[Lineage & Asset Assembly](/core-concepts/lineage-asset-assembly.mdx)**), and are **minted into** on-chain **[Tokenized Ownership](/core-concepts/tokenized-ownership-proofs.mdx)** with **transferable fractions**.
+3. **Usage**: AI builders access data through the **[Access Gateway](/core-concepts/access-control-metering.mdx)** backed by secure **[Storage / Compute / Serving](/core-concepts/storage-compute-serving.mdx)**. Every read produces **usage & billing events** (metering).
+4. **Royalty**: The **[Royalty Engine](/core-concepts/royalty-engine.mdx)** combines revenue, time-pinned ownership fractions, and metering events to produce **deterministic payouts** to ownership holders and the treasury.
 
-> Also present in flows: **Ownership Holders**, **Protocol Treasury**, **Revenue Accounts**, **Users**.
+---
 
-## Lifecycle (data → ownership → royalties)
+## Key components at a glance
 
-1. **Contribution Fingerprint (CF)** — atomic, signed record of **who did what, when, with what evidence**.
-2. **Identity** — bind actors (wallet/DID; optional credentials) with privacy modes and auditable boundaries.
-3. **Reputation** — trust signal from accuracy history, credentials/skills, and staking-as-confidence.
-4. **Lineage & Explorer** — compose CFs into versioned datasets; provenance queries power explainability.
-5. **Storage / Compute / Serving** — source-of-truth persistence, secure compute (TEE/federated), and access gateway.
-6. **Access & Metering** — policy checks gate reads; metering emits **usage & billing events** with dataset/version IDs.
-7. **Tokenized Ownership** — contributors/backers hold fractions over units/datasets; fractions are tradable/liquid.
-8. **Royalty Engine** — transforms revenue + events + ownership state into deterministic, explainable payouts.
+- **Contribution Fingerprint (CF)**: atomic, signed record of *who did what, when, with what evidence*.  
+- **Identity & Reputation**: privacy-preserving identity plus staking-as-confidence and accuracy history to score trust.  
+- **Lineage & Asset Assembly**: composes CFs into traceable datasets with versioning and provenance queries.  
+- **Storage / Compute / Serving**: source-of-truth storage, secure compute (TEE/federated), and performant delivery.  
+- **Access Control & Metering**: policy-gated access; emits auditable **usage & billing events**.  
+- **Tokenized Ownership**: on-chain, **transferable** ownership fractions over units/datasets with proof exports.  
+- **Royalty Engine**: converts revenue into transparent, replayable splits for contributors/backers (ownership holders).
+
+---
+
+## Where to start
+
+- **Building the stack:** start with **[Contribution Fingerprint](/core-concepts/contribution-fingerprint.mdx)** → Identity + Reputation → Lineage → Storage/Serving → Access & Metering → Ownership Proofs → Royalty Engine.  
+- **Exploring products:** see **Products → Lineage Explorer** and related dashboards for UI/API usage and SDKs.
 
 <Tip>
-**Data Valuation & Attribution**:
-
-**Valuation** *(how access is priced/weighted, versioned)*: quality/accuracy (source class, agreement, validator rep.), information richness (incremental info gain), demand & scarcity, market references (tier/SKU benchmarks), protocol distribution parameters (governance weights), novelty/recency. Each dataset/version caches an **Effective Price/Weight** used by metering events.
-
-**Attribution** *(who gets paid at time `t`)*: ownership fractions for the specific unit/dataset at the **event’s effective timestamp** (version-pinned), plus hold-backs/reserves for disputes and a governed treasury share.
-
-**Determinism:** *same* metering events + *same* ownership state + *same* valuation config ⇒ *same* payout result on replay.
+**Main goal:** use blockchain to **turn data into an ownable asset class** for AI—making rights **provable**, ownership **transferable**, and revenue **shareable** via royalties.
 </Tip>
-
-## Interfaces (module contracts)
-
-- **CF → Identity / Reputation** — signers; validation feeds reputation.
-- **CF / Reputation → Lineage** — inclusion and weighting rules.
-- **Lineage → Storage / Serving** — materialized datasets & versions.
-- **Access Gateway → Metering** — emits usage & billing events with dataset/version IDs.
-- **Tokenized Ownership ↔ Royalty Engine** — fractions at time *t*, dispute/escrow states.
-- **Royalty Engine → Owners/Task Creators/Treasury** — explainable payouts with audit trails.
-
-## Invariants
-
-- **Traceability:** every served byte maps to a lineage node → CFs → owners.
-- **Determinism:** event + ownership + valuation config = identical payout on replay.
-- **Minimal disclosure:** identity/access proofs reveal only what policy requires.
-- **Revocability with audit:** disputes quarantine revenue and allow recomputation without data loss.
