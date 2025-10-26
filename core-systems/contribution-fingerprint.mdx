@@ -12,7 +12,6 @@ A **Contribution Fingerprint (CF)** is like a **receipt with provenance** for on
 
 CFs are the **first brick** of the whole architecture. They make authorship clear, power transparent ownership and royalties, and let anyone trace a dataset back to its origins.
 
----
 
 ## Where CFs fit (big picture)
 
@@ -21,7 +20,6 @@ CFs are the **first brick** of the whole architecture. They make authorship clea
 3. **Usage →** AI builders access datasets via policy‑gated endpoints; usage is metered.  
 4. **Royalty →** revenue + metered events + ownership fractions = deterministic payouts.
 
----
 
 ## How a CF is created
 
@@ -75,7 +73,6 @@ To keep trust high without exposing private data, each CF can carry structured *
 
 Reviewers and algorithms do **not** edit the original CF. They **append their own CFs** that reference it. That keeps the audit trail clean and explainable.
 
----
 
 ## What CFs enable
 
@@ -85,14 +82,12 @@ Reviewers and algorithms do **not** edit the original CF. They **append their ow
 - **Fair payouts** — When data is used, metered events and ownership fractions point back to the right CFs, enabling deterministic royalties.  
 - **Accountable improvements** — Validations and corrections are new CFs instead of silent edits.
 
----
 
 ## Example: from contribution to royalties
 
 Dr. Lin contributes a **label** for a medical image, which was **provided by the patient from a recent pathology diagnosis**. The image upload creates one **CF** (for the sample); Dr. Lin’s label creates a **second CF** linked to the first. Both are **anchored on-chain** and **published** (the content stays policy-gated). Independent reviewers add **their own CFs** to confirm or challenge the label; disagreements open a **dispute** that results in a new CF (amend/deprecate) without editing history.
 These CFs are assembled into a **versioned dataset**. **Tokenized ownership fractions** are recorded for the patient (sample), Dr. Lin (label), validators (reviews), any backers, and the treasury. An AI builder accesses the dataset via the **access gateway**; usage is **metered**, payments flow to the builder’s **revenue account**, and the **royalty engine** combines revenue, usage events, and time-pinned
 
----
 
 ## Invariants (always true)
 

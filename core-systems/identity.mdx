@@ -1,4 +1,58 @@
 ---
 title: Identity
-description: Wallet/DID, optional KYC/KYB, verifiable credentials, account linking, privacy modes, and audit boundaries.
+description: "How contributors, teams, and agents are identified, verified, and bound to actions—without overexposing privacy."
 ---
+
+<Info>
+**What “identity” means here.**  
+Identity is the link between an actor and their actions: signing **Contribution Fingerprints (CFs)**, staking, accessing datasets, and receiving payouts. An identity can be a **wallet**, a **DID**, an **organization/team identity**, or an **agent** acting on behalf of a human/team.
+</Info>
+
+## Identity primitives
+Wallet address (secp256k1/ed25519), W3C **DID**, Organization/team identity with delegated keys, and **Agent identity** for autonomous agents (see [ERC-8004: Trustless Agents](https://eips.ethereum.org/EIPS/eip-8004) for an on-chain registry approach to agent **Identity/Reputation/Validation**). A person may link multiple wallets; a team may use multisig or delegated keys.
+
+## Verification levels (progressive trust)
+We support a ladder of assurance so contributors choose the minimum needed for their work:
+- **Pseudonymous:** proves control of a key. Default for most contributions.
+- **Linked accounts:** optional links (email, GitHub, ORCID) for continuity and recovery.
+- **Verifiable Credentials (VCs):** third-party attestations (e.g., license, affiliation) for expert tasks.
+- **KYC/KYB:** legal identity for regulated datasets or specific payout policies.
+
+> Higher levels unlock work that requires stronger assurances and can increase reputation weight. Lower levels preserve privacy for open tasks.
+
+## Enrollment & linking
+Create an identity → link wallets → (optional) connect accounts → add VCs/KYC if needed → set payout address.  
+You can **rotate keys** (lost/compromised) or delegate to agents—history is preserved, and new actions reference the updated keys.
+
+## Signing & binding CFs
+Every CF is **signed by exactly one identity** at creation (teams can use multisig/delegation). An **aggregator** may co-sign batched commits for efficiency. Verifiers check the signature, then the anchor.
+
+## Privacy modes & selective disclosure
+Pseudonymity is the default. Policies can require specific claims (e.g., “licensed clinician”) without revealing raw **PII**, using **verifiable credentials** and **encrypted artifacts** in Evidence & Signals. Sensitive payloads stay encrypted; only policy-authorized parties can decrypt.
+
+<Tip>
+**Experimental**: 
+Anonymous credentials and zero-knowledge proofs for selective disclosure are on the roadmap; exact formats may change.
+</Tip>
+
+## Identity and Reputation
+**Verification level**, **past accuracy**, and **staking-as-confidence** flow into your **reputation**. Stronger identities can unlock higher-impact work; slashing/penalties (if any) tie back to the same identity.
+
+## Policy boundaries
+Identity attributes (role, VC, KYC) map into **Access Gateway** rules (RBAC/ABAC). For the full policy language and metering details, see **Access Control & Metering**.
+
+## Security practices
+Use hardware wallets for high-value operations; enable 2FA/TOTP on dashboards; apply least-privilege keys for agents; follow a rotation/compromise playbook.
+
+## Invariants (must hold)
+- **CFs are signed:** every CF binds to one identity; rotations don’t change past signatures.
+- **Minimal disclosure:** reveal only what policy requires; proofs live in Evidence & Signals when possible.
+- **Auditability:** identity changes (links, rotations) are logged; history is append-only.
+
+## Interfaces
+- **To CF:** signing at creation; author metadata.
+- **To Reputation:** verification level and history influence scores.
+- **To Access/Metering:** identity attributes evaluated by the gateway.
+- **To Royalty:** payout addresses and eligibility policies.
+
+**Next up →** [/core-concepts/reputation](/core-concepts/reputation)
