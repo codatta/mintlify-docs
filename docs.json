@@ -37,7 +37,7 @@
               "core-systems/contribution-fingerprint", 
               "core-systems/identity",
               "core-systems/reputation",
-              "core-systems/lineage-asset-assembly",
+              "core-systems/data-assembly",
               "core-systems/storage-compute-serving",
               "core-systems/access-control-metering",
               "core-systems/tokenized-ownership-proofs",
