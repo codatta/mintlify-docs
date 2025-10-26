@@ -1,4 +1,92 @@
 ---
 title: Key Concepts
-description: Glossary of primitives (CF, lineage, ownership fractions, staking-as-confidence, royalty flow) and how they relate.
+description: "Essential primitives and how they fit together."
 ---
+
+
+## Contribution
+
+- **Atomic Contribution** — The smallest unit of work: a **sample**, a **label**, or a **validation**. Each atomic contribution is attributable and **must produce exactly one Contribution Fingerprint (CF) at creation time** to record authorship and content. Later corrections or merges emit **new CFs** that reference the originals via lineage, so attribution is never lost. See: [/core-concepts/contribution-fingerprint](/core-concepts/contribution-fingerprint), [/core-concepts/identity](/core-concepts/identity).
+
+- **Contribution Fingerprint (CF)** — A tamper-evident record that binds *what* (content hash or reference), *who* (author identity/wallet), *when* (timestamp/block), and *why it’s credible* (evidence/validations). There is **one CF per atomic contribution** at creation; amendments or derived artifacts produce additional CFs linked by lineage, enabling provenance queries and later economic rights. See: [/core-concepts/contribution-fingerprint](/core-concepts/contribution-fingerprint), [/core-concepts/reputation](/core-concepts/reputation).
+
+- **Identity (wallet/DID, credentials)** — Privacy-preserving actor identification with optional verifiable credentials; used to sign CFs and enable accountability without overexposing PII. See: [/core-concepts/identity](/core-concepts/identity).
+
+- **Reputation** — A trust signal derived from accuracy history, skills/credentials, and staking-as-confidence; used for task routing, inclusion thresholds, and weighting in lineage. See: [/core-concepts/reputation](/core-concepts/reputation).
+
+- **Validator Agreement** — The measured consensus level among validators about a claim/label, influencing quality-weighting and downstream valuation.
+
+- **Evidence & Signals (source + validation)** — Structured **artifacts** (txid/hash/URL/VC/image/doc) plus **weighting signals** that capture **how a claim was obtained** (source class: heuristic, ML inference, human self-report, third-party attested, primary document, on-chain ground truth) and **how it was verified** (validation class: none, peer-reviewed, staked verification, KYC/credentialed, adjudicated), including agreement level and attester reputations. Attach this metadata to the **atomic contribution’s CF**; validators should issue **their own validation CFs** rather than mutating the original, and algorithms may either annotate `quality_meta` or emit derived CFs for full provenance.
+
+```ts
+// Minimal illustration of Evidence & Signals within a CF
+evidence_signals: {
+  evidence_profile: "v1",
+  artifacts: [
+    { kind: "url", uri: "https://example.com/proof", hash: "blake3:...", note: "archived" },
+    { kind: "txid", uri: "eth://1/0xabc..." }
+  ],
+  source_class: "third_party_attested",
+  validation_class: "peer_reviewed",
+  agreement: 0.82,
+  attesters: ["did:pkh:eip155:1:0xValidator..."]
+}
+```
+
+---
+
+## Assetification
+
+- **Lineage & Asset Assembly** — Composition of CFs into versioned datasets under a provenance graph and invariants, enabling traceability, rollback, and explainability for served data. See: [/core-concepts/lineage-asset-assembly](/core-concepts/lineage-asset-assembly).
+
+- **Tokenized Ownership (fractions)** — On-chain, transferable economic rights over units/datasets; minted at unit (CF) or dataset/version level with lineage preserving the mapping back to contributing CFs. See: [/core-concepts/tokenized-ownership-proofs](/core-concepts/tokenized-ownership-proofs).
+
+- **Ownership Liquidity (marketplace)** — Secondary trading of ownership fractions to improve price discovery and capital efficiency. *Experimental — scope and interfaces are under exploration and may change or be removed.*
+
+- **Dispute / Challenge Window & Reserves** — Quarantine and recomputation safeguards for contested data that preserve payout integrity while allowing corrections. See: [/core-concepts/royalty-engine](/core-concepts/royalty-engine).
+
+---
+
+## Usage
+
+- **Storage / Compute / Serving** — A hybrid Web3/Web2 layer: decentralized **source-of-truth** (e.g., [Arweave](https://www.arweave.org/), [IPFS](https://ipfs.tech/)/[Filecoin](https://filecoin.io/), [BNB Greenfield](https://www.bnbchain.org/en/greenfield)) ensures immutability and provenance, while cloud **hot paths** ([AWS](https://aws.amazon.com/), [Google Cloud](https://cloud.google.com/), [Alibaba Cloud](https://www.alibabacloud.com/)) provide low-latency reads and batch throughput. Integrates with mainstream AI tooling: storage ([S3](https://aws.amazon.com/s3/)/[GCS](https://cloud.google.com/storage)/[OSS](https://www.alibabacloud.com/product/oss)), processing/orchestration ([Spark](https://spark.apache.org/), [Kubernetes](https://kubernetes.io/)), model dev & serving ([PyTorch](https://pytorch.org/), [Hugging Face](https://huggingface.co/)), managed platforms ([SageMaker](https://aws.amazon.com/sagemaker/), [Vertex AI](https://cloud.google.com/vertex-ai)). Secure compute uses **TEE** and **federated** patterns; delivery preserves lineage and auditability. See: [/core-concepts/storage-compute-serving](/core-concepts/storage-compute-serving).
+
+- **Access Gateway (Permissioned Access Control)** — Edge policy checks (role/attribute/token-gated) so only authorized usage becomes billable events; pairs with audit logs. See: [/core-concepts/access-control-metering](/core-concepts/access-control-metering).
+
+- **Metering (Usage & Billing Events)** — Signed, version-pinned events capturing who accessed what dataset/version, how much, and when; these events are replayable for billing and royalties. See: [/core-concepts/access-control-metering](/core-concepts/access-control-metering).
+
+- **Valuation Configuration (Effective Price/Weight)** — Versioned pricing/weighting inputs (quality, information gain, demand/scarcity, governance weights, recency) used during payout computation. *Under design — details may evolve significantly or be omitted based on governance direction.* See: [/core-concepts/royalty-engine](/core-concepts/royalty-engine).
+
+- **Event Effective Timestamp** — The snapshot moment used for valuation and attribution, ensuring that replays with the same inputs yield the same results.
+
+---
+
+## Royalty
+
+- **Attribution Snapshot** — Ownership fractions at the event’s effective time that determine who gets paid for each usage event. See: [/core-concepts/tokenized-ownership-proofs](/core-concepts/tokenized-ownership-proofs).
+
+- **Royalty Engine** — Combines revenue, metering events, valuation inputs, and attribution into explainable, deterministic payouts to ownership holders and the protocol treasury. See: [/core-concepts/royalty-engine](/core-concepts/royalty-engine).
+
+- **Revenue Account (owned by Data Consumer)** — The inflow hub for payments from users; funds are split into developer margin, royalties, and treasury per policy; supports reconciliation and audits.
+
+- **Treasury Share (governed)** — Protocol sustainability slice controlled by governance; funds infra and community while keeping rules transparent.
+
+- **TNPL (Train-Now-Pay-Later)** — Access data now and pay from downstream usage/revenue, reducing buyer friction while preserving contributor upside.
+
+---
+
+## Governance & Policy
+
+- **Protocol Distribution Parameters** — Community-set weights influencing valuation and split rules so incentives align with collective priorities (e.g., compliance-critical data). See: [/core-concepts/royalty-engine](/core-concepts/royalty-engine).
+
+- **Policy Language & Auditability** — Declarative access rules, logs, and replay guarantees that make enforcement transparent and defensible. See: [/core-concepts/access-control-metering](/core-concepts/access-control-metering).
+
+- **Invariants** — System-wide guarantees: traceability from served bytes → lineage → CFs → owners; determinism of payouts given the same inputs; minimal disclosure; and revocability with audit so disputes can quarantine revenue and recompute without data loss.
+
+---
+
+<Warning>
+Some concepts here (for example, **Ownership Liquidity** and **Valuation Configuration**) are intentionally open-ended while we validate product–market fit and governance. We keep details minimal and may **change substantially** or **remove** them in future revisions if they’re not essential to the core system.
+</Warning>
+
+
