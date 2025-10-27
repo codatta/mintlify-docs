@@ -1,5 +1,5 @@
 ---
-title: Core System Architecture (WIP)
+title: Core System Architecture
 description: "How **Codatta** turns data into owned, metered assets and royalties." 
 ---
 
@@ -90,6 +90,15 @@ flowchart TB
 - **Tokenized Ownership**: on-chain, **transferable** ownership fractions over units/datasets with proof exports.  
 - **Royalty Engine**: converts revenue into transparent, replayable splits for contributors/backers (ownership holders).
 
+### How to acquire ownership (short)
+
+- **Knowledge Contributors (providers / validators):** contribute **samples / labels / validations**. When your contribution is **accepted and published as a CF**, a **default share** is minted to you (policy-defined per task).  
+- **Knowledge Backers (stakers / underwriters / buyers):**  
+  - **Stake-as-confidence / Underwrite** to **acquire or boost** fractions; audits can **increase** or **slash** positions within governed caps.  
+  - **Buy fractions** on a secondary market (if liquidity is enabled). This **does not change payout math**—only **who** receives the owner share.  
+- **Transfer / Escrow:** move fractions directly or place them in **escrow** until conditions are met (payment, KYC, milestones, disputes). Snapshots use the **owner-of-record** at time *t* for payouts.
+
+See **[/core-concepts/tokenized-ownership-proofs](/core-concepts/tokenized-ownership-proofs)** for details.
 
 ## Where to start
 
