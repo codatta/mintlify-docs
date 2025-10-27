@@ -45,15 +45,6 @@
             ]
           },
           {
-            "group": "Use Cases",
-            "pages": [
-              "use-cases/why-human-intelligence",
-              "use-cases/tasks",
-              "use-cases/verticals",
-              "use-cases/examples"
-            ]
-          },
-          {
             "group": "Protocol Token ($XNY)",
             "pages": [
               "protocol-token/token-utility",
