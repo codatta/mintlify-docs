@@ -1,0 +1,88 @@
+---
+title: "핵심 개념 (Key Concepts)"
+---
+
+## 기여(Contribution)
+
+- **원자적 기여(Atomic Contribution)** — 최소 작업 단위: **샘플**, **레이블**, **검증**. 각 원자 기여는 귀속 가능해야 하며, 생성 시 **반드시 하나의 기여 지문(CF)** 을 만들어 저작권과 내용을 기록해야 합니다. 이후 수정/병합은 원본을 참조하는 **새 CF**를 발행하여 계보로 연결하므로, 귀속은 결코 사라지지 않습니다. 참고: [/core-concepts/contribution-fingerprint](/core-concepts/contribution-fingerprint), [/core-concepts/identity](/core-concepts/identity).
+
+- **기여 지문(CF)** — *무엇을*(콘텐츠 해시/참조), *누가*(저자 아이덴티티/지갑), *언제*(타임스탬프/블록), *왜 신뢰할 수 있는지*(증거/검증)를 결속하는 변조 방지 기록. 생성 시 **원자 기여마다 하나의 CF**가 있으며, 수정물/파생물은 계보로 연결된 추가 CF를 만들어 이후 출처 질의와 경제적 권리를 가능하게 합니다. 참고: [/core-concepts/contribution-fingerprint](/core-concepts/contribution-fingerprint), [/core-concepts/reputation](/core-concepts/reputation).
+
+- **아이덴티티(지갑/DID, 자격)** — 프라이버시를 지키는 행위자 식별. 선택적 검증 가능한 자격(VC)을 활용하며, CF 서명에 사용되어 PII 과다 공개 없이 책임성을 확보합니다. 참고: [/core-concepts/identity](/core-concepts/identity).
+
+- **평판(Reputation)** — 정확도 이력, 기술/자격, 신뢰로서의 스테이킹에서 파생되는 신뢰 신호. 태스크 라우팅, 포함 임계, 계보 가중치에 사용됩니다. 참고: [/core-concepts/reputation](/core-concepts/reputation).
+
+- **검증자 합의(Validator Agreement)** — 주장/레이블에 대한 검증자 간 합의 수준. 품질 가중치와 하류 평가에 영향.
+
+- **증거 & 신호(Evidence & Signals)** — 구조화된 **아티팩트**(txid/hash/URL/VC/image/doc)와 **가중 신호**. 이는 **주장을 어떻게 획득했는지**(source class: 휴리스틱, ML 추론, 본인 진술, 제3자 보증, 원문 문서, 온체인 사실)와 **어떻게 검증했는지**(validation class: 없음, 동료 검토, 스테이킹 검증, KYC/자격, 재판/판정)를 담고, 합의 수준과 검증자 평판까지 포함할 수 있습니다. 이 메타데이터를 **원자 기여의 CF**에 첨부하세요. 검증자는 원본을 수정하지 말고 **자신의 검증 CF**를 발행해야 하며, 알고리즘은 `quality_meta` 주석 또는 파생 CF 발행 중 선택하여 전체 출처를 보존할 수 있습니다.
+
+```ts
+// Minimal illustration of Evidence & Signals within a CF
+evidence_signals: {
+  evidence_profile: "v1",
+  artifacts: [
+    { kind: "url", uri: "https://example.com/proof", hash: "blake3:...", note: "archived" },
+    { kind: "txid", uri: "eth://1/0xabc..." }
+  ],
+  source_class: "third_party_attested",
+  validation_class: "peer_reviewed",
+  agreement: 0.82,
+  attesters: ["did:pkh:eip155:1:0xValidator..."]
+}
+```
+
+---
+
+## 자산화(Assetification)
+
+- **계보 & 자산 조립** — 출처 그래프와 불변 조건 하에서 CF를 버전드 데이터셋으로 조합해, 제공 데이터의 추적·롤백·설명 가능성을 보장합니다. 참고: [/core-concepts/lineage-asset-assembly](/core-concepts/lineage-asset-assembly).
+
+- **토큰화 소유권(분수)** — 단위/데이터셋에 대한 온체인 양도 가능 경제 권리. 단위(CF) 또는 데이터셋/버전 레벨에서 민팅하며, 계보가 기여 CF로의 매핑을 보존. 참고: [/core-concepts/tokenized-ownership-proofs](/core-concepts/tokenized-ownership-proofs).
+
+- **소유권 유동성(마켓플레이스)** — 가격 발견/자본 효율을 개선하는 분수 지분의 2차 거래. *실험적 — 범위/인터페이스는 검증 과정에서 변경/제거될 수 있습니다.*
+
+- **분쟁/챌린지 윈도우 & 준비금** — 이의 제기 데이터에 대한 격리와 재계산 장치로, 분배 무결성을 지키면서 수정 허용. 참고: [/core-concepts/royalty-engine](/core-concepts/royalty-engine).
+
+---
+
+## 사용(Usage)
+
+- **스토리지 / 컴퓨트 / 서빙** — 하이브리드 Web3/Web2 레이어: 탈중앙 **진실 소스**(Arweave, IPFS/Filecoin, BNB Greenfield 등)로 불변성과 출처를 보장하고, 클라우드 **핫 패스**(AWS/Google/Alibaba Cloud 등)로 저지연/고처리를 제공합니다. 주류 AI 툴과 통합(S3/GCS/OSS, Spark/Kubernetes, PyTorch/Hugging Face, SageMaker/Vertex AI). 안전한 컴퓨트는 **TEE/연합** 패턴 사용; 전달은 계보/감사를 보존. 참고: [/core-concepts/storage-compute-serving](/core-concepts/storage-compute-serving).
+
+- **액세스 게이트웨이(권한 접근 제어)** — 엣지 정책 점검(역할/속성/토큰 게이팅)으로 **허가된 사용**만 과금 이벤트가 되게 하며, 감사 로그와 짝지어집니다. 참고: [/core-concepts/access-control-metering](/core-concepts/access-control-metering).
+
+- **계량(사용 & 청구 이벤트)** — 누가 어떤 데이터셋/버전을 얼마나 언제 접근했는지 서명·버전 고정 이벤트로 기록; 청구/로열티를 위해 재생 가능. 참고: [/core-concepts/access-control-metering](/core-concepts/access-control-metering).
+
+- **평가 구성(유효 가격/가중치)** — 버전 관리되는 가격/가중 입력(품질, 정보 이득, 수요/희소성, 거버넌스 가중, 시신성)으로 분배 계산 시 사용. *설계 진행 중 — 거버넌스 방향에 따라 크게 변하거나 생략될 수 있습니다.* 참고: [/core-concepts/royalty-engine](/core-concepts/royalty-engine).
+
+- **이벤트 유효 타임스탬프** — 평가·귀속에 사용되는 스냅샷 시점. 동일 입력 재생 시 동일 결과 보장.
+
+---
+
+## 로열티(Royalty)
+
+- **귀속 스냅샷** — 이벤트 유효 시점의 소유권 분수. 각 사용 이벤트의 수익 귀속 대상을 결정. 참고: [/core-concepts/tokenized-ownership-proofs](/core-concepts/tokenized-ownership-proofs).
+
+- **로열티 엔진** — 매출, 계량 이벤트, 평가 입력, 귀속을 결합해 소유자와 프로토콜 금고로 **설명 가능·결정적** 분배를 수행. 참고: [/core-concepts/royalty-engine](/core-concepts/royalty-engine).
+
+- **수익 계정(데이터 소비자 소유)** — 사용자 결제 유입 허브. 정책에 따라 개발자 마진·로열티·금고로 분리; 조정/감사 지원.
+
+- **금고 몫(거버넌스)** — 거버넌스가 통제하는 프로토콜 지속가능성 몫; 투명한 규칙 하에 인프라·커뮤니티 자금 지원.
+
+- **TNPL(Train‑Now‑Pay‑Later)** — 지금 데이터에 접근하고 하류 사용/매출에서 지불; 구매자 마찰을 줄이면서 기여자 업사이드 보존.
+
+---
+
+## 거버넌스 & 정책
+
+- **프로토콜 분배 파라미터** — 커뮤니티가 설정하는 가중치로 평가/분할 규칙에 영향을 주어, 인센티브를 집단 우선순위(예: 컴플라이언스 핵심 데이터)와 정렬. 참고: [/core-concepts/royalty-engine](/core-concepts/royalty-engine).
+
+- **정책 언어 & 감사 가능성** — 선언적 접근 규칙·로그·리플레이 보장으로 집행을 투명·정당하게 만듭니다. 참고: [/core-concepts/access-control-metering](/core-concepts/access-control-metering).
+
+- **불변 조건** — 제공 바이트 → 계보 → CF → 소유자까지 추적 가능; 동일 입력 시 분배 결정성; 최소 공개; 분쟁 시 수익 격리와 재계산이 가능하도록 감사 기반 가역성.
+
+<Warning>
+여기 일부 개념(**소유권 유동성**, **평가 구성** 등)은 PMF·거버넌스 검증 동안 의도적으로 열어두었습니다. 핵심 시스템에 필수적이지 않다면 향후 **크게 변경**되거나 **제거**될 수 있습니다.
+</Warning>
+
+

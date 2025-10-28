@@ -14,49 +14,153 @@
       "og:site_name": "Codatta's Official Documentations"
     }
   },
-  "favicon": "/favicon.svg",
+  "indexPath": "en/index.mdx",
+  "favicon": "/en/favicon.svg",
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "Whitepaper",
-        "groups": [
+        "language": "en",
+        "tabs": [
           {
-            "group": "Getting started",
-            "pages": [
-              "starter/overview",
-              "starter/royalty-economy",
-              "starter/fundamentals",
-              "starter/why-now"
+            "tab": "Whitepaper",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": [
+                  "en/starter/overview",
+                  "en/starter/royalty-economy",
+                  "en/starter/fundamentals",
+                  "en/starter/why-now"
+                ]
+              },
+              {
+                "group": "Core Systems",
+                "pages": [
+                  "en/core-systems/architecture",
+                  "en/core-systems/key-concepts",
+                  "en/core-systems/contribution-fingerprint", 
+                  "en/core-systems/identity",
+                  "en/core-systems/reputation",
+                  "en/core-systems/data-assembly",
+                  "en/core-systems/storage-compute-serving",
+                  "en/core-systems/access-control-metering",
+                  "en/core-systems/tokenized-ownership-proofs",
+                  "en/core-systems/royalty-engine"
+                ]
+              },
+              {
+                "group": "Protocol Token ($XNY)",
+                "pages": [
+                  "en/protocol-token/token-utility",
+                  "en/protocol-token/tokenomics",
+                  "en/protocol-token/token-info"
+                ]
+              },
+              {
+                "group": "Community",
+                "pages": [
+                  "en/community/roadmap",
+                  "en/community/history"
+                ]
+              }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "language": "cn",
+        "tabs": [
           {
-            "group": "Core Systems",
-            "pages": [
-              "core-systems/architecture",
-              "core-systems/key-concepts",
-              "core-systems/contribution-fingerprint", 
-              "core-systems/identity",
-              "core-systems/reputation",
-              "core-systems/data-assembly",
-              "core-systems/storage-compute-serving",
-              "core-systems/access-control-metering",
-              "core-systems/tokenized-ownership-proofs",
-              "core-systems/royalty-engine"
+            "tab": "白皮书",
+            "groups": [
+              {
+                "group": "入门指南",
+                "pages": [
+                  "cn/starter/overview",
+                  "cn/starter/royalty-economy",
+                  "cn/starter/fundamentals",
+                  "cn/starter/why-now"
+                ]
+              },
+              {
+                "group": "核心系统",
+                "pages": [
+                  "cn/core-systems/architecture",
+                  "cn/core-systems/key-concepts",
+                  "cn/core-systems/contribution-fingerprint", 
+                  "cn/core-systems/identity",
+                  "cn/core-systems/reputation",
+                  "cn/core-systems/data-assembly",
+                  "cn/core-systems/storage-compute-serving",
+                  "cn/core-systems/access-control-metering",
+                  "cn/core-systems/tokenized-ownership-proofs",
+                  "cn/core-systems/royalty-engine"
+                ]
+              },
+              {
+                "group": "协议代币 ($XNY)",
+                "pages": [
+                  "cn/protocol-token/token-utility",
+                  "cn/protocol-token/tokenomics",
+                  "cn/protocol-token/token-info"
+                ]
+              },
+              {
+                "group": "社区",
+                "pages": [
+                  "cn/community/roadmap",
+                  "cn/community/history"
+                ]
+              }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "language": "ko",
+        "tabs": [
           {
-            "group": "Protocol Token ($XNY)",
-            "pages": [
-              "protocol-token/token-utility",
-              "protocol-token/tokenomics",
-              "protocol-token/token-info"
-            ]
-          },
-          {
-            "group": "Community",
-            "pages": [
-              "community/roadmap",
-              "community/history"
+            "tab": "백서",
+            "groups": [
+              {
+                "group": "시작하기",
+                "pages": [
+                  "ko/starter/overview",
+                  "ko/starter/royalty-economy",
+                  "ko/starter/fundamentals",
+                  "ko/starter/why-now"
+                ]
+              },
+              {
+                "group": "핵심 시스템",
+                "pages": [
+                  "ko/core-systems/architecture",
+                  "ko/core-systems/key-concepts",
+                  "ko/core-systems/contribution-fingerprint", 
+                  "ko/core-systems/identity",
+                  "ko/core-systems/reputation",
+                  "ko/core-systems/data-assembly",
+                  "ko/core-systems/storage-compute-serving",
+                  "ko/core-systems/access-control-metering",
+                  "ko/core-systems/tokenized-ownership-proofs",
+                  "ko/core-systems/royalty-engine"
+                ]
+              },
+              {
+                "group": "프로토콜 토큰 ($XNY)",
+                "pages": [
+                  "ko/protocol-token/token-utility",
+                  "ko/protocol-token/tokenomics",
+                  "ko/protocol-token/token-info"
+                ]
+              },
+              {
+                "group": "커뮤니티",
+                "pages": [
+                  "ko/community/roadmap",
+                  "ko/community/history"
+                ]
+              }
             ]
           }
         ]
@@ -78,8 +182,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/en/logo/light.svg",
+    "dark": "/en/logo/dark.svg"
   },
   "navbar": {
     "links": [
