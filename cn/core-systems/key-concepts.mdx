@@ -1,0 +1,87 @@
+---
+title: 关键概念（Key Concepts）
+description: "核心原语及其协同方式。"
+---
+
+## 贡献（Contribution）
+
+- **原子贡献（Atomic Contribution）** —— 最小工作单元：**样本**、**标签**或**验证**。每个原子贡献都可归属，并且在创建时**必须产生一个贡献指纹（CF）**以记录作者与内容。后续更正或合并会发出**新的 CF**通过谱系引用原记录，署名永不丢失。参见：[/core-concepts/contribution-fingerprint](/core-concepts/contribution-fingerprint)、[/core-concepts/identity](/core-concepts/identity)。
+
+- **贡献指纹（CF）** —— 一条防篡改记录，绑定*是什么*（内容哈希或引用）、*是谁*（作者身份/钱包）、*何时*（时间戳/区块）以及*为何可信*（证据/验证）。创建时**每个原子贡献仅一个 CF**；修订或派生制品会产生更多通过谱系关联的 CF，允许来源查询与未来经济权利。参见：[/core-concepts/contribution-fingerprint](/core-concepts/contribution-fingerprint)、[/core-concepts/reputation](/core-concepts/reputation)。
+
+- **身份（钱包/DID、凭证）** —— 隐私友好的行动者标识，支持可验证凭证；用于签署 CF 并在不暴露 PII 的前提下实现问责。参见：[/core-concepts/identity](/core-concepts/identity)。
+
+- **声誉（Reputation）** —— 源自准确性历史、技能/凭证与**质押即信心**的信任信号；用于任务路由、纳入阈值与谱系加权。参见：[/core-concepts/reputation](/core-concepts/reputation)。
+
+- **验证者一致性（Validator Agreement）** —— 验证者对某一主张/标签达成的一致程度；影响质量加权与下游估值。
+
+- **证据与信号（来源 + 验证）** —— 结构化**artifact**（txid/hash/URL/VC/image/doc）与**加权信号**，记录**如何获得主张**（来源类别：启发式、模型推断、人工自报、第三方背书、链上真实）与**如何验证**（验证类别：无、同行评审、质押验证、KYC/凭证、裁决），包括一致性与验证者声誉。将这些元数据附在**原子贡献的 CF**上；验证者应发布**他们自己的验证 CF**而非修改原记录；算法可注解 `quality_meta` 或发出派生 CF 以完整保留来源。
+
+```ts
+// Minimal illustration of Evidence & Signals within a CF
+evidence_signals: {
+  evidence_profile: "v1",
+  artifacts: [
+    { kind: "url", uri: "https://example.com/proof", hash: "blake3:...", note: "archived" },
+    { kind: "txid", uri: "eth://1/0xabc..." }
+  ],
+  source_class: "third_party_attested",
+  validation_class: "peer_reviewed",
+  agreement: 0.82,
+  attesters: ["did:pkh:eip155:1:0xValidator..."]
+}
+```
+
+---
+
+## 资产化（Assetification）
+
+- **谱系与资产组装** —— 在来源图与不变量下组装 CF 为版本化数据集，支持可追溯、回滚与可解释服务。参见：[/core-concepts/lineage-asset-assembly](/core-concepts/lineage-asset-assembly)。
+
+- **代币化所有权（份额）** —— 对单元/数据集的链上可转移经济权利；在单元（CF）或数据集/版本级铸造，并通过谱系保留回溯映射。参见：[/core-concepts/tokenized-ownership-proofs](/core-concepts/tokenized-ownership-proofs)。
+
+- **所有权流动性（市场）** —— 所有权份额的二级交易以改善价格发现与资本效率。*实验性——范围与接口仍在探索，可变更或移除。*
+
+- **争议/挑战窗口与准备金** —— 在不破坏分配完整性的前提下处理争议数据的隔离与重计算。参见：[/core-concepts/royalty-engine](/core-concepts/royalty-engine)。
+
+---
+
+## 使用（Usage）
+
+- **存储/计算/服务** —— 混合 Web3/Web2：去中心化**真源**（如 Arweave、IPFS/Filecoin、BNB Greenfield）保证不可篡改与来源；云端**热路径**（AWS/Google/阿里云）提供低延迟读取与批处理吞吐。集成主流 AI 工具：存储（S3/GCS/OSS）、处理/编排（Spark/Kubernetes）、开发与服务（PyTorch/Hugging Face）、托管平台（SageMaker/Vertex AI）。安全计算采用 **TEE/联邦**；交付保持谱系与可审计性。参见：[/core-concepts/storage-compute-serving](/core-concepts/storage-compute-serving)。
+
+- **访问网关（权限访问控制）** —— 边缘策略检查（基于角色/属性/令牌），确保只有被授权的使用才成为可计费事件，并伴随审计日志。参见：[/core-concepts/access-control-metering](/core-concepts/access-control-metering)。
+
+- **计量（使用与计费事件）** —— 签名、版本固定的事件，捕获谁在何时访问了哪个数据集/版本以及用量；事件可重放以支持计费与版税。参见：[/core-concepts/access-control-metering](/core-concepts/access-control-metering)。
+
+- **估值配置（有效价格/权重）** —— 版本化的定价/加权输入（质量、信息增益、供需、治理权重、时新性），用于分配计算。*在设计中——细节可能大幅演进或按治理删除。* 参见：[/core-concepts/royalty-engine](/core-concepts/royalty-engine)。
+
+- **事件生效时间戳** —— 估值与归属的快照时刻，确保对相同输入的重放得到相同结果。
+
+---
+
+## 版税（Royalty）
+
+- **归属快照** —— 事件生效时刻的所有权份额决定每个使用事件的受益者。参见：[/core-concepts/tokenized-ownership-proofs](/core-concepts/tokenized-ownership-proofs)。
+
+- **版税引擎** —— 将收入、计量事件、估值输入与归属结合，生成对所有权持有者与协议金库的**可解释、可确定**分配。参见：[/core-concepts/royalty-engine](/core-concepts/royalty-engine)。
+
+- **收入账户（由数据消费者持有）** —— 接收来自用户的付款；按策略将资金拆分为开发者利润、版税与金库；支持对账与审计。
+
+- **金库份额（受治理）** —— 由治理控制的协议可持续份额；在保持规则透明的同时资助基础设施与社区。
+
+---
+
+## 治理与策略
+
+- **协议分配参数** —— 社区设定影响估值与拆分规则的权重，使激励与集体优先级对齐（如对合规关键数据提高权重）。参见：[/core-concepts/royalty-engine](/core-concepts/royalty-engine)。
+
+- **策略语言与可审计性** —— 声明式访问规则、日志与重放保证，让执法透明且可辩护。参见：[/core-concepts/access-control-metering](/core-concepts/access-control-metering)。
+
+- **不变量** —— 系统级保证：从返回字节 → 谱系 → CF → 所有者的可追溯；在相同输入下分配的确定性；最小披露；带审计的可撤销性以便争议可隔离收入并重算而不丢数据。
+
+<Warning>
+此处部分概念（如**所有权流动性**与**估值配置**）有意保持开放，以便验证产品市场匹配与治理。我们保持细节最小化，并可能在未来**大幅变更**或**移除**非核心部分。
+</Warning>
+
+
