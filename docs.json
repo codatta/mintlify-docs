@@ -49,6 +49,15 @@
                 ]
               },
               {
+                "group": "Business Models",
+                "pages": [
+                  "en/business/overview",
+                  "en/business/incentives-staking",
+                  "en/business/ownership-liquidity",
+                  "en/business/governance-treasury"
+                ]
+              },
+              {
                 "group": "Protocol Token ($XNY)",
                 "pages": [
                   "en/protocol-token/token-utility",
