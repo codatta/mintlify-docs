@@ -78,6 +78,7 @@
                 "group": "入门指南",
                 "pages": [
                   "cn/starter/overview",
+                  "cn/starter/glossary",
                   "cn/starter/royalty-economy",
                   "cn/starter/fundamentals",
                   "cn/starter/why-now"
@@ -127,6 +128,7 @@
                 "group": "시작하기",
                 "pages": [
                   "ko/starter/overview",
+                  "ko/starter/glossary",
                   "ko/starter/royalty-economy",
                   "ko/starter/fundamentals",
                   "ko/starter/why-now"
