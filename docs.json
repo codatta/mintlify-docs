@@ -50,6 +50,15 @@
                 ]
               },
               {
+                "group": "Business Models",
+                "pages": [
+                  "en/business/overview",
+                  "en/business/incentives-staking",
+                  "en/business/ownership-liquidity",
+                  "en/business/governance-treasury"
+                ]
+              },
+              {
                 "group": "Protocol Token ($XNY)",
                 "pages": [
                   "en/protocol-token/token-utility",
@@ -100,6 +109,15 @@
                 ]
               },
               {
+                "group": "商业模式",
+                "pages": [
+                  "cn/business/overview",
+                  "cn/business/incentives-staking",
+                  "cn/business/ownership-liquidity",
+                  "cn/business/governance-treasury"
+                ]
+              },
+              {
                 "group": "协议代币 ($XNY)",
                 "pages": [
                   "cn/protocol-token/token-utility",
@@ -147,6 +165,15 @@
                   "ko/core-systems/access-control-metering",
                   "ko/core-systems/tokenized-ownership-proofs",
                   "ko/core-systems/royalty-engine"
+                ]
+              },
+              {
+                "group": "비즈니스 모델",
+                "pages": [
+                  "ko/business/overview",
+                  "ko/business/incentives-staking",
+                  "ko/business/ownership-liquidity",
+                  "ko/business/governance-treasury"
                 ]
               },
               {

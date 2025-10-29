@@ -1,0 +1,33 @@
+---
+title: Governance and Treasury
+description: Policy levers, token sinks and related matters.
+---
+
+### Policy levers
+
+- **Royalty rate bands** by domain and access tier  
+- **Default split templates** for contributors, validators, backers, treasury  
+- **Access rules** for restricted assets, including KYC, audit level, and dispute windows  
+- **Staking parameters**: min stake, lockups, slashing rules  
+- **Task launch requirements**: $XNY deposit sizing, refund logic, and priority rules
+
+### Treasury and token sinks
+
+| Flow | Currency | Notes |
+|---|---|---|
+| **Submission gas** | $XNY | Deters spam and funds indexing and security operations |
+| **Task launch deposit** | $XNY | Reserves network capacity and enforces SLAs |
+| **Staking** | $XNY | Confidence signal with slashing for low quality or fraud |
+| **Ownership trades** | $XNY | Settlement and listing fees for transfers and bundles |
+| **Marketplace fees** | $XNY or stablecoins | If paid in stablecoins, a small $XNY protocol fee still applies |
+| **Royalty payouts** | Stablecoins by default | TNPL and usage revenue are shared primarily in stablecoins |
+
+Treasury uses: **audits**, **grants**, **quality bounties**, **tooling for agents and contributors**, and **research**.
+
+
+### Integration posture
+
+Codatta remains **protocol-first and open**. Integrations include:
+- **API connectors** to launch tasks, pull datasets, and run evaluations  
+- **On-chain hooks** for metering and settlement with allowlisted bridges  
+- **Identity and reputation adapters** to reuse credentials from partner ecosystems
