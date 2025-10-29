@@ -25,13 +25,13 @@
             "tab": "Whitepaper",
             "groups": [
               {
-                "group": "Getting started",
+                "group": "Quick Guide",
                 "pages": [
-                  "en/starter/overview",
-                  "en/starter/royalty-economy",
-                  "en/starter/fundamentals",
-                  "en/starter/why-now",
-                  "en/starter/glossary"
+                  "en/quick-guide/overview",
+                  "en/quick-guide/royalty-economy",
+                  "en/quick-guide/fundamentals",
+                  "en/quick-guide/why-now",
+                  "en/quick-guide/glossary"
                 ]
               },
               {
@@ -81,20 +81,20 @@
         "language": "cn",
         "tabs": [
           {
-            "tab": "白皮书",
+            "tab": "白皮书 (Whitepaper)",
             "groups": [
               {
-                "group": "入门指南",
+                "group": "入门指南 (Quick Guide)",
                 "pages": [
-                  "cn/starter/overview",
-                  "cn/starter/glossary",
-                  "cn/starter/royalty-economy",
-                  "cn/starter/fundamentals",
-                  "cn/starter/why-now"
+                  "cn/quick-guide/overview",
+                  "cn/quick-guide/royalty-economy",
+                  "cn/quick-guide/fundamentals",
+                  "cn/quick-guide/why-now",
+                  "cn/quick-guide/glossary"
                 ]
               },
               {
-                "group": "核心系统",
+                "group": "核心系统 (Core Systems)",
                 "pages": [
                   "cn/core-systems/architecture",
                   "cn/core-systems/key-concepts",
@@ -109,7 +109,7 @@
                 ]
               },
               {
-                "group": "商业模式",
+                "group": "商业模式 (Business Models)",
                 "pages": [
                   "cn/business/overview",
                   "cn/business/incentives-staking",
@@ -126,7 +126,7 @@
                 ]
               },
               {
-                "group": "社区",
+                "group": "社区 (Community)",
                 "pages": [
                   "cn/community/roadmap",
                   "cn/community/history"
@@ -140,20 +140,20 @@
         "language": "ko",
         "tabs": [
           {
-            "tab": "백서",
+            "tab": "백서 (Whitepaper)",
             "groups": [
               {
-                "group": "시작하기",
+                "group": "시작하기 (Quick Guide)",
                 "pages": [
-                  "ko/starter/overview",
-                  "ko/starter/glossary",
-                  "ko/starter/royalty-economy",
-                  "ko/starter/fundamentals",
-                  "ko/starter/why-now"
+                  "ko/quick-guide/overview",
+                  "ko/quick-guide/royalty-economy",
+                  "ko/quick-guide/fundamentals",
+                  "ko/quick-guide/why-now",
+                  "ko/quick-guide/glossary"
                 ]
               },
               {
-                "group": "핵심 시스템",
+                "group": "핵심 시스템 (Core Systems)",
                 "pages": [
                   "ko/core-systems/architecture",
                   "ko/core-systems/key-concepts",

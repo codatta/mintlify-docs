@@ -11,7 +11,7 @@ series window, multi-sensor frame, etc.).
 **Label** (math notion: **Y** or **y**): A structured interpretation of a sample (or group of samples): class, bounding
 box, segmentation mask, span, rating, relation, events over time, etc.
 
-*Validation*: A quality judgment or evidence check on a sample or label. This can be consensus
+**Validation**: A quality judgment or evidence check on a sample or label. This can be consensus
 voting, rubric scoring, re-labeling, or automated checks plus human adjudication.
 
 **Why quality matters to models**
@@ -25,7 +25,6 @@ voting, rubric scoring, re-labeling, or automated checks plus human adjudication
 **Take-away**: Better samples + clearer labels + verifiable validations =
 **more useful gradient steps** and **fewer surprises in production**.
 
----
 ## Codatta’s data model
 
 ![Atomic → Data Asset → Dataset](/en/diagrams/data_assetify_model.png)
@@ -59,7 +58,6 @@ A curated selection of **Data Assets** for a particular model, vertical, or
 evaluation—defined by a saved query or manifest. Datasets inherit all
 **ownership, licensing, and lineage** from the assets they include.
 
----
 ## Typical real-world scenarios
 
 <Warning> The figures below are **conceptual** and focus on relationships and flow; field
@@ -94,8 +92,6 @@ annotated X0. Royalties propagate to the **meta-labelers** and **origin labelers
 **Why it matters**: You can annotate **interpretations**, not just raw data:
 rubrics, explanations, confidence judgments, or evaluator notes—all with lineage
 and revenue inheritance.
-
----
 
 ## Assetification & blockchain technology
 
