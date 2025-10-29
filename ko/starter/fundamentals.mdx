@@ -26,7 +26,7 @@ title: "기초 (Fundamentals)"
 ---
 ## Codatta의 데이터 모델
 
-![Atomic → Data Asset → Dataset](/diagrams/data_assetify_model.png)
+![Atomic → Data Asset → Dataset](/en/diagrams/data_assetify_model.png)
 *그림 1. 샘플·레이블·검증이 모여 **데이터 자산**을 이루고, 자산은 **데이터셋**으로 선택됩니다.*
 
 <Callout icon="key" color="#FFC107" iconType="regular">
@@ -55,19 +55,19 @@ title: "기초 (Fundamentals)"
 <Warning> 아래 도표는 **개념적**이며 관계와 흐름에 초점을 둡니다. 필드 이름/형식은 프로토콜 확정 시 변할 수 있습니다. </Warning>
 
 ### 시나리오 A: 하나의 샘플, 여러 레이블 세트
-![One sample → two assets via different label bundles](/diagrams/pattern01_sample_multi_label.png)
+![One sample → two assets via different label bundles](/en/diagrams/pattern01_sample_multi_label.png)
 *그림 2. 하나의 샘플(X0)에 **task01**과 **task02**가 레이블링. `X0 + {Y0, Y1}`를 묶으면 자산-A(버티컬 AI "a"), `X0 + {Y2}`를 묶으면 자산-B(버티컬 AI "b").*
 
 **왜 중요한가**: 동일한 원시 샘플이라도 **서로 다른 레이블 번들**을 묶으면 **서로 다른 제품**을 만들 수 있으며, 각각의 로열티/라이선스 조건이 달라집니다.
 
 ### 시나리오 B: 교차-샘플 합성
-![Cross-sample composite](/diagrams/pattern02_cross_sample.png)
+![Cross-sample composite](/en/diagrams/pattern02_cross_sample.png)
 *그림 3. 두 샘플(X0, X1)을 결합해 새로운 과제(task03)를 위한 **합성 자산**을 생성. 하류 레이블(Y3)은 개별 샘플이 아닌 합성 대상에 주석.*
 
 **왜 중요한가**: 많은 과제(대화 쌍, 멀티턴 컨텍스트, 비디오/액션 세그먼트)는 **샘플 간 관계**를 요구합니다. Codatta는 합성 자산을 지원하고 **파생 링크**를 유지하여 올바른 귀속과 분배를 보장합니다.
 
 ### 시나리오 C: 레이블 위의 레이블(메타 레이블링)
-![Label-on-label](/diagrams/pattern03_label_on_label.png)
+![Label-on-label](/en/diagrams/pattern03_label_on_label.png)
 *그림 4. 하류 레이블(Y4)은 **상류 레이블**(Y0)을 대상으로 하며, Y0은 X0에 주석되었습니다. 정책에 따라 로열티는 **메타 레이블러**와 **원 레이블러**(그리고 원 샘플)로 전파됩니다.*
 
 **왜 중요한가**: 원시 데이터만이 아니라 **해석 자체**(루브릭, 설명, 신뢰도 판단, 평가자 메모 등)도 주석화할 수 있으며, 모두 **계보와 수익 상속**을 가집니다.

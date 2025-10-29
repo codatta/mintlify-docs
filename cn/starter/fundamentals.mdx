@@ -26,7 +26,7 @@ title: "基础概念 (Fundamentals)"
 ---
 ## Codatta 的数据模型
 
-![Atomic → Data Asset → Dataset](/en/diagrams/data_assetify_model.png)
+![Atomic → Data Asset → Dataset](en/diagrams/data_assetify_model.png)
 *图 1. 样本、标签和验证聚合成一个**数据资产**；资产然后被选择到**数据集**中。*
 
 <Callout icon="key" color="#FFC107" iconType="regular">
@@ -56,19 +56,19 @@ title: "基础概念 (Fundamentals)"
 
 
 ### 场景 A：一个样本，多个标签集
-![One sample → two assets via different label bundles](/en/diagrams/pattern01_sample_multi_label.png)
+![One sample → two assets via different label bundles](en/diagrams/pattern01_sample_multi_label.png)
 *图 2. 一个样本（X0）被**task01**和**task02**标记。捆绑*`X0 + {Y0, Y1}`*形成资产-A（垂直 AI "a"），而捆绑*`X0 + {Y2}`*形成资产-B（垂直 AI "b"）。*
 
 **为什么重要**：同一个原始样本可以通过捆绑**不同的标签**为**不同的产品**提供动力—每个都有自己的版税和许可条款。
 
 ### 场景 B：跨样本复合
-![Cross-sample composite](/en/diagrams/pattern02_cross_sample.png)
+![Cross-sample composite](en/diagrams/pattern02_cross_sample.png)
 *图 3. 两个样本（X0, X1）组合成一个新任务（task03）的**复合资产**。下游标签（Y3）注释复合，而非单个样本。*
 
 **为什么重要**：许多任务（对话对、多轮上下文、视频/动作段）需要**跨样本的关系**。Codatta 支持复合资产并保持**派生链接**以进行适当的归属和支付。
 
 ### 场景 C：标签上标签（元标签）
-![Label-on-label](/en/diagrams/pattern03_label_on_label.png)
+![Label-on-label](en/diagrams/pattern03_label_on_label.png)
 *图 4. 下游标签（Y4）针对**上游标签**（Y0），它本身注释 X0。版税传播到**元标签者**和**原始标签者**（以及到原始样本，根据策略）。*
 
 **为什么重要**：您可以注释**解释**，而不仅仅是原始数据：标准、解释、信心判断或评估者注释—都带有谱系和收入继承。

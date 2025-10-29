@@ -28,7 +28,7 @@ voting, rubric scoring, re-labeling, or automated checks plus human adjudication
 ---
 ## Codatta’s data model
 
-![Atomic → Data Asset → Dataset](/diagrams/data_assetify_model.png)
+![Atomic → Data Asset → Dataset](/en/diagrams/data_assetify_model.png)
 *Figure 1. Samples, labels, and validations aggregate into a **Data Asset**; assets
 are then selected into **Datasets**.*
 
@@ -67,7 +67,7 @@ names and formats may evolve as the protocol is finalized. </Warning>
 
 
 ### Scenarion A: One sample, multiple label sets
-![One sample → two assets via different label bundles](/diagrams/pattern01_sample_multi_label.png)
+![One sample → two assets via different label bundles](/en/diagrams/pattern01_sample_multi_label.png)
 *Figure 2. One sample (X0) gets labeled by **task01** and **task02**. Bundling*
 `X0 + {Y0, Y1}` *forms Asset-A (Vertical AI “a”), while bundling* `X0 + {Y2}`
 *forms Asset-B (Vertical AI “b”).*
@@ -76,7 +76,7 @@ names and formats may evolve as the protocol is finalized. </Warning>
 bundling **different labels**—each with its own royalties and license terms.
 
 ### Scenarion B: Cross-sample composite
-![Cross-sample composite](/diagrams/pattern02_cross_sample.png)
+![Cross-sample composite](/en/diagrams/pattern02_cross_sample.png)
 *Figure 3. Two samples (X0, X1) are combined into a **composite asset** for a new
 task (task03). A downstream label (Y3) annotates the composite, not a single
 sample.*
@@ -86,7 +86,7 @@ segments) require **relationships across samples**. Codatta supports composite
 assets and keeps **derivation links** for proper attribution and payouts.
 
 ### Scenarion C: Label-on-label (meta-labeling)
-![Label-on-label](/diagrams/pattern03_label_on_label.png)
+![Label-on-label](/en/diagrams/pattern03_label_on_label.png)
 *Figure 4. A downstream label (Y4) targets an **upstream label** (Y0), which itself
 annotated X0. Royalties propagate to the **meta-labelers** and **origin labelers**
 (and to the original sample as policy dictates).*
