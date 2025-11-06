@@ -13,7 +13,7 @@ title: "기초 (Fundamentals)"
 
 **레이블**(수학 표기: **Y** 또는 **y**): 샘플(또는 샘플 그룹)에 대한 구조적 해석: 클래스, 바운딩 박스, 세그멘테이션 마스크, 스팬, 평점, 관계, 시간에 따른 사건 등.
 
-*검증(Validation)*: 샘플이나 레이블에 대한 품질 판단 또는 증거 점검. 합의 투표, 루브릭 채점, 재레이블링, 자동 점검 + 휴먼 판정 등을 포함할 수 있습니다.
+**검증(Validation)**: 샘플이나 레이블에 대한 품질 판단 또는 증거 점검. 합의 투표, 루브릭 채점, 재레이블링, 자동 점검 + 휴먼 판정 등을 포함할 수 있습니다.
 
 **모델에 품질이 중요한 이유**
 - **신호 대 잡음비** – 잘못된 레이블 또는 정보량이 낮은 데이터는 유효 배치 크기를 줄이고 수렴을 늦춥니다.  
@@ -23,10 +23,9 @@ title: "기초 (Fundamentals)"
 **핵심 요약**: 더 나은 샘플 + 더 명확한 레이블 + 검증 가능한 검증 =
 **더 유용한 그래디언트 스텝**과 **프로덕션의 예기치 못한 문제 감소**.
 
----
 ## Codatta의 데이터 모델
 
-![Atomic → Data Asset → Dataset](/diagrams/data_assetify_model.png)
+![Atomic → Data Asset → Dataset](/en/diagrams/data_assetify_model.png)
 *그림 1. 샘플·레이블·검증이 모여 **데이터 자산**을 이루고, 자산은 **데이터셋**으로 선택됩니다.*
 
 <Callout icon="key" color="#FFC107" iconType="regular">
@@ -49,30 +48,28 @@ title: "기초 (Fundamentals)"
 **C. 데이터셋(뷰/컬렉션)**  
 특정 모델, 버티컬, 평가 목적에 맞춘 **데이터 자산의 큐레이션된 선택**—저장된 쿼리나 매니페스트로 정의됩니다. 데이터셋은 포함된 자산의 **소유권, 라이선스, 계보**를 모두 상속합니다.
 
----
 ## 전형적 시나리오
 
 <Warning> 아래 도표는 **개념적**이며 관계와 흐름에 초점을 둡니다. 필드 이름/형식은 프로토콜 확정 시 변할 수 있습니다. </Warning>
 
 ### 시나리오 A: 하나의 샘플, 여러 레이블 세트
-![One sample → two assets via different label bundles](/diagrams/pattern01_sample_multi_label.png)
+![One sample → two assets via different label bundles](/en/diagrams/pattern01_sample_multi_label.png)
 *그림 2. 하나의 샘플(X0)에 **task01**과 **task02**가 레이블링. `X0 + {Y0, Y1}`를 묶으면 자산-A(버티컬 AI "a"), `X0 + {Y2}`를 묶으면 자산-B(버티컬 AI "b").*
 
 **왜 중요한가**: 동일한 원시 샘플이라도 **서로 다른 레이블 번들**을 묶으면 **서로 다른 제품**을 만들 수 있으며, 각각의 로열티/라이선스 조건이 달라집니다.
 
 ### 시나리오 B: 교차-샘플 합성
-![Cross-sample composite](/diagrams/pattern02_cross_sample.png)
+![Cross-sample composite](/en/diagrams/pattern02_cross_sample.png)
 *그림 3. 두 샘플(X0, X1)을 결합해 새로운 과제(task03)를 위한 **합성 자산**을 생성. 하류 레이블(Y3)은 개별 샘플이 아닌 합성 대상에 주석.*
 
 **왜 중요한가**: 많은 과제(대화 쌍, 멀티턴 컨텍스트, 비디오/액션 세그먼트)는 **샘플 간 관계**를 요구합니다. Codatta는 합성 자산을 지원하고 **파생 링크**를 유지하여 올바른 귀속과 분배를 보장합니다.
 
 ### 시나리오 C: 레이블 위의 레이블(메타 레이블링)
-![Label-on-label](/diagrams/pattern03_label_on_label.png)
+![Label-on-label](/en/diagrams/pattern03_label_on_label.png)
 *그림 4. 하류 레이블(Y4)은 **상류 레이블**(Y0)을 대상으로 하며, Y0은 X0에 주석되었습니다. 정책에 따라 로열티는 **메타 레이블러**와 **원 레이블러**(그리고 원 샘플)로 전파됩니다.*
 
 **왜 중요한가**: 원시 데이터만이 아니라 **해석 자체**(루브릭, 설명, 신뢰도 판단, 평가자 메모 등)도 주석화할 수 있으며, 모두 **계보와 수익 상속**을 가집니다.
 
----
 ## 자산화 & 블록체인 기술
 
 **왜 자산화인가?**  
