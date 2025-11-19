@@ -61,8 +61,8 @@
               {
                 "group": "Protocol Token ($XNY)",
                 "pages": [
-                  "en/protocol-token/token-utility",
                   "en/protocol-token/tokenomics",
+                  "en/protocol-token/token-utility",
                   "en/protocol-token/token-info"
                 ]
               },
@@ -120,8 +120,8 @@
               {
                 "group": "协议代币 ($XNY)",
                 "pages": [
-                  "cn/protocol-token/token-utility",
                   "cn/protocol-token/tokenomics",
+                  "cn/protocol-token/token-utility",
                   "cn/protocol-token/token-info"
                 ]
               },
@@ -179,8 +179,8 @@
               {
                 "group": "프로토콜 토큰 ($XNY)",
                 "pages": [
-                  "ko/protocol-token/token-utility",
                   "ko/protocol-token/tokenomics",
+                  "ko/protocol-token/token-utility",
                   "ko/protocol-token/token-info"
                 ]
               },
