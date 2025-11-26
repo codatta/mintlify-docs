@@ -72,6 +72,12 @@
                   "en/community/roadmap",
                   "en/community/history"
                 ]
+              },
+              {
+                "group": "Change Logs",
+                "pages": [
+                  "en/change-logs/all-logs",
+                ]
               }
             ]
           }
