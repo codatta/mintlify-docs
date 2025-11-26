@@ -74,6 +74,17 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "Changelog",
+            "groups": [
+              {
+                "group": "2025",
+                "pages": [
+                  "en/changelog/2025/11-24"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -130,6 +141,17 @@
                 "pages": [
                   "cn/community/roadmap",
                   "cn/community/history"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "更新日志",
+            "groups": [
+              {
+                "group": "2025",
+                "pages": [
+                  "cn/changelog/2025/11-24"
                 ]
               }
             ]
