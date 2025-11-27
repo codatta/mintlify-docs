@@ -1,0 +1,90 @@
+---
+title: "Adopting ERC-8004 and x402 as Essentials"
+description: "How ERC-8004 and x402 let Codatta plug into the Ethereum agent economy while paying contributors fairly."
+---
+
+## Overview
+
+![Flow of contributors, 8004 agents, asset assembly and x402 payouts](/en/diagrams/erc-8004-x402-flow.png)
+
+Codatta turns human and agent work into on-chain data assets, then routes value back to whoever created that value.  
+To plug cleanly into the emerging agent economy, we standardize on:
+
+- **ERC-8004** for agent identity and trust on Ethereum
+- **x402** for HTTP-native, pay-per-request payments
+
+
+## 1. Background
+
+**ERC-8004 (Trustless Agents)** is an Ethereum standard that adds a trust layer on top of agent protocols.  
+It defines three on-chain registries—Identity, Reputation, and Validation—so agents can be discovered and judged by a shared record of their behavior ([Ethereum Improvement Proposals][1]).
+
+**x402** is an open, chain-agnostic payment protocol that reuses the HTTP `402 Payment Required` status code so clients (humans or AI agents) can pay for APIs and content directly over HTTP with crypto, typically stablecoins ([Coinbase Developer Docs][2]).
+
+
+## 2. How we adopt ERC-8004
+
+In Codatta, agents help with pre-labelling, triage, and validation alongside human experts.
+
+We use ERC-8004 to make these agents first-class, verifiable participants:
+
+- **Agent registration**  
+  Each Codatta agent (for example “transaction classifier”, “KYB triage”, “policy validator”) is listed in the ERC-8004 Identity Registry with:
+  - its MCP/A2A endpoint
+  - capability description
+  - basic pricing metadata
+
+- **On-chain reputation and validation**  
+  As agents pre-label and validate tasks, we emit:
+  - **Reputation entries** summarizing outcomes (accept rate, conflicts with humans, slashing events)
+  - **Validation entries** pointing to off-chain logs or evaluation reports via URIs ([Composable Security][3])
+
+- **Link to data ownership**  
+  For each job, our internal systems record which data portfolios and contributors were involved.  
+  ERC-8004 events include references to those IDs in their evidence fields; our indexers then map agent activity to:
+  - which data assets were used
+  - which humans and agent operators should share future revenue ([Medium][4])
+
+Result: consumers can see not just “Codatta labels”, but *which* agents produced them and how those agents have behaved over time, while we preserve a precise link back to human and on-chain ownership.
+
+
+## 3. How we adopt x402
+
+We use x402 as the payment rail for Codatta APIs and agent endpoints.
+
+### Pay-per-use access
+
+Any paid Codatta endpoint (for example, “label this batch”, “score this transaction”, “fetch this dataset slice”) follows the x402 flow:
+
+1. Client calls the endpoint.
+2. If payment is required, we return `402 Payment Required` plus an x402 payment description (amount, currency, destination, expiry) ([Coinbase Developer Docs][5]).
+3. The client (human app or AI agent) pays and retries the request with the x402 authorization header.
+
+This gives us **fine-grained, per-request monetization** without separate billing systems or complex API key management.
+
+### From revenue to rewards
+
+Once a payment settles to Codatta:
+
+- We attribute the call to:
+  - the data portfolios used, and
+  - the agents and humans who contributed to them.
+- Revenue is split according to our staking and ownership rules and streamed out as **micro-payouts** to contributors and agent operators, with the remainder going to the protocol treasury ([Coinbase Developer Docs][2]).
+
+Because x402 is designed for low-friction, on-chain payments, these payouts can be frequent and small rather than batched.
+
+
+## 4. Putting it together
+
+- **ERC-8004** turns Codatta agents into **discoverable, auditable actors** with shared identity and trust signals.
+- **x402** turns each API or agent call into a **programmable payment event**, which we route back through Codatta’s ownership graph.
+
+Together, they let Codatta plug into a broader agent economy while staying true to our core promise: when your data and expertise power AI, you get a verifiable share of the upside.
+
+[1]: https://eips.ethereum.org/EIPS/eip-8004 "ERC-8004: Trustless Agents - Ethereum Improvement Proposals"
+[2]: https://docs.cdp.coinbase.com/x402/welcome "Welcome to x402 - Coinbase Developer Documentation"
+[3]: https://composable-security.com/blog/erc-8004-a-practical-explainer-for-trustless-agents/ "ERC-8004: a practical explainer for trustless agents"
+[4]: https://medium.com/%40gwrx2005/erc-8004-and-the-ethereum-ai-agent-economy-technical-economic-and-policy-analysis-3134290b24d1 "ERC-8004 and the Ethereum AI Agent Economy"
+[5]: https://docs.cdp.coinbase.com/x402/core-concepts/http-402 "HTTP 402 - Coinbase Developer Documentation"
+
+
