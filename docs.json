@@ -59,6 +59,12 @@
                 ]
               },
               {
+                "group": "Ecosystem Integration",
+                "pages": [
+                  "en/ecosystem-integration/adopting-erc-8004-x402-essentials"
+                ]
+              },
+              {
                 "group": "Protocol Token ($XNY)",
                 "pages": [
                   "en/protocol-token/tokenomics",
