@@ -59,6 +59,12 @@
                 ]
               },
               {
+                "group": "Product",
+                "pages": [
+                  "en/products/data-linage"
+                ]
+              },
+              {
                 "group": "Ecosystem Integration",
                 "pages": [
                   "en/ecosystem-integration/adopting-erc-8004-x402-essentials"
