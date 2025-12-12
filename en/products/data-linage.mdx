@@ -29,7 +29,7 @@ graph TB
     end
 
     subgraph Stage3 [Stage 3: Publication & Adoption]
-        DS --> PUB[■ Publish to GitHub]
+        DS --> PUB[■ Publish to HuggingFace]
         DS --> ADOPT[■ Adopted by Model X]
     end
 
@@ -66,7 +66,7 @@ For assembly rules, manifests, and versioning semantics, see **[Data Assembly](/
 
 Once assembled, datasets are released for utility. This stage tracks the downstream reach of the data.
 
-- **Publication:** Visualizes where the dataset has been pushed (e.g., HuggingFace, GitHub, decentralized storage).
+- **Publication:** Visualizes where the dataset has been pushed (e.g., HuggingFace, decentralized storage).
 - **Adoption:** Tracks commercial or research usage, such as a specific AI model integrating the dataset for training. This node represents the "proof of utility."
 
 For access control and usage metering, see:
@@ -84,3 +84,7 @@ The final stage closes the economic loop. When an adoption event generates reven
   - **Backers:** Because fractional ownership is tradable, the current holder may differ from the original creator. The lineage view identifies these current owners as **Backers**—investors or entities who have acquired ownership rights on the open market. The system ensures rewards reach the wallet currently holding the asset fraction.
 
 For payout math, reserves, and replay guarantees, see **[Royalty Engine](/core-concepts/royalty-engine)**.
+
+## References
+
+- [Codatta datasets on Hugging Face](https://huggingface.co/Codatta/datasets)

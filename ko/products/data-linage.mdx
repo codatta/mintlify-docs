@@ -28,7 +28,7 @@ graph TB
     end
 
     subgraph Stage3 [Stage 3: Publication & Adoption]
-        DS --> PUB[■ Publish to GitHub]
+        DS --> PUB[■ Publish to HuggingFace]
         DS --> ADOPT[■ Adopted by Model X]
     end
 
@@ -65,7 +65,7 @@ graph TB
 
 조립과 앵커링이 끝난 데이터셋은 실제 사용을 위해 게시됩니다:
 
-- **게시 (Publication):** 내부 카탈로그, HuggingFace, GitHub, 기타 플랫폼에 게시됩니다.  
+- **게시 (Publication):** HuggingFace, 분산 스토리지 등으로 게시됩니다.  
 - **채택 (Adoption):** 특정 AI 모델이나 애플리케이션이 해당 데이터셋 버전을 학습·평가·추론에 사용하며, 이는 “유틸리티 증거”로 기록됩니다.  
 
 접근 제어와 사용 계량에 대한 자세한 내용은 다음을 참고하세요:
@@ -82,5 +82,9 @@ graph TB
 - **백커 (Backers):** 소유권 지분이 2차 거래된 경우에도, 시스템은 항상 그 시점의 **현재 소유자**에게 분배하도록 보장합니다.  
 
 분배 수학, 준비금, 재생 가능성에 대해서는 **[로열티 엔진 (Royalty Engine)](/ko/core-systems/royalty-engine)** 문서를 참고하세요.
+
+## 참고 (References)
+
+- [Hugging Face의 Codatta 데이터셋 페이지](https://huggingface.co/Codatta/datasets)
 
 
