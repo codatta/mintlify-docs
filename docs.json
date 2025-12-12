@@ -59,6 +59,12 @@
                 ]
               },
               {
+                "group": "Products",
+                "pages": [
+                  "en/products/data-linage"
+                ]
+              },
+              {
                 "group": "Ecosystem Integration",
                 "pages": [
                   "en/ecosystem-integration/adopting-erc-8004-x402-essentials"
@@ -145,6 +151,12 @@
                 ]
               },
               {
+                "group": "产品 (Products)",
+                "pages": [
+                  "cn/products/data-linage"
+                ]
+              },
+              {
                 "group": "协议代币 ($XNY)",
                 "pages": [
                   "cn/protocol-token/tokenomics",
@@ -222,6 +234,12 @@
                   "ko/business/incentives-staking",
                   "ko/business/ownership-liquidity",
                   "ko/business/governance-treasury"
+                ]
+              },
+              {
+                "group": "프로덕트",
+                "pages": [
+                  "ko/products/data-linage"
                 ]
               },
               {
