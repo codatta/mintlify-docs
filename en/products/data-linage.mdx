@@ -10,14 +10,15 @@ The **Data Lineage** interface visualizes this lifecycle across four distinct st
 
 ## Lineage Visualization
 
-The following diagram illustrates the flow of data through the four codified stages of the Codatta protocol.
+The following diagram illustrates the flow of data through the four codified stages of the Codatta protocol.  
+In **Stage 1**, the system accepts atomic contributions (samples or labels), builds a **Contribution Fingerprint (CF) record** for each accepted contribution, and then anchors the CF’s fingerprint on-chain.
 
 ```mermaid
 graph TB
     %% Data Lineage Flow
 
     subgraph Stage1 [Stage 1: Assetification]
-        S1(Submit) --> V1(Validate)
+        S1(Submit Samples or Labels) --> V1(Validate)
         V1 --> ANCHOR{{⬢ Anchor On-Chain}}
     end
 
@@ -44,9 +45,9 @@ graph TB
 
 The foundational stage where raw contributions are transformed into trusted, immutable assets. This process involves three critical steps tracked by the lineage graph:
 
-- **Submission:** Contributors submit raw samples (e.g., text, images) and corresponding metadata.
-- **Validation:** The network validators verify the quality and accuracy of the submission.
-- **Anchoring:** Once validated, the data is immutably recorded (anchored) on the blockchain. This generates a unique Asset ID and establishes the initial ownership rights.
+- **Submission:** Contributors initiate this stage by providing [samples](https://docs.codatta.io/en/quick-guide/fundamentals#data-basics-for-artificial-intelligence-ai) or [labels](https://docs.codatta.io/en/quick-guide/fundamentals#data-basics-for-artificial-intelligence-ai), along with relevant metadata.
+- **Screening & validation:** Codatta runs automatic pre‑scan checks including heuristic-based checks for format, policy compliance, and deduplication, plus semantic checks with AI agents. Where needed, human review is triggered. Submissions that fail at this step are rejected and **never produce a CF**.
+- **CF creation & anchoring:** For each accepted atomic contribution, the system builds a **CF commit** (canonicalizing the content hash, attaching evidence & signals, and binding contributor identity), then **anchors the CF’s fingerprint on-chain** (per‑CF or in a batched Merkle root) on the selected network.
 
 For the underlying mechanics, see:
 
