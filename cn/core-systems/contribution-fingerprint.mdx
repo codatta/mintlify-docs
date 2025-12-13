@@ -27,7 +27,7 @@ config:
 ---
 flowchart TB
   subm[Submission of Data]
-  subm --> prescan[Pre-scan: Format/Policy Gate and De-dup]
+  subm --> prescan[Pre-scan: Heuristic checks (format/policy/dedup) + AI agent semantic checks]
   subm --> store[Store Encrypted Payload at Hybrid Storage]
   prescan --> |Auto-accept| build[Build CF Commit: canonicalize hash attach Evidence and Signals atomic_kind parent_cf]
   prescan --> |Needs Human Review| review[Human Review]
@@ -49,7 +49,7 @@ flowchart TB
 
 **步骤说明**
 - **提交：** 贡献者发送内容。我们保存**加密副本**与稳定引用（内容 ID 或 URL）。  
-- **预扫描：** 轻量检查格式、隐私脱敏与去重。部分项目自动通过；其余可能需要人工快速审核。  
+- **预扫描：** 基于启发式的格式、策略合规与去重检查，以及 AI 代理的语义检查。部分项目自动通过；其余可能需要人工快速审核。  
 - **创建记录：** 标准化细节，标注是否为**样本**、**标签**或**验证**，并附上**证据与信号**。  
 - **绑定身份：** 贡献者用钱包或 DID **签名**记录。  
 - **链上锚定：** 指纹以不可变方式锚定到区块链（单条或批量）。  

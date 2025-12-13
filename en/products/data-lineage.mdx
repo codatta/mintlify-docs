@@ -10,14 +10,15 @@ The **Data Lineage** interface visualizes this lifecycle across four distinct st
 
 ## Lineage Visualization
 
-The following diagram illustrates the flow of data through the four codified stages of the Codatta protocol.
+The following diagram illustrates the flow of data through the four codified stages of the Codatta protocol.  
+In **Stage 1**, the system accepts atomic contributions (samples or labels), builds a **Contribution Fingerprint (CF) record** for each accepted contribution, and then anchors the CF’s fingerprint on-chain.
 
 ```mermaid
 graph TB
     %% Data Lineage Flow
 
     subgraph Stage1 [Stage 1: Assetification]
-        S1(Submit) --> V1(Validate)
+        S1(Submit Samples or Labels) --> V1(Validate)
         V1 --> ANCHOR{{⬢ Anchor On-Chain}}
     end
 
@@ -28,7 +29,7 @@ graph TB
     end
 
     subgraph Stage3 [Stage 3: Publication & Adoption]
-        DS --> PUB[■ Publish to GitHub]
+        DS --> PUB[■ Publish to HuggingFace]
         DS --> ADOPT[■ Adopted by Model X]
     end
 
@@ -44,9 +45,9 @@ graph TB
 
 The foundational stage where raw contributions are transformed into trusted, immutable assets. This process involves three critical steps tracked by the lineage graph:
 
-- **Submission:** Contributors submit raw samples (e.g., text, images) and corresponding metadata.
-- **Validation:** The network validators verify the quality and accuracy of the submission.
-- **Anchoring:** Once validated, the data is immutably recorded (anchored) on the blockchain. This generates a unique Asset ID and establishes the initial ownership rights.
+- **Submission:** Contributors initiate this stage by providing [samples](https://docs.codatta.io/en/quick-guide/fundamentals#data-basics-for-artificial-intelligence-ai) or [labels](https://docs.codatta.io/en/quick-guide/fundamentals#data-basics-for-artificial-intelligence-ai), along with relevant metadata.
+- **Screening & validation:** Codatta runs automatic pre‑scan checks including heuristic-based checks for format, policy compliance, and deduplication, plus semantic checks with AI agents. Where needed, human review is triggered. Submissions that fail at this step are rejected and **never produce a CF**.
+- **CF creation & anchoring:** For each accepted atomic contribution, the system builds a **CF commit** (canonicalizing the content hash, attaching evidence & signals, and binding contributor identity), then **anchors the CF’s fingerprint on-chain** (per‑CF or in a batched Merkle root) on the selected network.
 
 For the underlying mechanics, see:
 
@@ -65,7 +66,7 @@ For assembly rules, manifests, and versioning semantics, see **[Data Assembly](/
 
 Once assembled, datasets are released for utility. This stage tracks the downstream reach of the data.
 
-- **Publication:** Visualizes where the dataset has been pushed (e.g., HuggingFace, GitHub, decentralized storage).
+- **Publication:** Visualizes where the dataset has been pushed (e.g., HuggingFace, decentralized storage).
 - **Adoption:** Tracks commercial or research usage, such as a specific AI model integrating the dataset for training. This node represents the "proof of utility."
 
 For access control and usage metering, see:
@@ -83,3 +84,7 @@ The final stage closes the economic loop. When an adoption event generates reven
   - **Backers:** Because fractional ownership is tradable, the current holder may differ from the original creator. The lineage view identifies these current owners as **Backers**—investors or entities who have acquired ownership rights on the open market. The system ensures rewards reach the wallet currently holding the asset fraction.
 
 For payout math, reserves, and replay guarantees, see **[Royalty Engine](/core-concepts/royalty-engine)**.
+
+## References
+
+- [Codatta datasets on Hugging Face](https://huggingface.co/Codatta/datasets)

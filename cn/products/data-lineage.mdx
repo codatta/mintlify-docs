@@ -17,7 +17,7 @@ graph TB
     %% Data Lineage Flow
 
     subgraph Stage1 [Stage 1: Assetification]
-        S1(Submit) --> V1(Validate)
+        S1(Submit Samples or Labels) --> V1(Validate)
         V1 --> ANCHOR{{⬢ Anchor On-Chain}}
     end
 
@@ -28,7 +28,7 @@ graph TB
     end
 
     subgraph Stage3 [Stage 3: Publication & Adoption]
-        DS --> PUB[■ Publish to GitHub]
+        DS --> PUB[■ Publish to HuggingFace]
         DS --> ADOPT[■ Adopted by Model X]
     end
 
@@ -45,8 +45,8 @@ graph TB
 原始贡献在这一阶段被转化为可信、不可篡改的链上资产：
 
 - **提交 (Submission)：** 贡献者提交样本、标签等原子贡献，并生成对应的贡献指纹 (CF)。  
-- **验证 (Validation)：** 网络中的验证者审核质量、合规性与正确性。  
-- **锚定 (Anchoring)：** 通过锚定到区块链生成唯一资产 ID，并确立初始所有权份额。
+- **筛选与验证 (Screening & Validation)：** Codatta 运行自动预扫描检查，包括基于启发式的格式、策略合规与去重检查，以及 AI 代理的语义检查。必要时触发人工审核。在此步骤失败的提交会被拒绝，**不会产生 CF**。  
+- **CF 创建与锚定 (CF Creation & Anchoring)：** 对于每个被接受的原子贡献，系统构建一个 **CF 提交**（规范化内容哈希、附加证据与信号、绑定贡献者身份），然后在所选网络上**将 CF 的指纹锚定到链上**（单条 CF 或批量 Merkle 根）。
 
 相关文档：
 
@@ -67,7 +67,7 @@ graph TB
 
 完成组装与锚定后，数据集被发布并进入实际使用场景：
 
-- **发布 (Publication)：** 数据集被发布到内部目录、HuggingFace、GitHub 或其他平台。  
+- **发布 (Publication)：** 数据集被发布到 HuggingFace、去中心化存储或其他平台。  
 - **采纳 (Adoption)：** 模型和应用将特定版本的数据集接入训练、评估或推理，形成“有效使用”记录。  
 
 相关文档：
@@ -86,5 +86,9 @@ graph TB
 相关文档：
 
 - **[版税引擎 (Royalty Engine)](/cn/core-systems/royalty-engine)**
+
+## 参考 (References)
+
+- [Codatta Hugging Face 数据集页面](https://huggingface.co/Codatta/datasets)
 
 

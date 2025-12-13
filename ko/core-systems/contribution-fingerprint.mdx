@@ -28,7 +28,7 @@ config:
 ---
 flowchart TB
   subm[Submission of Data]
-  subm --> prescan[Pre-scan: Format/Policy Gate and De-dup]
+  subm --> prescan[Pre-scan: Heuristic checks (format/policy/dedup) + AI agent semantic checks]
   subm --> store[Store Encrypted Payload at Hybrid Storage]
   prescan --> |Auto-accept| build[Build CF Commit: canonicalize hash attach Evidence and Signals atomic_kind parent_cf]
   prescan --> |Needs Human Review| review[Human Review]
@@ -50,7 +50,7 @@ flowchart TB
 
 **단계 설명**
 - **제출** — 기여자가 콘텐츠를 보냅니다. **암호화 사본**과 안정적 참조(콘텐츠 ID/URL)를 저장합니다.  
-- **사전 점검** — 형식/프라이버시 마스킹/중복을 가볍게 확인. 일부는 자동 통과, 일부는 간단한 휴먼 리뷰 필요.  
+- **사전 점검** — 휴리스틱 기반 형식/정책 준수/중복 제거 검사와 AI 에이전트의 의미론적 검사. 일부는 자동 통과, 일부는 간단한 휴먼 리뷰 필요.  
 - **기록 생성** — 세부를 표준화하고 **샘플/레이블/검증** 여부를 표시하며 **증거 & 신호**를 첨부.  
 - **아이덴티티 바인딩** — 지갑/DID로 레코드에 승인/서명.  
 - **온체인 앵커** — 지문을 블록체인에 불변으로 앵커(단건 or 배치).  

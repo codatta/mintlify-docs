@@ -31,7 +31,7 @@ config:
 ---
 flowchart TB
   subm[Submission of Data]
-  subm --> prescan[Pre-scan: Format/Policy Gate and De-dup]
+  subm --> prescan[Pre-scan: Heuristic checks (format/policy/dedup) + AI agent semantic checks]
   subm --> store[Store Encrypted Payload at Hybrid Storage]
   prescan --> |Auto-accept| build[Build CF Commit: canonicalize hash attach Evidence and Signals atomic_kind parent_cf]
   prescan --> |Needs Human Review| review[Human Review]
@@ -55,7 +55,7 @@ flowchart TB
 **Step explanations**
 
 - **Submit** — The contributor sends the content. We save an **encrypted copy** and a stable reference (content ID or URL).  
-- **Pre‑scan** — Light checks for format, privacy redactions, and duplicates. Some items pass automatically; others may need a quick human review.  
+- **Pre‑scan** — Heuristic-based checks for format, policy compliance, and deduplication, plus semantic checks with AI agents. Some items pass automatically; others may need a quick human review.  
 - **Create the record** — We standardize the details, mark whether it’s a **sample**, **label**, or **validation**, and attach **evidence & signals** (see below).  
 - **Bind identity** — The contributor approves/signs the record using a wallet or decentralized ID (DID).  
 - **Anchor on chain** — A fingerprint is immutably anchored to a blockchain (individually or in a batch).  

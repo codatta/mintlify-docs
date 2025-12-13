@@ -61,7 +61,7 @@
               {
                 "group": "Products",
                 "pages": [
-                  "en/products/data-linage"
+                  "en/products/data-lineage"
                 ]
               },
               {
@@ -153,7 +153,7 @@
               {
                 "group": "产品 (Products)",
                 "pages": [
-                  "cn/products/data-linage"
+                  "cn/products/data-lineage"
                 ]
               },
               {
@@ -239,7 +239,7 @@
               {
                 "group": "프로덕트",
                 "pages": [
-                  "ko/products/data-linage"
+                  "ko/products/data-lineage"
                 ]
               },
               {
