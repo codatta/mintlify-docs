@@ -29,17 +29,17 @@ graph TB
     %%Codatta DID%%
 
     subgraph Contracts
-        C1[DID Registrar] --> C2[DID Registry]
-        C2 --> O1
+        C1(DID Registrar) --> C2(DID Registry)
     end
 
     subgraph Offchain Storage Infrastructure
-        O1[DID Indexer] --> O2[Storage]
+        O1(DID Indexer) --> O2[(Storage)]
     end
 
+    C2 --> O1
     O2 --> RESOLVER
-    RESOLVER[DID Resolver] --> A1[Login]
-    RESOLVER[DID Resolver] --> A2[DID Explorer]
+    RESOLVER(DID Resolver) --> A1(Login)
+    RESOLVER(DID Resolver) --> A2(DID Explorer)
 ```
 
 **DID Registrar**
