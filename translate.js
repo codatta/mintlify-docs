@@ -11,7 +11,6 @@ import path from "path";
 // 原始 changelog 目录（英文）
 const SRC_DIR = "en/changelog";
 
-
 // 输出语言配置
 const TARGET_LANGS = [
   {
@@ -50,6 +49,7 @@ async function translate(text, systemPrompt) {
 
   return res.choices[0].message.content.trim();
 }
+
 
 /**
  * ===============================
