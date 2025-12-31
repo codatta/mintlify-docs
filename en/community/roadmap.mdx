@@ -1,18 +1,109 @@
 ---
 title: "Roadmap"
-description: "4-year building plan"
+description: "3-year building plan"
 ---
 
-## Codatta Community Roadmap (2025-2028)
+## Codatta Community Roadmap (2026–2028)
+
+This roadmap lays out the next three years of execution—from making the hybrid protocol work end-to-end in production, to decentralizing the core loop, to becoming the knowledge-economy backbone.
+
+**Terms:** **CF** = Contribution Fingerprint; **TNPL** = Train‑Now‑Pay‑Later.
+
+### Summary
+
+- **2026 — Forge**: Make the hybrid protocol work end-to-end and plug into real businesses.
+- **2027 — Mesh**: Decentralize the core loop and make it interoperable across chains, operators, and agent ecosystems.
+- **2028 — Nexus**: Become the knowledge-economy backbone with end-to-end auditable lineage, on-chain TNPL, and autonomous evolution.
 
 ---
 
-| Phase                                                 | Goals & Key Deliverables (incl. product rollouts)                                                                 | Community Engagement / Pod Strategy                                                                                           | Key Protocol Metrics                                                                                                                                                                                 |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **2025 – Assetification & Royalty Readiness**         | Launch registry, staking-as-confidence, reputation, payout rails; pilot APIs/SDKs; roll out 50–100 topics         | Kick off regional clubs (pods) in major geographies to manage onboarding, peer support, local campaigns                       | Number of topics live; volume of royalty payouts; total staked on data/contributors; average confidence scores; number of active data access calls                                                   |
-| **2026 – Scale Participation & Business Integration** | Deploy portfolio packaging & fractional data asset modules; SDK v2; onboard business clients and consumption APIs | Expand pod network (20+ regions); train pod leads; run local events, sprints, hackathons                                      | % of revenue flowing to contributors; number of portfolios created & traded; data usage / request volume; retention of high-confidence data; latencies / response times for queries                  |
-| **2027 – Decentralization & Interoperability**        | Protocol v3: modular, cross-chain infrastructure, operator decentralization, on-chain governance & treasury       | Transition pods into local DAO/sub-DAO roles; enable pod proposals & supervision; federated pod coordination                  | Governance decentralization (e.g. % non-foundation votes, Nakamoto coefficient); number of independent operators; cross-chain throughput; governance proposals count; protocol uptime / availability |
-| **2028 – Knowledge Economy Backbone**                 | Protocol v4: autonomous upgrades, data marketplace maturity, AI-agent integration, institutional portfolio launch | Pods fully integrated into ecosystem governance; pod subgovernance (topic forks, curator elections); global pod collaboration | Total topics; contributor count; ARR of protocol; average royalty per contributor; number of AI integrations; on-chain upgrade frequency; protocol composability across chains                       |
+## 2026 — **Forge**
+
+Make the hybrid protocol *work end-to-end* and plug into real businesses.
+
+### Key milestones
+
+**Protocol maturity**
+
+* Ship **Assetification → CF creation → on-chain anchoring** with automated screening (heuristics + agent semantic checks) and batched Merkle anchoring where needed. ([Data Lineage](/en/products/data-lineage))
+* Productionize the **hybrid delivery stack**: decentralized source-of-truth + cloud hot paths + secure compute (stack to be selected) behind an Access Gateway. ([Storage, Compute & Serving](/en/core-systems/storage-compute-serving))
+* Productionize **Access Control & Metering**: versioned access policies, obligations (e.g., masking/sampling), and signed usage events for billing/royalties (TNPL supported). ([Access Control & Metering](/en/core-systems/access-control-metering))
+* Build the **attribution + tracking platform** (not necessarily fully on-chain): fast lineage lookups (search/diffs/export), batch access, and inference/usage tracking—so full-cycle attribution is replayable. ([Data Assembly](/en/core-systems/data-assembly))
+* Ship **Ownership + Royalties**: fractional ownership proofs/receipts, snapshot hashes, challenge windows; deterministic Royalty Engine payouts (stablecoins default). ([Tokenized Ownership Proofs](/en/core-systems/tokenized-ownership-proofs))
+* Put **$XNY utility** into real production paths: gas, task launch deposits, metered access, ownership trades; keep payouts flexible (stablecoins + majors) to reduce buyer friction. ([Token Utility](/en/protocol-token/token-utility))
+* Lay the groundwork for **portfolio packaging, fractional modules, and SDK (0.x pilots)** with select startup partners.
+
+**Network of humans + agents**
+
+* Roll out the **identity ladder + talent index** (DID identities, attestations, and a verification network), enabling expert tracks and reliable talent discovery—without overexposing privacy. ([Identity](/en/core-systems/identity))
+* Scale contributor **pods to 10+ pivotal regions** as the operating layer for onboarding, QA culture, and local growth loops.
+* Make **agents useful in production** (pre-labeling, triage, validation), and start emitting the right evidence trails so they can later become fully “first-class” participants. ([ERC-8004 + x402](/en/ecosystem-integration/adopting-erc-8004-x402-essentials))
+
+**Asset economy & GTM**
+
+* Launch **Data Lineage** as the default story UI: Assetification → Assembling → Adoption → Payouts; connect adoption to real payout events. ([Data Lineage](/en/products/data-lineage))
+* Enable **pay-per-request** for APIs and agent endpoints (x402) so metering → payout routing is native, not bolted on. ([ERC-8004 + x402](/en/ecosystem-integration/adopting-erc-8004-x402-essentials))
+
+**Use case enabled**
+
+A startup hits a Codatta endpoint, gets a `402`, pays once, and retries. The request is metered, tied to a dataset version, and logged with the policy that allowed it. Months later, when their product revenue lands, the Royalty Engine replays the same events and pays the right people—contributors, validators, backers—without debate.
+
+---
+
+## 2027 — **Mesh**
+
+Decentralize the core loop and make it interoperable across chains, operators, and agent ecosystems.
+
+### Key milestones
+
+**Protocol maturity**
+
+* Ship **Protocol v2: modular + cross-chain + operator decentralization + on-chain governance/treasury**.
+* Build and test the **dataset + ownership marketplace** (policy-gated): listings, bundles, transfers, and ownership fractions—so real demand can start forming. ([Ownership, Royalties & Liquidity](/en/business/ownership-liquidity))
+* Run **governance pilots** on real knobs (market rules, royalty bands, split templates, access rules, staking parameters, task launch deposit sizing). ([Governance and Treasury](/en/business/governance-treasury))
+* Push privacy forward: **selective disclosure** by default; pilot **anonymous credentials / ZK** where it unlocks regulated demand. ([Identity](/en/core-systems/identity))
+
+**Network of humans + agents**
+
+* Transition pods toward **DAO/sub-DAO roles** (local proposals + supervision, federated coordination).
+* Make agents truly first-class via **ERC-8004 identity/reputation/validation registries** and map their work to ownership/royalties. ([ERC-8004 + x402](/en/ecosystem-integration/adopting-erc-8004-x402-essentials))
+
+**Asset economy & GTM**
+
+* Launch the **dataset + ownership marketplace** (still policy-gated), using listings, bundles, and secondary markets where appropriate; $XNY for listing/settlement, stablecoins for payouts. ([Ownership, Royalties & Liquidity](/en/business/ownership-liquidity))
+* Deepen “plug-in backend” distribution: APIs + on-chain hooks + identity adapters so existing platforms can adopt Codatta without re-platforming. ([Governance and Treasury](/en/business/governance-treasury))
+* Take **portfolio packaging, fractional modules, and SDK** into production—supporting packaging contributions and revenue-share entitlements for startups at scale.
+
+**Use case enabled**
+
+A research group in Seoul and an enterprise team in Dubai both contribute to the same topic through local pods. A KYB-triage agent, registered and scored like a real participant, pre-labels the queue; expert humans confirm edge cases. Liquidity starts to form: a backer buys a fraction in a high-performing asset bundle, and payouts flow to whoever holds the fraction at snapshot time.
+
+---
+
+## 2028 — **Nexus**
+
+Become the knowledge-economy backbone: end-to-end on-chain lineage + on-chain TNPL + autonomous evolution.
+
+### Key milestones
+
+**Protocol maturity**
+
+* Ship **Protocol v3**: autonomous upgrades, marketplace maturity, deep AI-agent integration, and institutional portfolio rails.
+* Move to **end-to-end auditable lineage** across the full lifecycle (CFs → assets → dataset versions → adoption → payout), minimizing trust gaps and maximizing replayability. ([Data Assembly](/en/core-systems/data-assembly))
+* Put **TNPL fully on-chain**: usage metering covers training + downstream inference of derived models; settlement flows by rule, not negotiation. ([Royalty Economy](/en/quick-guide/royalty-economy))
+* Governance becomes real control: community tunes **reputation weights** and other protocol parameters with transparent versions and audit trails. ([Reputation](/en/core-systems/reputation))
+
+**Network of humans + agents**
+
+* Agents become **investable, composable actors** with shared trust signals; humans shift toward high-skill review, adjudication, and frontier expertise. ([ERC-8004 + x402](/en/ecosystem-integration/adopting-erc-8004-x402-essentials))
+
+**Asset economy & GTM**
+
+* Codatta is the default **provenance + policy + metering + payouts backend** across many ecosystems; open distribution stays broad, paid inventory compounds. ([Royalty Economy](/en/quick-guide/royalty-economy))
+
+**Use case enabled**
+
+A developer trains under TNPL, ships a model, and sells an API worldwide. Every meaningful request is metered, and royalties stream continuously to the people and agents whose work made the model possible. Nobody argues over attribution—lineage answers it. The protocol upgrades itself through governed, replayable rules, while the ecosystem keeps building on top.
 
 ---
 
@@ -39,3 +130,4 @@ description: "4-year building plan"
 
 * We aim to **build in public**, where transparency fosters trust, invites constructive feedback, and holds us accountable to our community.
 * We view **token holders, contributors, and participants** as **stakeholders** — like shareholders — and believe visibility helps align incentives, deepen commitment, and elevate long-term thinking.
+
