@@ -1,6 +1,6 @@
 ---
-title: "Changelog"
-description: "This changelog documents all updates, fixes, and new features for Codatta in 2025."
+title: "变更日志"
+description: "本文档记录了 Codatta 在 2025 年的所有更新、修复和新功能。"
 ---
 
 import { useState, useEffect } from 'react';
@@ -67,7 +67,7 @@ import { useState, useEffect } from 'react';
             flexShrink: 0
           }}></span>
           <strong style={{color:'#111827', fontWeight:'600', marginRight: '0.25rem'}}>{num}</strong>
-          <span>result{num !== 1 ? 's' : ''}</span>
+          <span>条结果</span>
         </div>
       );
     };
@@ -537,11 +537,11 @@ export const ChangelogFilter = () => {
   }, [activeFilter]);
 
   const filterTypes = [
-    { id: 'all', label: 'All', color: '#6b7280', count: 24 },
-    { id: 'core-feature', label: 'Core Feature Release', color: '#16A34A', count: 4 },
-    { id: 'optimization', label: 'Adjustments & Optimization', color: '#F59E0B', count: 3 },
-    { id: 'fixes', label: 'Fixes & Feature Sunset', color: '#EF4444', count: 3 },
-    { id: 'campaign', label: 'Campaign Launch', color: '#A855F7', count: 14 }
+    { id: 'all', label: '全部', color: '#6b7280', count: 24 },
+    { id: 'core-feature', label: '核心功能发布', color: '#16A34A', count: 4 },
+    { id: 'optimization', label: '调整与优化', color: '#F59E0B', count: 3 },
+    { id: 'fixes', label: '修复与功能下线', color: '#EF4444', count: 3 },
+    { id: 'campaign', label: '活动启动', color: '#A855F7', count: 14 }
   ];
 
   const activeType = filterTypes.find(type => type.id === activeFilter) || filterTypes[0];
@@ -713,14 +713,14 @@ export const MonthFilter = () => {
   }, [activeMonth]);
 
   const months = [
-    { id: 'all', label: 'All Months', count: 24 },
-    { id: 'dec', label: 'December', count: 1 },
-    { id: 'nov', label: 'November', count: 3 },
-    { id: 'oct', label: 'October', count: 6 },
-    { id: 'sep', label: 'September', count: 3 },
-    { id: 'aug', label: 'August', count: 5 },
-    { id: 'jul', label: 'July', count: 5 },
-    { id: 'jun', label: 'June', count: 1 }
+    { id: 'all', label: '全部月份', count: 24 },
+    { id: 'dec', label: '十二月', count: 1 },
+    { id: 'nov', label: '十一月', count: 3 },
+    { id: 'oct', label: '十月', count: 6 },
+    { id: 'sep', label: '九月', count: 3 },
+    { id: 'aug', label: '八月', count: 5 },
+    { id: 'jul', label: '七月', count: 5 },
+    { id: 'jun', label: '六月', count: 1 }
   ];
 
   const activeMonthData = months.find(month => month.id === activeMonth) || months[0];
