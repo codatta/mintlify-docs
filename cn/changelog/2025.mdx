@@ -1,7 +1,9 @@
 ---
-title: "Changelog"
-description: "This changelog documents all updates, fixes, and new features for Codatta in 2025."
+title: "变更日志"
+description: "本文档记录了 Codatta 在 2025 年的所有更新、修复和新功能。"
 ---
+
+import { useState, useEffect } from 'react';
 
 <div style={{
   backgroundColor: '#ffffff',
@@ -65,7 +67,7 @@ description: "This changelog documents all updates, fixes, and new features for 
             flexShrink: 0
           }}></span>
           <strong style={{color:'#111827', fontWeight:'600', marginRight: '0.25rem'}}>{num}</strong>
-          <span>result{num !== 1 ? 's' : ''}</span>
+          <span>条结果</span>
         </div>
       );
     };
@@ -74,7 +76,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 </div>
 <div className="changelog-item" data-type="core-feature" data-month="dec">
 
-## Dec 04, 2025
+## 2025 年 12 月 04 日
 ---
 **激励机制演变：长期生态管理的奖励锁定**
 
@@ -94,7 +96,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="nov">
 
-## Nov 24, 2025
+## 2025 年 11 月 24 日
 ---
 **活动启动：空投第二季**
 
@@ -116,7 +118,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="core-feature" data-month="nov">
 
-## Nov 05, 2025
+## 2025 年 11 月 05 日
 ---
 **账户系统升级：去中心化身份（DID）正式上线**
 
@@ -136,7 +138,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="fixes" data-month="nov">
 
-## Nov 03, 2025
+## 2025 年 11 月 03 日
 ---
 **任务系统调整：加密前沿任务模块停用**
 
@@ -153,7 +155,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="fixes" data-month="oct">
 
-## Oct 24, 2025
+## 2025 年 10 月 24 日
 ---
 **前沿系统调整：机器人前沿停用**
 
@@ -170,7 +172,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="optimization" data-month="oct">
 
-## Oct 23, 2025
+## 2025 年 10 月 23 日
 ---
 **反垃圾邮件增强：实施每日提交限制**
 
@@ -187,7 +189,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="fixes" data-month="oct">
 
-## Oct 20, 2025
+## 2025 年 10 月 20 日
 ---
 **前沿系统调整：加密前沿停用**
 
@@ -204,7 +206,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="optimization" data-month="oct">
 
-## Oct 15, 2025
+## 2025 年 10 月 15 日
 ---
 **系统治理：平台黑名单控制实施**
 
@@ -221,7 +223,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="oct">
 
-## Oct 13, 2025
+## 2025 年 10 月 13 日
 ---
 **活动启动：空投第一季**
 
@@ -245,7 +247,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="core-feature" data-month="oct">
 
-## Oct 10, 2025
+## 2025 年 10 月 10 日
 ---
 **功能发布：前沿特定奖励活动**
 
@@ -255,7 +257,6 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 现在为前沿提供可配置的奖励活动，提供额外的高价值激励。
 
-```html
 - **如何:** 选定的前沿任务提供额外的奖励，奖励以 $XNY 或 USDT 形式发放，与基础积分无关。活动参数（奖励金额、持续时间、目标）根据每个前沿任务设定，并在其各自的主页上显示。
 - **为什么:** 通过有针对性的激励措施，推动用户更深入地参与高价值数据任务，从而提高数据质量和生态系统的参与度。
 
@@ -263,7 +264,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## 2025年9月26日
+## 2025 年 09 月 26 日
 ---
 **活动启动: Codatta 助推器活动 第三季 第四周**
 
@@ -281,7 +282,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## 2025年9月12日
+## 2025 年 09 月 12 日
 ---
 **活动启动: Codatta 助推器活动 第三季 第三周**
 
@@ -299,7 +300,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## 2025年9月5日
+## 2025 年 09 月 05 日
 ---
 **活动启动: Codatta 助推器活动 第三季 第二周**
 
@@ -317,7 +318,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="core-feature" data-month="aug">
 
-## 2025年8月28日
+## 2025 年 08 月 28 日
 ---
 **功能发布: 用户数据档案**
 
@@ -334,7 +335,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## 2025年8月22日
+## 2025 年 08 月 22 日
 ---
 **活动启动: Codatta 助推器活动 第三季 第一周**
 
@@ -352,7 +353,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## 2025年8月15日
+## 2025 年 08 月 15 日
 ---
 **活动启动: Codatta 助推器活动 第二季 第四周**
 
@@ -370,7 +371,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## 2025年8月8日
+## 2025 年 08 月 08 日
 ---
 **活动启动: Codatta 助推器活动 第二季 第三周**
 
@@ -388,7 +389,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## 2025年8月1日
+## 2025 年 08 月 01 日
 ---
 **活动启动: Codatta 助推器活动 第二季 第二周**
 
@@ -406,7 +407,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## 2025年7月24日
+## 2025 年 07 月 24 日
 ---
 **活动启动: Codatta 助推器活动 第二季 第一周**
 
@@ -424,7 +425,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## 2025年7月16日
+## 2025 年 07 月 16 日
 ---
 **活动启动: Codatta 助推器活动 第一季 第四周**
 
@@ -442,7 +443,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## 2025年7月9日
+## 2025 年 07 月 09 日
 ---
 **活动启动: Codatta 助推器活动 第一季 第三周**
 
@@ -460,7 +461,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="optimization" data-month="jul">
 
-## 2025年7月7日
+## 2025 年 07 月 07 日
 ---
 **功能优化: 任务系统恢复**
 
@@ -474,11 +475,10 @@ description: "This changelog documents all updates, fixes, and new features for 
 - **为什么:** 通过架构升级，提高系统稳定性和用户体验。
 
 </div>
-```
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## 2025年7月02日
+## 2025 年 07 月 02 日
 ---
 **活动启动：Codatta Booster 活动 第一季 第二周**
 
@@ -496,7 +496,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="jun">
 
-## 2025年6月25日
+## 2025 年 06 月 25 日
 ---
 **活动启动：Codatta Booster 活动 第一季 第一周**
 
@@ -510,7 +510,9 @@ description: "This changelog documents all updates, fixes, and new features for 
 - **奖励：** 总奖励池为 50,000,000 $XNY，任务完成并验证后发放。
 - **时间安排：** 2025年6月25日 13:00 UTC – 2025年7月2日 13:00 UTC。
 
-</div>{/* Component definitions - moved to end of file for cleaner code organization */}
+</div>
+
+{/* Component definitions - moved to end of file for cleaner code organization */}
 export const ChangelogFilter = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [isOpen, setIsOpen] = useState(false);
@@ -536,11 +538,11 @@ export const ChangelogFilter = () => {
   }, [activeFilter]);
 
   const filterTypes = [
-    { id: 'all', label: 'All', color: '#6b7280', count: 24 },
-    { id: 'core-feature', label: 'Core Feature Release', color: '#16A34A', count: 4 },
-    { id: 'optimization', label: 'Adjustments & Optimization', color: '#F59E0B', count: 3 },
-    { id: 'fixes', label: 'Fixes & Feature Sunset', color: '#EF4444', count: 3 },
-    { id: 'campaign', label: 'Campaign Launch', color: '#A855F7', count: 14 }
+    { id: 'all', label: '全部', color: '#6b7280', count: 24 },
+    { id: 'core-feature', label: '核心功能发布', color: '#16A34A', count: 4 },
+    { id: 'optimization', label: '调整与优化', color: '#F59E0B', count: 3 },
+    { id: 'fixes', label: '修复与功能停用', color: '#EF4444', count: 3 },
+    { id: 'campaign', label: '活动启动', color: '#A855F7', count: 14 }
   ];
 
   const activeType = filterTypes.find(type => type.id === activeFilter) || filterTypes[0];
@@ -712,14 +714,14 @@ export const MonthFilter = () => {
   }, [activeMonth]);
 
   const months = [
-    { id: 'all', label: 'All Months', count: 24 },
-    { id: 'dec', label: 'December', count: 1 },
-    { id: 'nov', label: 'November', count: 3 },
-    { id: 'oct', label: 'October', count: 6 },
-    { id: 'sep', label: 'September', count: 3 },
-    { id: 'aug', label: 'August', count: 5 },
-    { id: 'jul', label: 'July', count: 5 },
-    { id: 'jun', label: 'June', count: 1 }
+    { id: 'all', label: '全部月份', count: 24 },
+    { id: 'dec', label: '十二月', count: 1 },
+    { id: 'nov', label: '十一月', count: 3 },
+    { id: 'oct', label: '十月', count: 6 },
+    { id: 'sep', label: '九月', count: 3 },
+    { id: 'aug', label: '八月', count: 5 },
+    { id: 'jul', label: '七月', count: 5 },
+    { id: 'jun', label: '六月', count: 1 }
   ];
 
   const activeMonthData = months.find(month => month.id === activeMonth) || months[0];

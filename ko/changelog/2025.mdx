@@ -1,7 +1,9 @@
 ---
-title: "Changelog"
-description: "This changelog documents all updates, fixes, and new features for Codatta in 2025."
+title: "변경 로그"
+description: "이 변경 로그는 Codatta의 2025년 모든 업데이트, 수정 사항 및 새로운 기능을 문서화합니다."
 ---
+
+import { useState, useEffect } from 'react';
 
 <div style={{
   backgroundColor: '#ffffff',
@@ -65,7 +67,7 @@ description: "This changelog documents all updates, fixes, and new features for 
             flexShrink: 0
           }}></span>
           <strong style={{color:'#111827', fontWeight:'600', marginRight: '0.25rem'}}>{num}</strong>
-          <span>result{num !== 1 ? 's' : ''}</span>
+          <span>개 결과</span>
         </div>
       );
     };
@@ -255,9 +257,14 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 프론티어를 위한 구성 가능한 보상 활동이 제공되어 추가적인 고부가가치 인센티브를 제공합니다.
 
+- **방법:** 선택된 프론티어 작업은 기본 포인트와 무관하게 $XNY 또는 USDT로 추가 보상을 제공합니다. 활동 매개변수(보상 금액, 지속 시간, 목표)는 각 프론티어별로 설정되며 각각의 홈페이지에 표시됩니다.
+- **목적:** 타겟팅된 인센티브를 통해 고부가가치 데이터 작업에 대한 더 깊은 참여를 유도하여 데이터 품질과 생태계 참여를 모두 개선하기 위함입니다.
+
+</div>
+
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## Sep 26, 2025
+## 2025년 09월 26일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 3 4주차**
 
@@ -275,7 +282,7 @@ description: "This changelog documents all updates, fixes, and new features for 
 
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## Sep 12, 2025
+## 2025년 09월 12일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 3 3주차**
 
@@ -293,7 +300,7 @@ AI 훈련 및 검증을 위해 생명, 로봇 공학, 암호화폐, 모델 비�
 
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## Sep 05, 2025
+## 2025년 09월 05일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 3 2주차**
 
@@ -311,7 +318,7 @@ AI 훈련 및 검증을 위해 생명, 로봇 공학 및 암호화폐에 걸친 
 
 <div className="changelog-item" data-type="core-feature" data-month="aug">
 
-## Aug 28, 2025
+## 2025년 08월 28일
 ---
 **기능 출시: 사용자 데이터 프로필**
 
@@ -328,7 +335,7 @@ AI 훈련 및 검증을 위해 생명, 로봇 공학 및 암호화폐에 걸친 
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## Aug 22, 2025
+## 2025년 08월 22일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 3 1주차**
 
@@ -346,7 +353,7 @@ AI 훈련 및 검증을 위해 생명, 로봇 공학 및 암호화폐에 걸친 
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## Aug 15, 2025
+## 2025년 08월 15일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 2 4주차**
 
@@ -364,7 +371,7 @@ AI 훈련 및 검증을 위해 생명, 로봇 공학 및 암호화폐에 걸친 
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## Aug 08, 2025
+## 2025년 08월 08일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 2 3주차**
 
@@ -382,7 +389,7 @@ AI 훈련 및 검증을 위해 생명, 로봇 공학 및 암호화폐에 걸친 
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## Aug 01, 2025
+## 2025년 08월 01일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 2 2주차**
 
@@ -400,7 +407,7 @@ AI 음식 모델 비교, 로봇 상호작용 주석 및 CEX 핫 월렛 데이터
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## July 24, 2025
+## 2025년 07월 24일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 2 1주차**
 
@@ -418,7 +425,7 @@ AI 음식 모델 비교, 로봇 상호작용 주석 및 CEX 핫 월렛 데이터
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## July 16, 2025
+## 2025년 07월 16일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 1 4주차**
 
@@ -436,7 +443,7 @@ AI 음식 모델 비교, 로봇 상호작용 주석 및 CEX 핫 월렛 데이터
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## July 09, 2025
+## 2025년 07월 09일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 1 3주차**
 
@@ -454,7 +461,7 @@ AI 음식 모델 비교, 로봇 상호작용 주석 및 CEX 핫 월렛 데이터
 
 <div className="changelog-item" data-type="optimization" data-month="jul">
 
-## July 07, 2025
+## 2025년 07월 07일
 ---
 **기능 최적화: 퀘스트 시스템 복원**
 
@@ -471,7 +478,7 @@ AI 음식 모델 비교, 로봇 상호작용 주석 및 CEX 핫 월렛 데이터
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## 2025년 7월 02일
+## 2025년 07월 02일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 1 2주차**
 
@@ -489,7 +496,7 @@ AI 음식 모델 비교, 로봇 상호작용 주석 및 CEX 핫 월렛 데이터
 
 <div className="changelog-item" data-type="campaign" data-month="jun">
 
-## 2025년 6월 25일
+## 2025년 06월 25일
 ---
 **캠페인 시작: Codatta 부스터 캠페인 시즌 1 1주차**
 
@@ -503,7 +510,9 @@ AI 음식 모델 비교, 로봇 상호작용 주석 및 CEX 핫 월렛 데이터
 - **보상:** 총 50,000,000 $XNY의 보상 풀, 작업 완료 및 검증 후 분배됩니다.
 - **일정:** 2025년 6월 25일 13:00 UTC – 2025년 7월 2일 13:00 UTC.
 
-</div>{/* Component definitions - moved to end of file for cleaner code organization */}
+</div>
+
+{/* Component definitions - moved to end of file for cleaner code organization */}
 export const ChangelogFilter = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [isOpen, setIsOpen] = useState(false);
@@ -529,11 +538,11 @@ export const ChangelogFilter = () => {
   }, [activeFilter]);
 
   const filterTypes = [
-    { id: 'all', label: 'All', color: '#6b7280', count: 24 },
-    { id: 'core-feature', label: 'Core Feature Release', color: '#16A34A', count: 4 },
-    { id: 'optimization', label: 'Adjustments & Optimization', color: '#F59E0B', count: 3 },
-    { id: 'fixes', label: 'Fixes & Feature Sunset', color: '#EF4444', count: 3 },
-    { id: 'campaign', label: 'Campaign Launch', color: '#A855F7', count: 14 }
+    { id: 'all', label: '전체', color: '#6b7280', count: 24 },
+    { id: 'core-feature', label: '핵심 기능 출시', color: '#16A34A', count: 4 },
+    { id: 'optimization', label: '조정 및 최적화', color: '#F59E0B', count: 3 },
+    { id: 'fixes', label: '수정 및 기능 종료', color: '#EF4444', count: 3 },
+    { id: 'campaign', label: '캠페인 시작', color: '#A855F7', count: 14 }
   ];
 
   const activeType = filterTypes.find(type => type.id === activeFilter) || filterTypes[0];
@@ -705,14 +714,14 @@ export const MonthFilter = () => {
   }, [activeMonth]);
 
   const months = [
-    { id: 'all', label: 'All Months', count: 24 },
-    { id: 'dec', label: 'December', count: 1 },
-    { id: 'nov', label: 'November', count: 3 },
-    { id: 'oct', label: 'October', count: 6 },
-    { id: 'sep', label: 'September', count: 3 },
-    { id: 'aug', label: 'August', count: 5 },
-    { id: 'jul', label: 'July', count: 5 },
-    { id: 'jun', label: 'June', count: 1 }
+    { id: 'all', label: '전체 월', count: 24 },
+    { id: 'dec', label: '12월', count: 1 },
+    { id: 'nov', label: '11월', count: 3 },
+    { id: 'oct', label: '10월', count: 6 },
+    { id: 'sep', label: '9월', count: 3 },
+    { id: 'aug', label: '8월', count: 5 },
+    { id: 'jul', label: '7월', count: 5 },
+    { id: 'jun', label: '6월', count: 1 }
   ];
 
   const activeMonthData = months.find(month => month.id === activeMonth) || months[0];
