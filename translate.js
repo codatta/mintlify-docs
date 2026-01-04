@@ -3,7 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 
 /**
- * 配置区
+ * Configuration
  */
 const SRC_DIR = "en/changelog";
 const TARGET_LANGS = [
@@ -21,7 +21,7 @@ const TARGET_LANGS = [
   },
 ];
 
-// 初始化客户端
+// Initialize OpenAI client
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   timeout: 120000,
@@ -29,7 +29,7 @@ const client = new OpenAI({
 });
 
 /**
- * 重试策略
+ * Retry strategy
  */
 async function withRetry(fn, maxRetries = 5) {
   let retries = 0;
@@ -39,17 +39,17 @@ async function withRetry(fn, maxRetries = 5) {
     } catch (err) {
       retries++;
       if (retries >= maxRetries) {
-        throw new Error(`重试${maxRetries}次后仍失败：${err.message}`);
+        throw new Error(`Failed after ${maxRetries} retries: ${err.message}`);
       }
       const delay = 1000 * Math.pow(2, retries);
-      console.log(`请求失败，${delay}ms 后重试（第 ${retries}/${maxRetries} 次）：`, err.message);
+      console.log(`Request failed, retrying after ${delay}ms (attempt ${retries}/${maxRetries}):`, err.message);
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
 }
 
 /**
- * 分块函数（仅处理待翻译部分）
+ * Split text into chunks (only for the part to be translated)
  */
 function splitTextByParagraphs(text, maxChars = 8000) {
   const paragraphs = text.split("\n\n");
@@ -82,32 +82,32 @@ function splitTextByParagraphs(text, maxChars = 8000) {
   if (currentChunk.trim()) {
     chunks.push(currentChunk.trim());
   }
-  console.log(`✅ 待翻译部分拆分为 ${chunks.length} 块，单块最大${maxChars}字符`);
+  console.log(`✅ Split translation part into ${chunks.length} chunks, max ${maxChars} chars per chunk`);
   return chunks;
 }
 
 /**
- * 🔥 双标记截断逻辑（核心修改）
- * 规则：
- * 1. 前标记（markerBefore）及之前 → 不翻译，保留
- * 2. 前标记后 ~ 后标记前 → 翻译
- * 3. 后标记（markerAfter）及之后 → 不翻译，保留
+ * Two-marker truncation logic (core modification)
+ * Rules:
+ * 1. Before markerBefore (inclusive) → keep as-is, no translation
+ * 2. Between markerBefore and markerAfter → translate
+ * 3. After markerAfter (inclusive) → keep as-is, no translation
  */
 function truncateWithTwoMarkers(text, markerBefore, markerAfter) {
-  // 1. 定位前标记（兼容跨多行）
+  // 1. Locate markerBefore (supports multi-line)
   const markerBeforeIndex = text.indexOf(markerBefore);
-  // 2. 定位后标记（从前往后找，且在前标记之后）
+  // 2. Locate markerAfter (search forward, must be after markerBefore)
   const markerAfterIndex = markerBeforeIndex === -1
     ? -1
     : text.indexOf(markerAfter, markerBeforeIndex + markerBefore.length);
 
-  // 边界情况1：没找到前标记 → 只处理后标记（后标记及之后不翻译）
+  // Edge case 1: markerBefore not found → only handle markerAfter (keep after markerAfter as-is)
   if (markerBeforeIndex === -1) {
     if (markerAfterIndex === -1) {
-      console.log("⚠️ 未找到任何标记，将翻译全部内容");
+      console.log("⚠️ No markers found, will translate entire content");
       return { translatePart: text, keepBefore: "", keepAfter: "" };
     }
-    console.log("⚠️ 未找到前标记，仅保留后标记及之后不翻译");
+    console.log("⚠️ markerBefore not found, keeping content after markerAfter as-is");
     return {
       translatePart: text.slice(0, markerAfterIndex).trim(),
       keepBefore: "",
@@ -115,9 +115,9 @@ function truncateWithTwoMarkers(text, markerBefore, markerAfter) {
     };
   }
 
-  // 边界情况2：找到前标记，但没找到后标记 → 仅前标记及之前不翻译，之后全翻译
+  // Edge case 2: markerBefore found but markerAfter not found → keep before markerBefore as-is, translate the rest
   if (markerAfterIndex === -1) {
-    console.log("⚠️ 未找到后标记，仅保留前标记及之前不翻译");
+    console.log("⚠️ markerAfter not found, keeping content before markerBefore as-is");
     return {
       translatePart: text.slice(markerBeforeIndex + markerBefore.length).trim(),
       keepBefore: text.slice(0, markerBeforeIndex + markerBefore.length),
@@ -125,56 +125,56 @@ function truncateWithTwoMarkers(text, markerBefore, markerAfter) {
     };
   }
 
-  // 正常情况：前后标记都找到 → 中间部分翻译
-  console.log(`✅ 双标记定位成功：
-  - 前标记位置：${markerBeforeIndex}
-  - 后标记位置：${markerAfterIndex}`);
+  // Normal case: both markers found → translate the middle part
+  console.log(`✅ Both markers located:
+  - markerBefore position: ${markerBeforeIndex}
+  - markerAfter position: ${markerAfterIndex}`);
 
   return {
-    // 待翻译：前标记后 ~ 后标记前
+    // To translate: between markerBefore and markerAfter
     translatePart: text.slice(markerBeforeIndex + markerBefore.length, markerAfterIndex).trim(),
-    // 保留：前标记及之前
+    // Keep: before markerBefore (inclusive)
     keepBefore: text.slice(0, markerBeforeIndex + markerBefore.length),
-    // 保留：后标记及之后
+    // Keep: after markerAfter (inclusive)
     keepAfter: text.slice(markerAfterIndex)
   };
 }
 
 /**
- * 翻译函数（整合双标记+分块+翻译+拼接）
+ * Translation function (integrates two-marker + chunking + translation + concatenation)
  */
 async function translate(text, systemPrompt) {
-  console.log("\n📝 原始文本总长度：", text.length, "字符");
+  console.log("\n📝 Original text total length:", text.length, "characters");
 
-  // 🔥 配置两个标记（原样复制，含换行/缩进/特殊字符）
-  // 前标记：};    return <ShowResult />;  })()}</div>
+  // Configure two markers (exact copy, including newlines/indentation/special characters)
+  // markerBefore: };    return <ShowResult />;  })()}</div>
   const markerBefore = `};
     return <ShowResult />;
   })()}
 </div>`;
-  // 后标记：{/* Component definitions - moved to end of file for cleaner code organization */}
+  // markerAfter: {/* Component definitions - moved to end of file for cleaner code organization */}
   const markerAfter = `{/* Component definitions - moved to end of file for cleaner code organization */}`;
 
-  // 执行双标记截断
+  // Execute two-marker truncation
   const { translatePart, keepBefore, keepAfter } = truncateWithTwoMarkers(text, markerBefore, markerAfter);
 
-  // 无待翻译内容 → 直接返回保留的前后部分
+  // No content to translate → return kept parts directly
   if (!translatePart) {
     return keepBefore + keepAfter;
   }
 
-  // 分块翻译中间内容
+  // Chunk and translate the middle content
   const chunks = splitTextByParagraphs(translatePart);
   const translatedChunks = [];
 
   for (let i = 0; i < chunks.length; i++) {
-    console.log(`🔄 翻译第 ${i+1}/${chunks.length} 块（字符数：${chunks[i].length}）`);
+    console.log(`🔄 Translating chunk ${i+1}/${chunks.length} (${chunks[i].length} characters)`);
     const res = await withRetry(async () => {
       return await client.chat.completions.create({
         model: "gpt-4o-mini",
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: `请翻译以下文本，严格遵循系统指令：\n${chunks[i]}` },
+          { role: "user", content: `Please translate the following text, strictly following the system instructions:\n${chunks[i]}` },
         ],
         temperature: 0.0,
         max_tokens: 4096,
@@ -183,12 +183,12 @@ async function translate(text, systemPrompt) {
     });
 
     if (!res || !res.choices || res.choices.length === 0) {
-      throw new Error(`第${i+1}块翻译失败：API返回异常`);
+      throw new Error(`Translation failed for chunk ${i+1}: API returned abnormal response`);
     }
     translatedChunks.push(res.choices[0].message.content.trim());
   }
 
-  // 拼接最终结果：前保留 + 翻译后的中间内容 + 后保留
+  // Concatenate final result: keepBefore + translated middle content + keepAfter
   const translatedPart = translatedChunks.join("\n\n");
   const finalResult = keepBefore + (translatedPart ? "\n" + translatedPart : "") + keepAfter;
 
@@ -196,11 +196,11 @@ async function translate(text, systemPrompt) {
 }
 
 /**
- * 主流程
+ * Main process
  */
 async function run() {
   if (!(await fs.pathExists(SRC_DIR))) {
-    console.log("❌ 未找到 changelog 目录，跳过翻译");
+    console.log("❌ changelog directory not found, skipping translation");
     return;
   }
 
@@ -211,7 +211,7 @@ async function run() {
     const srcPath = path.join(SRC_DIR, file);
     const content = await fs.readFile(srcPath, "utf-8");
 
-    console.log(`\n========== 开始处理 ${srcPath} ==========`);
+    console.log(`\n========== Processing ${srcPath} ==========`);
 
     for (const lang of TARGET_LANGS) {
       const outDir = path.join(lang.code, "changelog");
@@ -221,19 +221,19 @@ async function run() {
       try {
         const translated = await translate(content, lang.systemPrompt);
         await fs.writeFile(outPath, translated, "utf-8");
-        console.log(`✅ 成功：${file} → ${lang.code}/changelog/${file}`);
+        console.log(`✅ Success: ${file} → ${lang.code}/changelog/${file}`);
       } catch (err) {
-        console.error(`❌ 失败：${file} → ${lang.code}`, err.stack);
+        console.error(`❌ Failed: ${file} → ${lang.code}`, err.stack);
         continue;
       }
     }
   }
 
-  console.log("\n🎉 所有文件处理完成！");
+  console.log("\n🎉 All files processed!");
 }
 
-// 执行主流程
+// Execute main process
 run().catch((err) => {
-  console.error("💥 全局执行失败：", err.stack);
+  console.error("💥 Global execution failed:", err.stack);
   process.exit(1);
 });
