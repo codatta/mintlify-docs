@@ -1,7 +1,9 @@
 ---
 title: "变更日志"
-description: "此日志记录了 2025 年 Codatta 所有更新、修复和新功能。"
+description: "本文档记录了 Codatta 在 2025 年的所有更新、修复和新功能。"
 ---
+
+import { useState, useEffect } from 'react';
 
 <div style={{
   backgroundColor: '#ffffff',
@@ -72,448 +74,444 @@ description: "此日志记录了 2025 年 Codatta 所有更新、修复和新功
     return <ShowResult />;
   })()}
 </div>
-
 <div className="changelog-item" data-type="core-feature" data-month="dec">
 
-## Dec 04, 2025
+## 2025 年 12 月 04 日
+
 ---
-**引入奖励锁仓机制，管理生态长期激励**
+**激励机制演变：长期生态系统管理的奖励锁仓**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **适用范围：** 我们为 Airdrop、Frontier 等高激励场景的任务引入了可选的「锁仓」奖励规则。
-- **核心流程：**
-  - **触发：** 在支持此规则的活动结束后，奖励将发放至平台资产余额。
-  - **锁仓：** 在资产页将奖励转入智能合约锁定。
-  - **释放：** 锁仓期满后，一键领取奖励至钱包。
-- **迭代意义：** 此机制是我们激励体系向"精细化管理"演进的关键一步。它针对高激励场景，通过引入流动性调节工具，旨在系统性地平衡短期激励效应与生态长期健康发展。
+为高激励任务（例如，在 Airdrop 或 Frontier 活动中）提供的可选锁仓功能。
+
+- **触发：** 活动结束后，奖励将存入您的余额。
+- **锁仓：** 通过资产页面将奖励锁定在智能合约中以确保安全。
+- **释放：** 在锁仓期结束后，您可以一键将奖励直接提取到您的钱包。
+
+这是我们激励系统向精细化管理演变的关键一步。它为高奖励场景中的流动性管理提供了工具，平衡了短期参与与生态系统的长期健康。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="nov">
 
-## Nov 24, 2025
+## 2025 年 11 月 24 日
 ---
-**Airdrop二期活动**
+**活动启动：Airdrop 第二季**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：**
-  - **数据目标：** 系统性收集学术级验证的物理、金融、多模态领域数据集。
-  - **生态目标：** 通过定向激励，为三个新前线模块冷启动高质量数据流
-- **活动内容：**
-  - **Airdrop Season 2:** 代号"Physics Frontier Challenge"，总奖池 1M $XNY (含3个月锁仓)。
-  - **三个Frontier上线：** 同步上线高难度物理问题、加密资产与股票信息、真实世界图像三个数据收集frontier。
-    - **Advanced Physics Questions frontier：** 专业物理专业人士提交AI无法正确回答的高难度物理问题
-    - **Crypto & Stock Information frontier：** 给AI提供可靠的crypto和股票投资决策相关的信息
-    - **Real-world Photo frontier：** 给AI提供标注元数据的真实拍摄图片
-- **奖励信息：** 形式：任务奖励（90%奖池）与排行榜激励（10%奖池）结合。
-- **活动时间：** 周期：2025/11/24 - 2025/12/08 (UTC)。
+系统性地收集物理学、金融和多模态领域的学术级数据集，并为三个新前沿建立高质量的数据管道。
+
+- **操作：** 启动 Airdrop 第二季，奖金池为 100 万 $XNY（3 个月线性解锁）。
+- **新前沿：**
+  - **高级物理问题：** 供领域专家提交当前 AI 无法正确回答的高难度物理问题。
+  - **加密与股票信息：** 为 AI 提供与加密货币和股票投资决策相关的可靠信息。
+  - **现实世界照片：** 为 AI 提供包含注释元数据的现实世界照片。
+- **奖励结构：** 任务完成奖励占 90%，排行榜排名奖励占 10%。
+- **活动时间：** 2025 年 11 月 24 日 09:00 UTC – 2025 年 12 月 08 日 09:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="core-feature" data-month="nov">
 
-## Nov 05, 2025
+## 2025 年 11 月 05 日
 ---
-**账户体系升级：DID 正式上线**
+**账户系统升级：DID 正式上线**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **是什么：** 一项账户升级功能，允许用户在现有平台账户绑定标准 DID（去中心化身份标识）账户。
-- **如何运作：**
-  - **升级：** 用户可在账户设置中自行升级，将现有账户与链上DID绑定。
-  - **关联：** 升级后，该DID将在Codatta平台内作为您的统一主键，自动关联并索引您的所有任务行为、数据贡献、奖励记录等全链路信息。
-  - **追溯：** 基于DID，所有历史与未来的链上及链下行为均可被追溯和验证，形成完整的"数据血缘"。
-- **为何重要：** 这是构建可信、透明数据经济基础设施的关键一步。DID为每位用户在生态中的贡献提供了唯一、持久且可验证的"数字身份"，是实现贡献精准计量、权属清晰界定和激励公平发放的技术基石。
+一项基础升级，使账户绑定到去中心化标识符（DID）。
+
+- **绑定：** 通过下次登录 Codatta 自助集成链上 DID。
+- **关联：** 绑定的 DID 作为统一主键，系统性地索引所有任务操作、数据贡献和奖励分配。
+- **血缘：** 实现链上和链下活动的完全可追溯性和验证，建立不可变的数据来源。
+
+此部署为可验证的数据经济奠定了技术基础。通过为每位贡献者提供持久的、独特的数字身份，我们实现了精细的贡献归属、明确的所有权验证和透明的激励分配。
 
 </div>
 
 <div className="changelog-item" data-type="fixes" data-month="nov">
 
-## Nov 03, 2025
+## 2025 年 11 月 03 日
 ---
-**任务系统调整：Crypto Frontier QUEST 模块下线**
+**任务系统调整：Crypto Frontier QUEST 模块停用**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **下线范围：**
-  - 整个 Crypto Frontier QUEST 模块。
-  - 所有相关任务——包括 Submission（提交）、Validation（验证）与 Bounty Hunting（赏金狩猎）——均已关闭。
-- **下线原因：**
-  - 该模块已在当前产品路线图中完成其预设的生命周期。
-  - 此次下线有助于系统结构优化，并为后续功能更新释放资源、重新聚焦。
-- **相关说明：**
-  - 用户在该模块中的历史贡献记录与已获奖励保持完整，不受影响。
-  - 本次调整不涉及其他任何 Frontier 模块的正常运行。
+整个 Crypto Frontier QUEST 模块及所有相关任务（包括提交、验证和赏金猎人）已下线。
+
+- **原因：** 该模块已完成当前产品路线图下的计划生命周期。停用支持系统精简和资源重新分配，以便于即将发布的新功能。
+- **注意：** 用户在该模块的历史贡献记录和获得的奖励保持不变。此更改不影响其他 Frontier 模块。
 
 </div>
 
 <div className="changelog-item" data-type="fixes" data-month="oct">
 
-## Oct 24, 2025
+## 2025 年 10 月 24 日
 ---
-**Frontier 系统调整：Robotics Frontier 已下线**
+**Frontier 系统调整：Robotics Frontier 停用**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **调整内容：**
-  - Robotics Frontier 已正式下线。
-  - 本次调整仅涉及前端入口，所有历史贡献数据均保持完整且可查询。
-- **调整原因：**
-  - 该决定是产品持续优化的一部分，旨在将资源与用户注意力集中至当前优先级最高的活跃 Frontier。
-  - Robotics Frontier 已完成其预设的探索阶段，下线有助于我们整合资源、聚焦核心任务。
-- **相关说明：**
-  - 用户在 Robotics Frontier 中的历史贡献与所获奖励已被完整保留，可在其贡献历史记录中随时查看。
-  - 此次调整不影响平台其他 Frontier 模块及任何系统功能的正常使用。
+Robotics Frontier 已正式停用。此操作仅影响前端入口点。所有历史贡献数据保持完整且可访问。
+
+- **原因：** 此决定是我们持续产品精简的一部分，旨在将资源和用户注意力集中在我们最高优先级的活跃前沿。Robotics Frontier 已完成其计划的探索阶段，停用使我们能够整合努力。
+- **注意：** 用户在 Robotics Frontier 的过去贡献和奖励被保留，并可在其贡献历史中查看。其他前沿或平台功能不受影响。
 
 </div>
 
 <div className="changelog-item" data-type="optimization" data-month="oct">
 
-## Oct 23, 2025
+## 2025 年 10 月 23 日
 ---
-**反垃圾信息增强：每日提交次数限制已实施**
+**反垃圾邮件增强：实施每日提交限制**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **策略内容：** 已实施一项新的平台级安全策略，以防止任务刷单行为。
-- **实施方式：** 针对每项任务，执行可配置的每日提交次数上限。
-- **实施目的：** 保护系统资源，确保所有贡献者公平参与，并维持任务生态系统的长期健康与公平
+一项新的平台安全政策，以防止任务垃圾邮件。
+
+- **运作方式：** 对每个任务实施可配置的每日提交上限。
+- **原因：** 保护系统资源，确保所有贡献者的公平参与，并维护任务生态系统的长期健康和公平性。
 
 </div>
 
 <div className="changelog-item" data-type="fixes" data-month="oct">
 
-## Oct 20, 2025
+## 2025 年 10 月 20 日
 ---
-**Frontier 系统调整：Crypto Frontier 已下线**
+**Frontier 系统调整：Crypto Frontier 停用**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **调整内容：**
-  - Crypto Frontier 已正式下线。
-  - 本次调整仅涉及前端入口关闭，所有历史贡献数据均保持完整且可正常访问。
-- **调整原因：**
-  - 此决策是我们持续优化产品结构的一部分，旨在将资源与用户关注聚焦于优先级最高的活跃 Frontier 模块。
-  - Crypto Frontier 已完成其预设的探索阶段，下线有助于我们集中资源、推进核心目标。
-- **相关说明：**
-  - 用户在 Crypto Frontier 中的历史贡献与奖励记录已完整保留，可在个人贡献历史中查询。
-  - 本次调整不影响其他任何 Frontier 模块及平台功能的正常运行。
+Crypto Frontier 已正式停用。此操作仅影响前端入口点。所有历史贡献数据保持完整且可访问。
+
+- **原因：** 此决定是我们持续产品精简的一部分，旨在将资源和用户注意力集中在我们最高优先级的活跃前沿。Crypto Frontier 已完成其计划的探索阶段，停用使我们能够整合努力。
+- **注意：** 用户在 Crypto Frontier 的过去贡献和奖励被保留，并可在其贡献历史中查看。其他前沿或平台功能不受影响。
 
 </div>
 
 <div className="changelog-item" data-type="optimization" data-month="oct">
 
-## Oct 15, 2025
+## 2025 年 10 月 15 日
 ---
-**系统治理：平台黑名单管控功能已上线**
+**系统治理：实施平台黑名单控制**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **功能概述：** 平台已实施全新的黑名单管控功能。
-- **运作方式：** 指定管理员现可通过应用黑名单规则对恶意账户实施限制。
-- **实施目标：** 主动维护平台生态的完整性，保护诚信贡献者，并为所有参与者构建公平、可信的环境。旨在提升平台整体安全性，保障贡献者权益，并维护生态系统的公平性。
+平台上实施了一项新的黑名单控制功能。
+
+- **运作方式：** 指定的管理员现在可以应用黑名单规则以限制恶意账户。
+- **原因：** 增强平台安全性，保护贡献者利益，维护生态系统公平性。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="oct">
 
-## Oct 13, 2025
+## 2025 年 10 月 13 日
 ---
-**Airdrop 第一期活动**
+**活动启动：Airdrop 第一季**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：**
-  - **数据目标：** 通过高额奖励机制与违规处罚策略，系统性地筛选并收集高质量、结构化的数据，保障数据的有效性与学术价值。
-  - **生态目标：** 回馈长期支持的用户，通过五个新前线模块推动平台数据生态的多元发展与健康循环。
-- **主要动作：**
-  - 正式上线 Airdrop 第一期活动，提供 2.5M 高额 $XNY 与积分奖励，活动为期两周。
-  - 同步推出五个全新的 Frontier 数据模块：
-    - **Model Comparison：** 支持横向比较不同AI模型的性能指标与业务回报，助力识别最优或融合模型方案。
-    - **Spot LLM's Mistakes：** 聚焦识别大语言模型在推理、事实表述、等方面的错误，为模型优化提供数据支撑。
-    - **Correct LLM's Mistakes：** 通过收集错误纠正数据，帮助大模型从错误中学习，提升其自我修正与推理能力。
-    - **Food Science：** 围绕食品科学、营养功能等方向收集研究数据，助力食品科学领域创新。
-    - **Lifelog Canvas：** 支持生活行为、健康状态等数据的跟踪与记录，为相关研究提供基础数据。
-- **奖励信息：** 奖励将依据数据提交后的评级得分进行排名，并于活动结束后统一发放。活动全程将监测并处罚恶意提交行为，以保障数据质量。
-- **活动时间：** 周期：2025/10/13 - 2025/10/27 (UTC)。
+通过高奖励机制和反垃圾邮件执行系统性地收集高质量、结构化的数据，确保有效性和学术价值，并奖励长期贡献者，丰富平台的数据生态系统，推出五个新前沿模块。
+
+- **操作：** 启动 Airdrop 第一季，奖金池为 250 万 $XNY 和积分奖励。
+- **新前沿：**
+  - **模型比较：** 比较不同 AI 模型的性能指标和业务结果，以识别最佳或混合解决方案。
+  - **识别 LLM 的错误：** 识别 LLM 输出中的推理、事实和逻辑错误，以支持模型优化。
+  - **纠正 LLM 的错误：** 收集纠正数据，帮助 LLM 从错误中学习，提高自我纠正和推理能力。
+  - **食品科学：** 收集食品科学和营养功能方面的研究数据，以推动该领域的创新。
+  - **生活记录画布：** 跟踪和记录个人行为和健康相关数据，以支持行为及相关研究。
+- **奖励结构：** 奖励根据提交评分排名，并在活动结束后分配。恶意提交将受到惩罚，以确保数据质量。
+- **活动时间：** 2025 年 10 月 13 日 09:00 UTC - 2025 年 10 月 27 日 09:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="core-feature" data-month="oct">
 
-## Oct 10, 2025
+## 2025 年 10 月 10 日
 ---
-**功能上线：Frontier 专属激励活动（Activity）**
+**功能发布：特定 Frontier 的奖励活动**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **是什么：** 平台现支持为各 Frontier 灵活配置专属奖励活动（Activity），为特定高难度模块提供叠加式高额奖励。
-- **如何运作：**
-  - 部分 Frontier 任务将额外提供高额 $XNY 或 USDT 活动奖励，该奖励独立于平台基础积分，叠加发放。
-  - 活动奖励规则（如额度、周期、目标）由各Frontier独立设定，具体信息见对应Frontier Home页说明。
-- **为何重要：** 通过更精准、可配置的激励方式，持续吸引用户参与高价值数据任务，提升数据贡献深度与生态活跃度。
+现在为 Frontiers 提供可配置的奖励活动，提供额外的高价值激励。
+
+- **运作方式:** 选择的 Frontier 任务提供额外的奖励，奖励以 $XNY 或 USDT 形式发放，与基础积分无关。活动参数（奖励金额、持续时间、目标）根据每个 Frontier 设置，并在其各自的主页上显示。
+- **原因:** 通过有针对性的激励措施，推动对高价值数据任务的更深入参与，提高数据质量和生态系统的参与度。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## Sep 26, 2025
+## 2025 年 09 月 26 日
 ---
-**活动上线：Codatta Booster Campaign 第三季第4周**
+**活动启动：Codatta Booster 活动 第三季 第四周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 通过收集多领域可信数据加速AI发展，并推动社区共建去中心化AI知识层。
-- **主要动作：** 正式上线第三季第4周活动，入口位于币安钱包Booster页及平台首页（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY（含锁仓机制），奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年9月26日 07:00（UTC）开始。
+通过可信的多领域数据收集加速 AI 发展，并促进社区驱动的去中心化 AI 知识构建。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY（有锁仓期），在任务完成和验证后分配。
+- **活动时间:** 2025 年 09 月 26 日 07:00 UTC – 2025 年 10 月 03 日 07:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## Sep 12, 2025
+## 2025 年 09 月 12 日
 ---
-**活动上线：Codatta Booster Campaign 第三季第3周**
+**活动启动：Codatta Booster 活动 第三季 第三周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 收集跨领域数据，涵盖生活、机器人、加密资产、模型对比和指纹验证等领域，用于AI训练和验证。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY（含锁仓机制），奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年9月12日 07:00（UTC）– 2025年9月19日 07:00（UTC）。
+收集跨领域数据，涵盖生活、机器人、加密货币、模型比较和指纹验证，以用于 AI 训练和验证。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY（有锁仓期），在任务完成和验证后分配。
+- **活动时间:** 2025 年 09 月 12 日 07:00 UTC – 2025 年 09 月 19 日 07:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="sep">
 
-## Sep 05, 2025
+## 2025 年 09 月 05 日
 ---
-**活动上线：Codatta Booster Campaign 第三季第2周**
+**活动启动：Codatta Booster 活动 第三季 第二周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 收集并标注跨领域数据，涵盖生活、机器人和加密资产等领域，用于AI训练和验证。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY（含锁仓机制），奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年9月5日 07:00（UTC）– 2025年9月12日 07:00（UTC）。
+收集和注释跨领域数据，涵盖生活、机器人和加密货币，以用于 AI 训练和验证。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY（有锁仓期），在任务完成和验证后分配。
+- **活动时间:** 2025 年 09 月 05 日 07:00 UTC – 2025 年 09 月 12 日 07:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="core-feature" data-month="aug">
 
-## Aug 28, 2025
+## 2025 年 08 月 28 日
 ---
-**功能上线：用户数据档案**
+**功能发布：用户数据档案**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **是什么：** 在用户信息模块中引入全新的数据档案功能。
-- **如何运作：** 通过用户信息 > 数据档案访问，在可视化仪表板中查看您的总提交数、已获奖励和贡献统计。
-- **为何重要：** 提供贡献透明度，通过可见的进度跟踪增强参与度，并支持长期参与。
+在用户信息模块中引入新的数据档案功能。
+
+- **运作方式:** 通过用户信息 > 数据档案访问，查看您的总提交、获得的奖励和贡献统计信息，呈现在可视化仪表板中。
+- **原因:** 提供对您贡献的透明度，通过可见的进度跟踪增强参与感，并支持长期参与。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## Aug 22, 2025
+## 2025 年 08 月 22 日
 ---
-**活动上线：Codatta Booster Campaign 第三季第1周**
+**活动启动：Codatta Booster 活动 第三季 第一周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 建立跨领域标注数据基础，涵盖生活、机器人和加密资产等领域，用于去中心化AI训练。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY（含锁仓机制），奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年8月22日 07:00（UTC）– 2025年8月29日 07:00（UTC）。
+为去中心化 AI 训练建立跨领域注释数据的基础，涵盖生活、机器人和加密货币。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY（有锁仓期），在任务完成和验证后分配。
+- **活动时间:** 2025 年 08 月 22 日 07:00 UTC – 2025 年 08 月 29 日 07:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## Aug 15, 2025
+## 2025 年 08 月 15 日
 ---
-**活动上线：Codatta Booster Campaign 第二季第4周**
+**活动启动：Codatta Booster 活动 第二季 第四周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 系统性地标注和扩展特定领域数据集，涵盖食品AI、机器人交互和CEX链上数据，用于去中心化AI训练。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY（含锁仓机制），奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年8月15日 07:00（UTC）– 2025年8月22日 07:00（UTC）。
+系统性地注释和扩展食品 AI、机器人交互和 CEX 链上数据的领域特定数据集，以用于去中心化 AI 训练。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY（有锁仓期），在任务完成和验证后分配。
+- **活动时间:** 2025 年 08 月 15 日 07:00 UTC – 2025 年 08 月 22 日 07:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## Aug 08, 2025
+## 2025 年 08 月 08 日
 ---
-**活动上线：Codatta Booster Campaign 第二季第3周**
+**活动启动：Codatta Booster 活动 第二季 第三周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 系统性地收集四个关键领域的标注数据：项目学习、食品AI判断、机器人标注和CEX数据扩展。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY（含锁仓机制），奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年8月8日 07:00（UTC）– 2025年8月15日 07:00（UTC）。
+系统性地收集四个关键领域的注释数据：项目学习、食品 AI 判断、机器人注释和 CEX 数据扩展。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY（有锁仓期），在任务完成和验证后分配。
+- **活动时间:** 2025 年 08 月 08 日 07:00 UTC – 2025 年 08 月 15 日 07:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="aug">
 
-## Aug 01, 2025
+## 2025 年 08 月 01 日
 ---
-**活动上线：Codatta Booster Campaign 第二季第2周**
+**活动启动：Codatta Booster 活动 第二季 第二周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 收集三个核心领域的标注数据：AI食品模型对比、机器人交互标注和CEX热钱包数据标注。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY（含锁仓机制），奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年8月1日 07:00（UTC）– 2025年8月8日 07:00（UTC）。
+收集三个核心领域的注释数据：AI 食品模型比较、机器人交互注释和 CEX 热钱包数据标注。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY（有锁仓期），在任务完成和验证后分配。
+- **活动时间:** 2025 年 08 月 01 日 07:00 UTC – 2025 年 08 月 08 日 07:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## Jul 24, 2025
+## 2025 年 07 月 24 日
 ---
-**活动上线：Codatta Booster Campaign 第二季第1周**
+**活动启动：Codatta Booster 活动 第二季 第一周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 通过标注真实世界交互数据，验证AI食品分析并增强机器人训练。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY（含锁仓机制），奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年7月24日 07:00（UTC）– 2025年7月31日 07:00（UTC）。
+通过注释的真实世界交互数据来验证 AI 食品分析并增强机器人训练。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY（有锁仓期），在任务完成和验证后分配。
+- **活动时间:** 2025 年 07 月 24 日 07:00 UTC – 2025 年 07 月 31 日 07:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## Jul 16, 2025
+## 2025 年 07 月 16 日
 ---
-**活动上线：Codatta Booster Campaign 第一季第4周**
+**活动启动：Codatta Booster 活动 第一季 第四周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 通过收集丰富的标注数据深化AI对食品的理解，标注内容不仅包括标签，还包括重量、烹饪方法和卡路里含量。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY，奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年7月16日 13:00（UTC）– 2025年7月23日 13:00（UTC）。
+通过收集丰富的注释，深化 AI 对食品的理解，这些注释不仅限于标签，还包括重量、烹饪方法和热量含量。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY，在任务完成和验证后分配。
+- **活动时间:** 2025 年 07 月 16 日 13:00 UTC – 2025 年 07 月 23 日 13:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## Jul 09, 2025
+## 2025 年 07 月 09 日
 ---
-**活动上线：Codatta Booster Campaign 第一季第3周**
+**活动启动：Codatta Booster 活动 第一季 第三周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 通过收集即食食品的标注图像，教授AI对人类饮食习惯的细致理解，关注文化背景和情境相关性，而不仅仅是简单标签。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY，奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年7月9日 13:00（UTC）– 2025年7月16日 13:00（UTC）。
+通过收集即食食品的注释图像，教会 AI 对人类饮食习惯的细致理解，关注文化和上下文的相关性，而不仅仅是简单的标签。
+
+- **参与方式:** 通过 Binance Wallet Booster 标签或主页横幅访问（需要 Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY，在任务完成和验证后分配。
+- **活动时间:** 2025 年 07 月 09 日 13:00 UTC – 2025 年 07 月 16 日 13:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="optimization" data-month="jul">
 
-## Jul 07, 2025
+## 2025 年 07 月 07 日
 ---
-**功能优化：Quest 系统已恢复**
+**功能优化：任务系统恢复**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **是什么：** Quest 系统已完全恢复并重新开放。
-- **如何运作：** 系统于2025年6月30日暂时下线，现已全面恢复。
-- **为何重要：** 通过架构升级提升系统稳定性和用户体验。
+任务系统已全面恢复并重新开放。
+
+- **运作方式:** 于 2025 年 06 月 30 日暂时下线，现在已全面恢复。
+- **原因:** 通过架构升级增强系统稳定性和用户体验。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="jul">
 
-## Jul 02, 2025
+## 2025 年 07 月 02 日
 ---
-**活动上线：Codatta Booster Campaign 第一季第2周**
+**活动启动：Codatta Booster 活动第一季第二周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 通过细致的图像标注扩展AI对全球食品文化和偏好的理解，涵盖素食、非素食和混合类别。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY，奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年7月2日 13:00（UTC）– 2025年7月9日 13:00（UTC）。
+通过对素食、非素食和混合类别的细致图像标注，扩展 AI 对全球食品文化和偏好的理解。
+
+- **参与方式:** 可通过 Binance Wallet Booster 标签或主页横幅访问（Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY，任务完成并验证后分发。
+- **活动时间:** 2025 年 07 月 02 日 13:00 UTC – 2025 年 07 月 09 日 13:00 UTC。
 
 </div>
 
 <div className="changelog-item" data-type="campaign" data-month="jun">
 
-## Jun 25, 2025
+## 2025 年 06 月 25 日
 ---
-**活动上线：Codatta Booster Campaign 第一季第1周**
+**活动启动：Codatta Booster 活动第一季第一周**
 
 <br />
 
 <div style={{ marginTop: "1rem" }}></div>
 
-- **活动目标：** 通过收集标注食品数据、社区知识问答和分层激励结构，启动首届活动。
-- **主要动作：** 入口位于币安钱包Booster页或平台首页横幅（需Alpha Points ≥ 61）。
-- **活动规则：** 总奖池50,000,000 $XNY，奖励于任务完成并通过审核后发放。
-- **活动时间：** 2025年6月25日 13:00（UTC）– 2025年7月2日 13:00（UTC）。
+通过收集注释食品数据、通过测验吸引社区知识，并通过多层次激励结构奖励参与，启动首季活动。
 
-</div>
+- **参与方式:** 可通过 Binance Wallet Booster 标签或主页横幅访问（Alpha Points ≥ 61）。
+- **奖励:** 总奖励池为 50,000,000 $XNY，任务完成并验证后分发。
+- **活动时间:** 2025 年 06 月 25 日 13:00 UTC – 2025 年 07 月 02 日 13:00 UTC。
 
-{/* Component definitions - moved to end of file for cleaner code organization */}
+</div>{/* Component definitions - moved to end of file for cleaner code organization */}
 export const ChangelogFilter = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [isOpen, setIsOpen] = useState(false);
@@ -543,7 +541,7 @@ export const ChangelogFilter = () => {
     { id: 'core-feature', label: '核心功能发布', color: '#16A34A', count: 4 },
     { id: 'optimization', label: '调整与优化', color: '#F59E0B', count: 3 },
     { id: 'fixes', label: '修复与功能下线', color: '#EF4444', count: 3 },
-    { id: 'campaign', label: '活动上线', color: '#A855F7', count: 14 }
+    { id: 'campaign', label: '活动启动', color: '#A855F7', count: 14 }
   ];
 
   const activeType = filterTypes.find(type => type.id === activeFilter) || filterTypes[0];
