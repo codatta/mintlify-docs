@@ -1,6 +1,6 @@
 ---
-title: "Changelog"
-description: "This changelog documents all updates, fixes, and new features for Codatta in 2025."
+title: "变更日志"
+description: "本文档记录了 Codatta 在 2025 年的所有更新、修复和新功能。"
 ---
 
 import { useState, useEffect } from 'react';
@@ -67,7 +67,7 @@ import { useState, useEffect } from 'react';
             flexShrink: 0
           }}></span>
           <strong style={{color:'#111827', fontWeight:'600', marginRight: '0.25rem'}}>{num}</strong>
-          <span>result{num !== 1 ? 's' : ''}</span>
+          <span>条结果</span>
         </div>
       );
     };
@@ -76,7 +76,7 @@ import { useState, useEffect } from 'react';
 </div>
 <div className="changelog-item" data-type="core-feature" data-month="dec">
 
-## 2025 年 12 月 04 日
+## 4.2.7 2025 年 12 月 04 日
 ---
 **激励机制演变：长期生态系统管理的奖励锁仓**
 
@@ -96,7 +96,7 @@ import { useState, useEffect } from 'react';
 
 <div className="changelog-item" data-type="campaign" data-month="nov">
 
-## 2025 年 11 月 24 日
+## 4.2.5 2025 年 11 月 24 日
 ---
 **活动启动：Airdrop 第二季**
 
@@ -118,7 +118,7 @@ import { useState, useEffect } from 'react';
 
 <div className="changelog-item" data-type="core-feature" data-month="nov">
 
-## 2025 年 11 月 05 日
+## 4.2.0 2025 年 11 月 05 日
 ---
 **账户系统升级：DID 正式上线**
 
@@ -138,7 +138,7 @@ import { useState, useEffect } from 'react';
 
 <div className="changelog-item" data-type="fixes" data-month="nov">
 
-## 2025 年 11 月 03 日
+## 4.1.5 2025 年 11 月 03 日
 ---
 **任务系统调整：Crypto Frontier QUEST 模块停用**
 
@@ -155,7 +155,7 @@ import { useState, useEffect } from 'react';
 
 <div className="changelog-item" data-type="fixes" data-month="oct">
 
-## 2025 年 10 月 24 日
+## 4.1.4 2025 年 10 月 24 日
 ---
 **Frontier 系统调整：Robotics Frontier 停用**
 
@@ -172,7 +172,7 @@ Robotics Frontier 已正式停用。此操作仅影响前端入口点。所有�
 
 <div className="changelog-item" data-type="optimization" data-month="oct">
 
-## 2025 年 10 月 23 日
+## 4.1.3 2025 年 10 月 23 日
 ---
 **反垃圾邮件增强：实施每日提交限制**
 
@@ -189,7 +189,7 @@ Robotics Frontier 已正式停用。此操作仅影响前端入口点。所有�
 
 <div className="changelog-item" data-type="fixes" data-month="oct">
 
-## 2025 年 10 月 20 日
+## 4.1.2 2025 年 10 月 20 日
 ---
 **Frontier 系统调整：Crypto Frontier 停用**
 
@@ -206,7 +206,7 @@ Crypto Frontier 已正式停用。此操作仅影响前端入口点。所有历�
 
 <div className="changelog-item" data-type="optimization" data-month="oct">
 
-## 2025 年 10 月 15 日
+## 4.1.1 2025 年 10 月 15 日
 ---
 **系统治理：平台黑名单控制实施**
 
@@ -223,7 +223,7 @@ Crypto Frontier 已正式停用。此操作仅影响前端入口点。所有历�
 
 <div className="changelog-item" data-type="campaign" data-month="oct">
 
-## 2025 年 10 月 13 日
+## 4.1.0 2025 年 10 月 13 日
 ---
 **活动启动：Airdrop 第一季**
 
@@ -247,7 +247,7 @@ Crypto Frontier 已正式停用。此操作仅影响前端入口点。所有历�
 
 <div className="changelog-item" data-type="core-feature" data-month="oct">
 
-## 2025 年 10 月 10 日
+## 4.0.0 2025 年 10 月 10 日
 ---
 **功能发布：Frontier 特定奖励活动**
 
@@ -255,8 +255,7 @@ Crypto Frontier 已正式停用。此操作仅影响前端入口点。所有历�
 
 <div style={{ marginTop: "1rem" }}></div>
 
-```html
-Configurable reward activities are now available for Frontiers, offering additional high-value incentives.
+现在为 Frontiers 提供可配置的奖励活动，提供额外的高价值激励。
 
 - **运作方式:** 选定的 Frontier 任务提供额外的 $XNY 或 USDT 奖励，与基础积分无关。活动参数（奖励金额、持续时间、目标）根据每个 Frontier 设置，并在其各自的主页上显示。
 - **原因:** 通过有针对性的激励措施，推动对高价值数据任务的更深入参与，提高数据质量和生态系统的参与度。
@@ -471,7 +470,6 @@ Configurable reward activities are now available for Frontiers, offering additio
 <div style={{ marginTop: "1rem" }}></div>
 
 任务系统已全面恢复并重新开放。
-```
 
 - **运作方式:** 于 2025 年 06 月 30 日暂时下线，现在已全面恢复。
 - **原因:** 通过架构升级提升系统稳定性和用户体验。
@@ -538,11 +536,11 @@ export const ChangelogFilter = () => {
   }, [activeFilter]);
 
   const filterTypes = [
-    { id: 'all', label: 'All', color: '#6b7280', count: 24 },
-    { id: 'core-feature', label: 'Core Feature Release', color: '#16A34A', count: 4 },
-    { id: 'optimization', label: 'Adjustments & Optimization', color: '#F59E0B', count: 3 },
-    { id: 'fixes', label: 'Fixes & Feature Sunset', color: '#EF4444', count: 3 },
-    { id: 'campaign', label: 'Campaign Launch', color: '#A855F7', count: 14 }
+    { id: 'all', label: '全部', color: '#6b7280', count: 24 },
+    { id: 'core-feature', label: '核心功能发布', color: '#16A34A', count: 4 },
+    { id: 'optimization', label: '调整与优化', color: '#F59E0B', count: 3 },
+    { id: 'fixes', label: '修复与功能下线', color: '#EF4444', count: 3 },
+    { id: 'campaign', label: '活动启动', color: '#A855F7', count: 14 }
   ];
 
   const activeType = filterTypes.find(type => type.id === activeFilter) || filterTypes[0];
@@ -714,14 +712,14 @@ export const MonthFilter = () => {
   }, [activeMonth]);
 
   const months = [
-    { id: 'all', label: 'All Months', count: 24 },
-    { id: 'dec', label: 'December', count: 1 },
-    { id: 'nov', label: 'November', count: 3 },
-    { id: 'oct', label: 'October', count: 6 },
-    { id: 'sep', label: 'September', count: 3 },
-    { id: 'aug', label: 'August', count: 5 },
-    { id: 'jul', label: 'July', count: 5 },
-    { id: 'jun', label: 'June', count: 1 }
+    { id: 'all', label: '全部月份', count: 24 },
+    { id: 'dec', label: '十二月', count: 1 },
+    { id: 'nov', label: '十一月', count: 3 },
+    { id: 'oct', label: '十月', count: 6 },
+    { id: 'sep', label: '九月', count: 3 },
+    { id: 'aug', label: '八月', count: 5 },
+    { id: 'jul', label: '七月', count: 5 },
+    { id: 'jun', label: '六月', count: 1 }
   ];
 
   const activeMonthData = months.find(month => month.id === activeMonth) || months[0];
