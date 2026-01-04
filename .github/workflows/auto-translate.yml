@@ -1,0 +1,68 @@
+name: Auto Translate (Push to New Branch)
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  translate:
+    if: "!contains(github.ref_name, 'auto-translate')"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      # 1️⃣ Checkout source branch
+      - name: Checkout source branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      # 2️⃣ Setup Node environment
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3️⃣ Install dependencies
+      - name: Install deps
+        run: |
+          npm init -y
+          npm install openai fs-extra
+
+      # 4️⃣ Run translation (generate cn/ ko/ files)
+      - name: Run translation
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node translate.js
+        timeout-minutes: 60
+
+      # 5️⃣ Create translation branch with timestamp and push
+      - name: Push translated files
+        run: |
+          # Timestamp (UTC, for stability)
+          TS=$(date -u '+%Y%m%d-%H%M%S')
+
+          SRC_BRANCH="${GITHUB_REF_NAME}"
+          TRANS_BRANCH="${SRC_BRANCH}-auto-translate-${TS}"
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          # Create new translation branch (new each time)
+          git checkout -b "$TRANS_BRANCH"
+
+          # Ensure directories exist (prevent glob errors)
+          mkdir -p cn/changelog
+          mkdir -p ko/changelog
+
+          # Only add translated files
+          git add cn/** ko/**
+
+          # Skip commit if no changes
+          git diff --cached --quiet || git commit -m "chore: auto translate (${TS})"
+
+          # Push new branch
+          git push origin "$TRANS_BRANCH"
