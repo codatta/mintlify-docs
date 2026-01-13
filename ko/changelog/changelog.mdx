@@ -1,6 +1,6 @@
 ---
 title: "변경 로그"
-description: "이 변경 로그는 2025년 Codatta의 모든 업데이트, 수정 및 새로운 기능을 문서화합니다."
+description: "이 변경 로그는 2025년과 2026년 Codatta의 모든 업데이트, 수정 및 새로운 기능을 문서화합니다."
 ---
 
 import { useState, useEffect } from 'react';
@@ -74,6 +74,23 @@ import { useState, useEffect } from 'react';
     return <ShowResult />;
   })()}
 </div>
+<div className="changelog-item" data-type="optimization" data-month="jan">
+
+## 4.3.2 2026년 01월 09일
+---
+**기능 최적화: 추천 시스템 업그레이드**
+
+<br />
+
+<div style={{ marginTop: "1rem" }}></div>
+
+지속 가능한 성장과 고품질 기여를 촉진하기 위한 일일 제한 및 보상 상자가 있는 향상된 추천 시스템입니다.
+
+- **방법:** 매일 신규 사용자 10명까지 초대 제한. 사용자는 5명 초대할 때마다 상자 1개를 획득합니다. 초대받은 사용자가 첫 번째 작업 검토를 제출하고 통과하면, 초대자와 피초대자 모두 각각 1개의 상자를 받으며, 1-100개의 무작위 포인트가 포함됩니다. 추천 페이지는 실시간 진행 상황과 상자 상태를 표시합니다. 조건이 충족되면 상자가 자동으로 발급되며 "기여 및 승리"에서 열 수 있습니다.
+- **이유:** 일일 상한은 스팸을 방지하고 초대를 의미 있게 유지합니다. 상자는 양쪽에서 실제 기여를 장려하여 데이터 품질을 향상시킵니다. 무작위 포인트 보상은 초대를 재미있고 공정하게 만들어 장기 활동과 플랫폼 성장을 지원합니다.
+
+</div>
+
 <div className="changelog-item" data-type="core-feature" data-month="dec">
 
 ## 4.2.7 2025년 12월 04일
@@ -536,9 +553,9 @@ export const ChangelogFilter = () => {
   }, [activeFilter]);
 
   const filterTypes = [
-    { id: 'all', label: '전체', color: '#6b7280', count: 24 },
+    { id: 'all', label: '전체', color: '#6b7280', count: 25 },
     { id: 'core-feature', label: '핵심 기능 출시', color: '#16A34A', count: 4 },
-    { id: 'optimization', label: '조정 및 최적화', color: '#F59E0B', count: 3 },
+    { id: 'optimization', label: '조정 및 최적화', color: '#F59E0B', count: 4 },
     { id: 'fixes', label: '수정 및 기능 종료', color: '#EF4444', count: 3 },
     { id: 'campaign', label: '캠페인 시작', color: '#A855F7', count: 14 }
   ];
@@ -712,14 +729,15 @@ export const MonthFilter = () => {
   }, [activeMonth]);
 
   const months = [
-    { id: 'all', label: '전체', count: 24 },
-    { id: 'dec', label: '12월', count: 1 },
-    { id: 'nov', label: '11월', count: 3 },
-    { id: 'oct', label: '10월', count: 6 },
-    { id: 'sep', label: '9월', count: 3 },
-    { id: 'aug', label: '8월', count: 5 },
-    { id: 'jul', label: '7월', count: 5 },
-    { id: 'jun', label: '6월', count: 1 }
+    { id: 'all', label: '전체', count: 25 },
+    { id: 'jan', label: '2026년 1월', count: 1 },
+    { id: 'dec', label: '2025년 12월', count: 1 },
+    { id: 'nov', label: '2025년 11월', count: 3 },
+    { id: 'oct', label: '2025년 10월', count: 6 },
+    { id: 'sep', label: '2025년 9월', count: 3 },
+    { id: 'aug', label: '2025년 8월', count: 5 },
+    { id: 'jul', label: '2025년 7월', count: 5 },
+    { id: 'jun', label: '2025년 6월', count: 1 }
   ];
 
   const activeMonthData = months.find(month => month.id === activeMonth) || months[0];
