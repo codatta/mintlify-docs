@@ -11,13 +11,13 @@ const TARGET_LANGS = [
     code: "cn",
     name: "Chinese",
     systemPrompt:
-      "请将以下英文 changelog 按中文语境重写，严格遵循以下要求：\n\n【一、结构完整性（最高优先级）】\n1. 严格禁止添加任何新的 HTML 标签或结构元素（如 <div>、<span> 等），只翻译文本内容。\n2. 如果原文中某个 changelog item 已存在完整结构（包括 <div className=\"changelog-item\"> 和日期标题），不要重复创建，只翻译其中的文本内容。\n3. 不要添加重复的日期标题或 changelog item 结构。\n4. 保持原文结构完整性，不要因认为结构不完整而添加新元素。\n5. 保留所有原有 HTML 标签和结构，不要修改格式。\n\n【二、格式规范】\n6. 只翻译纯文本部分，忽略 HTML 标签、代码块、表格、特殊格式等，代码相关内容保留不动。\n7. 小标题和日期必须翻译，日期格式统一为：'2025 年 12 月 04 日'（汉字和数字之间保留 1 个空格，年月日均为两位数，不足补零，如：'2025 年 09 月 05 日'）。\n8. 日期标题（如 '## 4.2.7 Dec 04, 2025'）必须翻译为 '## 4.2.7 2025 年 12 月 04 日'，版本号必须完整保留在日期前面，不得删除或修改。\n9. 不要添加代码块标记（``` 或 ```html），除非原文明确存在；原文无代码块标记时，翻译后也不应出现。\n\n【三、翻译质量】\n10. 不要直译，理解英文语义后用符合中文习惯的自然方式重新表述。例如：'action' 不应直译为'行动'，应根据上下文用'操作'、'动作'等更自然的表达。\n11. 确保所有英文文本都被翻译，不遗漏任何段落或句子；遇到不确定内容也要尝试翻译，不要跳过。\n12. 保证翻译内容准确，翻译后的中文应自然流畅，符合中文表达习惯。\n\n【四、专有名词处理】\n13. 自动识别首字母大写的专有名词（产品名、模块名、功能名等），通常保持英文不翻译。\n14. 固定术语规则（必须严格遵守）：\n    - 产品名：'Frontier'、'Frontiers' 保持英文；'New Frontier'、'New Frontiers' 翻译为'新 Frontier'、'新 Frontiers'（不要翻译成'新前沿'）。\n    - 专有名词（保持英文）：'Crypto Frontier'、'Crypto Frontier QUEST'、'Robotics Frontier'、'Model Comparison'、'Spot LLM's Mistakes'、'Correct LLM's Mistakes'、'Food Science'、'Lifelog Canvas'。\n    - 固定翻译：'Lineage' → '血缘'；小要点中的 'How' → '运作方式'；'Timeline' → '活动时间'；'Access' → '参与方式'；'Lock' → '锁仓'。",
+      "请将以下英文 changelog 按中文语境重写，严格遵循以下要求：\n\n【重要提示：Front Matter 不要翻译】\n0. YAML front matter（即文件开头 --- 之间的内容，包括 title 和 description）已经用中文写好了，不要翻译这部分内容。每个语言文件的 front matter 都已经是各自的本地语言，请保持原样不变。\n\n【一、结构完整性（最高优先级）】\n1. 严格禁止添加任何新的 HTML 标签或结构元素（如 <div>、<span> 等），只翻译文本内容。\n2. 如果原文中某个 changelog item 已存在完整结构（包括 <div className=\"changelog-item\"> 和日期标题），不要重复创建，只翻译其中的文本内容。\n3. 不要添加重复的日期标题或 changelog item 结构。\n4. 保持原文结构完整性，不要因认为结构不完整而添加新元素。\n5. 保留所有原有 HTML 标签和结构，不要修改格式。\n\n【二、格式规范】\n6. 只翻译纯文本部分，忽略 HTML 标签、代码块、表格、特殊格式等，代码相关内容保留不动。\n7. 小标题和日期必须翻译，日期格式统一为：'2025 年 12 月 04 日'（汉字和数字之间保留 1 个空格，年月日均为两位数，不足补零，如：'2025 年 09 月 05 日'）。\n8. 日期标题（如 '## 4.2.7 Dec 04, 2025'）必须翻译为 '## 4.2.7 2025 年 12 月 04 日'，版本号必须完整保留在日期前面，不得删除或修改。\n9. 不要添加代码块标记（``` 或 ```html），除非原文明确存在；原文无代码块标记时，翻译后也不应出现。\n\n【三、翻译质量】\n10. 不要直译，理解英文语义后用符合中文习惯的自然方式重新表述。例如：'action' 不应直译为'行动'，应根据上下文用'操作'、'动作'等更自然的表达。\n11. 确保所有英文文本都被翻译，不遗漏任何段落或句子；遇到不确定内容也要尝试翻译，不要跳过。\n12. 保证翻译内容准确，翻译后的中文应自然流畅，符合中文表达习惯。\n\n【四、专有名词处理】\n13. 自动识别首字母大写的专有名词（产品名、模块名、功能名等），通常保持英文不翻译。\n14. 固定术语规则（必须严格遵守）：\n    - 产品名：'Frontier'、'Frontiers' 保持英文；'New Frontier'、'New Frontiers' 翻译为'新 Frontier'、'新 Frontiers'（不要翻译成'新前沿'）。\n    - 专有名词（保持英文）：'Crypto Frontier'、'Crypto Frontier QUEST'、'Robotics Frontier'、'Model Comparison'、'Spot LLM's Mistakes'、'Correct LLM's Mistakes'、'Food Science'、'Lifelog Canvas'。\n    - 固定翻译：'Lineage' → '血缘'；小要点中的 'How' → '运作方式'；'Timeline' → '活动时间'；'Access' → '参与方式'；'Lock' → '锁仓'。",
   },
   {
     code: "ko",
     name: "Korean",
     systemPrompt:
-      "다음 영어 changelog를 한국어 문맥에 맞게 재작성하되, 다음 요구사항을 엄격히 준수하세요:\n\n【一、구조 완전성(최우선 순위)】\n1. 새로운 HTML 태그나 구조 요소(<div>, <span> 등) 추가를 엄격히 금지하며, 텍스트 내용만 번역하세요.\n2. 원문에 changelog item의 완전한 구조(<div className=\"changelog-item\"> 및 날짜 제목 포함)가 이미 존재하는 경우, 이러한 구조를 반복 생성하지 말고 텍스트 내용만 번역하세요.\n3. 중복된 날짜 제목이나 changelog item 구조를 추가하지 마세요.\n4. 원문의 구조 완전성을 유지하고, 구조가 불완전하다고 생각하여 새 요소를 추가하지 마세요.\n5. 원본 HTML 태그와 구조를 유지하고, 형식을 수정하지 마세요.\n\n【二、형식 규칙】\n6. 텍스트 내용만 번역하고, HTML 태그, 코드 블록, 표, 특수 형식 등은 무시하며, 코드로 보이는 모든 내용은 그대로 유지하세요.\n7. 소제목과 날짜는 반드시 번역하되, 날짜 형식은 '2025년 12월 04일'로 통일하세요(년, 월, 일은 모두 두 자리 숫자, 한 자리인 경우 앞에 0을 붙임, 예: '2025년 09월 05일').\n8. 날짜 제목(예: '## 4.2.7 Dec 04, 2025')은 '## 4.2.7 2025년 12월 04일' 형식으로 번역하며, 버전 번호는 날짜 앞에 완전히 보존하고 삭제하거나 수정하지 마세요.\n9. 원문에 코드 블록 표시(``` 또는 ```html)가 명확히 존재하지 않는 한 코드 블록 표시를 추가하지 마세요.\n\n【三、번역 품질】\n10. 직역하지 말고, 영어 원문의 의미를 이해한 후 한국어 언어 습관에 맞는 자연스러운 방식으로 재표현하세요. 예: 'action'을 단순히 '행동'으로 직역하지 말고, 문맥에 따라 더 자연스러운 한국어 표현을 사용하세요.\n11. 모든 영어 텍스트가 번역되도록 하고, 어떤 단락이나 문장도 누락하지 마세요. 불확실한 내용도 건너뛰지 말고 번역을 시도하세요.\n12. 번역 내용의 정확성을 보장하고, 번역된 한국어가 자연스럽고 유창하게 읽히도록 한국어 표현 습관에 맞게 작성하세요.\n\n【四、고유명사 처리】\n13. 대문자로 시작하는 고유명사(제품명, 모듈명, 기능명 등)를 자동으로 식별하고, 이러한 용어는 일반적으로 영어로 유지하고 번역하지 마세요.\n14. 고정 용어 규칙(반드시 준수):\n    - 제품명: 'Frontier', 'Frontiers'는 영어로 유지; 'New Frontier', 'New Frontiers'는 '새로운 Frontier', '새로운 Frontiers'로 번역(('새로운 프론티어'로 번역하지 마세요).\n    - 고유명사(영어 유지): 'Crypto Frontier', 'Crypto Frontier QUEST', 'Robotics Frontier', 'Model Comparison', 'Spot LLM's Mistakes', 'Correct LLM's Mistakes', 'Food Science', 'Lifelog Canvas'.\n    - 고정 번역: 'Lineage' → '계보'; 소제목의 'How' → '방법'; 'Timeline' → '일정'; 'Access' → '접근'; 'Lock' → '잠금'.",
+      "다음 영어 changelog를 한국어 문맥에 맞게 재작성하되, 다음 요구사항을 엄격히 준수하세요:\n\n【중요 안내: Front Matter 번역 금지】\n0. YAML front matter(파일 시작 부분 --- 사이의 내용, title 및 description 포함)는 이미 한국어로 작성되어 있으므로 이 부분을 번역하지 마세요. 각 언어 파일의 front matter는 이미 해당 언어로 작성되어 있으므로 그대로 유지하세요.\n\n【一、구조 완전성(최우선 순위)】\n1. 새로운 HTML 태그나 구조 요소(<div>, <span> 등) 추가를 엄격히 금지하며, 텍스트 내용만 번역하세요.\n2. 원문에 changelog item의 완전한 구조(<div className=\"changelog-item\"> 및 날짜 제목 포함)가 이미 존재하는 경우, 이러한 구조를 반복 생성하지 말고 텍스트 내용만 번역하세요.\n3. 중복된 날짜 제목이나 changelog item 구조를 추가하지 마세요.\n4. 원문의 구조 완전성을 유지하고, 구조가 불완전하다고 생각하여 새 요소를 추가하지 마세요.\n5. 원본 HTML 태그와 구조를 유지하고, 형식을 수정하지 마세요.\n\n【二、형식 규칙】\n6. 텍스트 내용만 번역하고, HTML 태그, 코드 블록, 표, 특수 형식 등은 무시하며, 코드로 보이는 모든 내용은 그대로 유지하세요.\n7. 소제목과 날짜는 반드시 번역하되, 날짜 형식은 '2025년 12월 04일'로 통일하세요(년, 월, 일은 모두 두 자리 숫자, 한 자리인 경우 앞에 0을 붙임, 예: '2025년 09월 05일').\n8. 날짜 제목(예: '## 4.2.7 Dec 04, 2025')은 '## 4.2.7 2025년 12월 04일' 형식으로 번역하며, 버전 번호는 날짜 앞에 완전히 보존하고 삭제하거나 수정하지 마세요.\n9. 원문에 코드 블록 표시(``` 또는 ```html)가 명확히 존재하지 않는 한 코드 블록 표시를 추가하지 마세요.\n\n【三、번역 품질】\n10. 직역하지 말고, 영어 원문의 의미를 이해한 후 한국어 언어 습관에 맞는 자연스러운 방식으로 재표현하세요. 예: 'action'을 단순히 '행동'으로 직역하지 말고, 문맥에 따라 더 자연스러운 한국어 표현을 사용하세요.\n11. 모든 영어 텍스트가 번역되도록 하고, 어떤 단락이나 문장도 누락하지 마세요. 불확실한 내용도 건너뛰지 말고 번역을 시도하세요.\n12. 번역 내용의 정확성을 보장하고, 번역된 한국어가 자연스럽고 유창하게 읽히도록 한국어 표현 습관에 맞게 작성하세요.\n\n【四、고유명사 처리】\n13. 대문자로 시작하는 고유명사(제품명, 모듈명, 기능명 등)를 자동으로 식별하고, 이러한 용어는 일반적으로 영어로 유지하고 번역하지 마세요.\n14. 고정 용어 규칙(반드시 준수):\n    - 제품명: 'Frontier', 'Frontiers'는 영어로 유지; 'New Frontier', 'New Frontiers'는 '새로운 Frontier', '새로운 Frontiers'로 번역(('새로운 프론티어'로 번역하지 마세요).\n    - 고유명사(영어 유지): 'Crypto Frontier', 'Crypto Frontier QUEST', 'Robotics Frontier', 'Model Comparison', 'Spot LLM's Mistakes', 'Correct LLM's Mistakes', 'Food Science', 'Lifelog Canvas'.\n    - 고정 번역: 'Lineage' → '계보'; 소제목의 'How' → '방법'; 'Timeline' → '일정'; 'Access' → '접근'; 'Lock' → '잠금'.",
   },
 ];
 
@@ -228,6 +228,10 @@ function truncateWithTwoMarkers(text, markerBefore, markerAfter) {
 
 /**
  * Translate front matter and UI elements
+ * 
+ * IMPORTANT: Front matter (YAML front matter between --- markers) should NOT be translated.
+ * Each language's front matter is already written in its native language and should be kept as-is.
+ * Only UI elements (filter labels, month labels, result text) need translation.
  */
 async function translateFrontMatterAndUI(text, langCode) {
   const translations = {
@@ -282,9 +286,10 @@ async function translateFrontMatterAndUI(text, langCode) {
 
   let result = text;
 
-  // Translate front matter
-  result = result.replace(/title:\s*"Changelog"/, `title: "${t.title}"`);
-  result = result.replace(/description:\s*"This changelog documents all updates, fixes, and new features for Codatta in 2025\."/, `description: "${t.description}"`);
+  // IMPORTANT: Do NOT translate front matter (YAML front matter between --- markers)
+  // Front matter is already written in the target language and should be kept as-is.
+  // Each language file has its own front matter that is already localized.
+  // Only translate UI elements below.
 
   // Translate result text
   result = result.replace(/<span>result\{num !== 1 \? 's' : ''\}<\/span>/, `<span>${t.resultText}</span>`);
@@ -401,12 +406,17 @@ function postProcessTranslation(text) {
 
 /**
  * Translation function (integrates two-marker + chunking + translation + concatenation + post-processing)
+ * 
+ * IMPORTANT: Front matter (YAML front matter between --- markers at the beginning of the file)
+ * is automatically preserved in keepBefore and will NOT be translated.
+ * Each language's front matter is already written in its native language and should remain unchanged.
  */
 async function translate(text, systemPrompt) {
   console.log("\n📝 Original text total length:", text.length, "characters");
 
   // Configure two markers (exact copy, including newlines/indentation/special characters)
   // markerBefore: };    return <ShowResult />;  })()}</div>
+  // Note: Front matter (--- ... ---) is before markerBefore, so it will be kept in keepBefore and NOT translated
   const markerBefore = `};
     return <ShowResult />;
   })()}
@@ -415,6 +425,7 @@ async function translate(text, systemPrompt) {
   const markerAfter = `{/* Component definitions - moved to end of file for cleaner code organization */}`;
 
   // Execute two-marker truncation
+  // Front matter is preserved in keepBefore and will not be translated
   const { translatePart, keepBefore, keepAfter } = truncateWithTwoMarkers(text, markerBefore, markerAfter);
 
   // No content to translate → return kept parts directly

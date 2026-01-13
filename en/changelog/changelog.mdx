@@ -1,9 +1,7 @@
 ---
 title: "Changelog"
-description: "This changelog documents all updates, fixes, and new features for Codatta in 2025."
+description: "This changelog documents all updates, fixes, and new features for Codatta in 2025 and 2026."
 ---
-
-import { useState, useEffect } from 'react';
 
 <div style={{
   backgroundColor: '#ffffff',
@@ -73,6 +71,59 @@ import { useState, useEffect } from 'react';
     };
     return <ShowResult />;
   })()}
+</div>
+<div className="changelog-item" data-type="optimization" data-month="jan">
+
+## 4.3.2 Jan 09, 2026
+---
+**Feature Optimization: Referral System Upgrade**
+
+<br />
+
+<div style={{ marginTop: "1rem" }}></div>
+
+An enhanced referral system with daily limits and reward chests to drive sustainable growth and quality contributions.
+
+- **How:** Daily invite limit of 10 new users per day. Users earn 1 chest for every 5 invites. When an invited user submits and passes their first task review, both the inviter and invitee receive 1 chest each, containing 1–100 random points. The referral page shows real-time progress and chest status. Chests are auto-issued when conditions are met and can be opened in "Contribute & Win".
+- **Why:** A daily cap prevents spam and keeps invites meaningful. Chests encourage real contributions from both sides, boosting data quality. Randomized point rewards make inviting fun and fair, supporting long-term activity and platform growth.
+
+</div>
+
+<div className="changelog-item" data-type="core-feature" data-month="dec">
+
+## 4.3.0 Dec 31, 2025
+---
+**Platform Upgrade: Staking for Quality & Commitment**
+
+<br />
+
+<div style={{ marginTop: "1rem" }}></div>
+
+Users can now stake XNY to meet task reputation requirements, unlocking access to higher-value tasks.
+
+- **Stake XNY:** Stake XNY on the Staking page to meet reputation requirements.
+- **Unlock Period:** Wait for the unlock period after requesting unstake.
+- **Reclaim Assets:** Reclaim assets once available (on-chain confirmations may take minutes; history updates accordingly).
+
+This feature fosters a more committed contributor community and elevates overall task quality through economic-aligned participation.
+
+</div>
+
+<div className="changelog-item" data-type="optimization" data-month="dec">
+
+## 4.2.8 Dec 17, 2025
+---
+**Adjustment & Optimization: Task & Activity System Upgrade**
+
+<br />
+
+<div style={{ marginTop: "1rem" }}></div>
+
+A comprehensive upgrade to the task and activity system, introducing dual-category task types and enhanced identification features.
+
+- **How:** Introduced a new "Data Labeling (review)" task type, forming a complete dual-category system alongside the existing "Data Annotation (contribution)" type. Added exclusive icons for tasks involved in Airdrop and Activity campaigns, enabling quick identification of reward types. The Activity mechanism now covers both task categories and supports independent reward configuration for each category. Updated task list, detail pages, and Frontier filters with icons, category labels, and "Contribute"/"Review" options. Users can intuitively distinguish task types and their associated incentive campaigns through the interface.
+- **Why:** Refines the task classification structure, helping users participate more precisely based on their skills and preferences. Improves the transparency and recognizability of the reward system, boosting engagement willingness and efficiency. Provides operations with more granular incentive configuration capabilities, supporting differentiated data-contribution strategies.
+
 </div>
 
 <div className="changelog-item" data-type="core-feature" data-month="dec">
@@ -539,9 +590,9 @@ export const ChangelogFilter = () => {
   }, [activeFilter]);
 
   const filterTypes = [
-    { id: 'all', label: 'All', color: '#6b7280', count: 24 },
-    { id: 'core-feature', label: 'Core Feature Release', color: '#16A34A', count: 4 },
-    { id: 'optimization', label: 'Adjustments & Optimization', color: '#F59E0B', count: 3 },
+    { id: 'all', label: 'All', color: '#6b7280', count: 27 },
+    { id: 'core-feature', label: 'Core Feature Release', color: '#16A34A', count: 5 },
+    { id: 'optimization', label: 'Adjustments & Optimization', color: '#F59E0B', count: 5 },
     { id: 'fixes', label: 'Fixes & Feature Sunset', color: '#EF4444', count: 3 },
     { id: 'campaign', label: 'Campaign Launch', color: '#A855F7', count: 14 }
   ];
@@ -715,14 +766,15 @@ export const MonthFilter = () => {
   }, [activeMonth]);
 
   const months = [
-    { id: 'all', label: 'All Months', count: 24 },
-    { id: 'dec', label: 'December', count: 1 },
-    { id: 'nov', label: 'November', count: 3 },
-    { id: 'oct', label: 'October', count: 6 },
-    { id: 'sep', label: 'September', count: 3 },
-    { id: 'aug', label: 'August', count: 5 },
-    { id: 'jul', label: 'July', count: 5 },
-    { id: 'jun', label: 'June', count: 1 }
+    { id: 'all', label: 'All Months', count: 27 },
+    { id: 'jan', label: 'January 2026', count: 1 },
+    { id: 'dec', label: 'December 2025', count: 3 },
+    { id: 'nov', label: 'November 2025', count: 3 },
+    { id: 'oct', label: 'October 2025', count: 6 },
+    { id: 'sep', label: 'September 2025', count: 3 },
+    { id: 'aug', label: 'August 2025', count: 5 },
+    { id: 'jul', label: 'July 2025', count: 5 },
+    { id: 'jun', label: 'June 2025', count: 1 }
   ];
 
   const activeMonthData = months.find(month => month.id === activeMonth) || months[0];

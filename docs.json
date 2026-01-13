@@ -91,9 +91,9 @@
             "tab": "Changelog",
             "groups": [
               {
-                "group": "2025",
+                "group": "Changelog",
                 "pages": [
-                  "en/changelog/2025"
+                  "en/changelog/changelog"
                 ]
               }
             ]
@@ -165,12 +165,12 @@
             ]
           },
           {
-            "tab": "更新日志",
+            "tab": "变更日志",
             "groups": [
               {
-                "group": "2025",
+                "group": "变更日志",
                 "pages": [
-                  "cn/changelog/2025"
+                  "cn/changelog/changelog"
                 ]
               }
             ]
@@ -244,9 +244,9 @@
             "tab": "변경 로그",
             "groups": [
               {
-                "group": "2025",
+                "group": "변경 로그",
                 "pages": [
-                  "ko/changelog/2025"
+                  "ko/changelog/changelog"
                 ]
               }
             ]
