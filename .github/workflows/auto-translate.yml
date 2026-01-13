@@ -33,6 +33,8 @@ jobs:
           npm install openai fs-extra
 
       # 4️⃣ Run translation (generate cn/ ko/ files)
+      # Note: Front matter (YAML front matter between --- markers) is NOT translated.
+      # Each language's front matter is already written in its native language and is preserved as-is.
       - name: Run translation
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
