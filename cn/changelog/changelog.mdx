@@ -763,14 +763,14 @@ export const MonthFilter = () => {
 
   const months = [
     { id: 'all', label: '全部月份', count: 27 },
-    { id: 'jan', label: 'January 2026', count: 1 },
-    { id: 'dec', label: 'December 2025', count: 3 },
-    { id: 'nov', label: 'November 2025', count: 3 },
-    { id: 'oct', label: 'October 2025', count: 6 },
-    { id: 'sep', label: 'September 2025', count: 3 },
-    { id: 'aug', label: 'August 2025', count: 5 },
-    { id: 'jul', label: 'July 2025', count: 5 },
-    { id: 'jun', label: 'June 2025', count: 1 }
+    { id: 'jan', label: '2026 年 1 月', count: 1 },
+    { id: 'dec', label: '2025 年 12 月', count: 3 },
+    { id: 'nov', label: '2025 年 11 月', count: 3 },
+    { id: 'oct', label: '2025 年 10 月', count: 6 },
+    { id: 'sep', label: '2025 年 9 月', count: 3 },
+    { id: 'aug', label: '2025 年 8 月', count: 5 },
+    { id: 'jul', label: '2025 年 7 月', count: 5 },
+    { id: 'jun', label: '2025 年 6 月', count: 1 }
   ];
 
   const activeMonthData = months.find(month => month.id === activeMonth) || months[0];
